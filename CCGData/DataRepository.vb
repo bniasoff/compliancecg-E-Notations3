@@ -267,7 +267,7 @@ Public Class DataRepository
     Public Function GetFacilityUser(FacilityID As Integer, UserID As Integer, Active As Boolean) As FacilityUser
         Try
             Dim FacilityUser As FacilityUser = Nothing
-            If Active = true then FacilityUser=CCGDataEntities.FacilityUsers.Where(Function(u) u.FacilityID = FacilityID And u.UserID = UserID And Not u.InActive.Value.Equals(True)).SingleOrDefault
+            If Active = True Then FacilityUser = CCGDataEntities.FacilityUsers.Where(Function(u) u.FacilityID = FacilityID And u.UserID = UserID And Not u.InActive.Value.Equals(True)).SingleOrDefault
             If Active = False Then FacilityUser = CCGDataEntities.FacilityUsers.Where(Function(u) u.FacilityID = FacilityID And u.UserID = UserID And u.InActive.Value.Equals(True)).SingleOrDefault
 
             Return FacilityUser
@@ -343,7 +343,8 @@ Public Class DataRepository
         Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
             Try
                 CCGDataEntities.Configuration.ProxyCreationEnabled = False
-                Dim FacilityGroups As List(Of FacilityGroup) = CCGDataEntities.FacilityGroups.Where(Function(g) Not g.InActive.Value.Equals(True)).OrderBy(Function(g) g.GroupName).ToList
+                'Dim FacilityGroups As List(Of FacilityGroup) = CCGDataEntities.FacilityGroups.Where(Function(g) Not g.InActive.Value.Equals(True)).OrderBy(Function(g) g.GroupName).ToList
+                Dim FacilityGroups As List(Of FacilityGroup) = CCGDataEntities.FacilityGroups.OrderBy(Function(g) g.GroupName).ToList
                 Return FacilityGroups
             Catch ex As Exception
                 logger.Error(ex)
@@ -427,7 +428,10 @@ Public Class DataRepository
 
     Public Function GetFacilityGroup(GroupID As Integer) As FacilityGroup
         Try
-            Dim FacilityGroup As FacilityGroup = CCGDataEntities.FacilityGroups.Where(Function(f) f.FacilityGroupID = GroupID And Not f.InActive.Value.Equals(True)).SingleOrDefault
+            'Dim FacilityGroup As FacilityGroup = CCGDataEntities.FacilityGroups.Where(Function(f) f.FacilityGroupID = GroupID And Not f.InActive.Value.Equals(True)).SingleOrDefault
+
+            Dim FacilityGroup As FacilityGroup = CCGDataEntities.FacilityGroups.Where(Function(f) f.FacilityGroupID = GroupID).SingleOrDefault
+
             Return FacilityGroup
 
         Catch ex As Exception
@@ -684,6 +688,18 @@ Public Class DataRepository
         Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
             Try
                 Dim FacilityGroup As FacilityGroup = CCGDataEntities.FacilityGroups.Where(Function(g) g.FacilityGroupID = GroupID).SingleOrDefault
+                Return FacilityGroup
+            Catch ex As Exception
+                logger.Error(ex)
+                Return Nothing
+            End Try
+        End Using
+    End Function
+
+    Public Function GetGroupFromGroupName(GroupName As String) As FacilityGroup
+        Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
+            Try
+                Dim FacilityGroup As FacilityGroup = CCGDataEntities.FacilityGroups.Where(Function(g) g.GroupName = GroupName).SingleOrDefault
                 Return FacilityGroup
             Catch ex As Exception
                 logger.Error(ex)

@@ -19,8 +19,6 @@
 <input type="hidden" id="UserEmails" data-value="@ViewBag.UserEmails" />
 
 
-
-
 @code
     Dim TabTabItems As List(Of Syncfusion.EJ2.Navigations.TabTabItem) = New List(Of Syncfusion.EJ2.Navigations.TabTabItem)()
     For Each TabHeader As TabHeader In ViewBag.TabHeaders
@@ -53,16 +51,126 @@ End code
 
 @*<div style="border-style: solid;border-color: coral;"><span>Facility</span></div>*@
 
-<div class="row formsRow">
-    <h2>Facilities</h2>
-    <div  class="col-12">
-        @*@Html.EJS().Tab("ej2Tab").Animation(Function(anim) anim.Previous(New TabTabActionSettings With {.Effect = "SlideRight"})).HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Popup).Selected("TabSelected").Items(TabTabItems).Width("1500px").Height("600px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()*@
-        @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Scrollable).Selected("TabSelected").Items(TabTabItems).Height("800px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()
 
+
+
+
+
+<div>
+    <div style="width:10px">
+        @*@Html.EJS().Tab("ej2Tab").Animation(Function(anim) anim.Previous(New TabTabActionSettings With {.Effect = "SlideRight"})).HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Popup).Selected("TabSelected").Items(TabTabItems).Width("1500px").Height("600px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()*@
+        @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Scrollable).Selected("TabSelected").Items(TabTabItems).Width("1500px").Height("800px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()
+        <div id="GroupButton">
+            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                <button type="button" class="btn btn-primary" id="ajaxSubmit" onclick="onClick();">Edit Groups</button>
+            </div>
+        </div>
     </div>
 
+
+    <div id="target3" class="col-lg-12 control-section" style="display:none; height:600px;">
+        @Html.EJS().Dialog("ExternalDialog3").IsModal(True).AnimationSettings(New DialogAnimationSettings() With {.Effect = DialogEffect.None}).ContentTemplate(@@<div>
+
+            <div id="Grid2">Test</div>
+        </div>).ShowCloseIcon(True).CloseOnEscape(True).Width("600px").Height("500px").Target("#Grid1").Created("Created").Visible(False).Render()
+    </div>
+
+
+
     <div id="Grid1" style="display: none;height:800px"> @Html.Partial("../Facilities/FacilitiesPartial")</div>
+
+    @*<div id="Grid2" style="display: none;height:800px"> @Html.Partial("../Facilities/FacilityGroupsPartial2")</div>*@
+    <div id="Grid2"></div>
 </div>
+
+
+
+
+<script type="text/javascript">
+    function onClick(e) {
+
+        @*$('#divid').load('@Url.Action("About", "Home")');*@
+
+      // $("#Grid1").empty();
+        //$("#Grid2").show();
+
+        //$('#Grid2').load("../Facilities/FacilitiesPartial2");
+
+        //$("#target").show();
+
+
+        var dialog = document.getElementById("ExternalDialog3").ej2_instances[0];
+        dialog.show();
+
+        //var button = new ej.buttons.Button({ isPrimary: true });
+        //button.appendTo('#Grid2');
+
+
+        gridInstance = new ej.grids.Grid({
+            allowPaging: false,
+
+            dataSource: new ej.data.DataManager({
+                url: "/Facilities/UrlDatasource5",
+                insertUrl: "/Facilities/Insert5",
+                updateUrl: "/Facilities/Update5",
+                removeUrl: "/Facilities/Delete5",
+                adaptor: new ej.data.UrlAdaptor()
+            }),
+
+            actionComplete: (args) => {
+                if (args.requestType == 'save') {
+                    gridInstance.refresh();
+                }
+                if (args.requestType == 'update') {
+                    gridInstance.refresh();
+                }
+                if (args.requestType === 'beginEdit') {
+                    EditMode = 'Edit'
+   }
+                if (args.requestType === 'add') {
+                    EditMode = 'Add'
+                }
+            },
+
+
+            //load: load2,
+            height: 165,
+            width: 550,
+            allowSorting: true,
+            allowFiltering: true,
+            allowResizing: true,
+            filterSettings: { type: "Excel" },
+
+            editSettings: { allowAdding: true, allowEditing: true, allowDeleting: true, mode: "Normal" },
+            toolbar: ["Add", "Edit", "Update", "Delete", "Cancel"],
+            columns:
+                [
+                    { field: "FacilityGroupID", headerText: "FacilityGroupID", width: 0, isPrimaryKey: true, visible: false },
+                    { field: "GroupName", headerText: "GroupName", width: 200, visible: true },
+                    { field: "AllowPolicyPrint", headerText: "AllowPolicyPrint", width: 150, editType: "booleanedit", displayAsCheckBox: true, type: 'boolean', textAlign: 'Center' },
+                    { field: "InActive", headerText: "InActive", width: 150, editType: "booleanedit", displayAsCheckBox: true, type: 'boolean', textAlign: 'Center' }
+
+                ]
+        });
+
+
+        //$("#Grid1").empty();
+
+        $("#Grid2").empty();
+        gridInstance.appendTo('#Grid2');
+
+
+
+   //     // debugger;
+   //     //alert('Clicked');
+    }
+
+    function Created() {
+        this.target = ".e-gridcontent";
+    }
+</script>
+
+
 
 
 
@@ -79,7 +187,6 @@ End code
 
     var FacilityGroup2
 
-
     function TabCreated(e) {
         var tabObj = document.getElementById("ej2Tab").ej2_instances[0];
         //debugger;
@@ -93,49 +200,7 @@ End code
 
     function CheckUserRole() {
 
-        $.post('/Facilities/CheckUserRole')
-            .done(function (data) {
 
-                var grid = document.getElementById("Grid").ej2_instances[0];
-                var grid2 = document.getElementById("Grid2").ej2_instances[0];
-                //var grid3 = document.getElementById("Grid3").ej2_instances[0];
-                var grid4 = document.getElementById("Grid4").ej2_instances[0];
-
-                if (data == 0) {
-                    grid.editSettings.allowAdding = false;
-                    grid.editSettings.allowEditing = false;
-                    grid.editSettings.allowDeleting = false;
-
-                    grid2.editSettings.allowAdding = false;
-                    grid2.editSettings.allowEditing = false;
-                    grid2.editSettings.allowDeleting = false;
-
-                    //grid3.editSettings.allowAdding = false;
-                    //grid3.editSettings.allowEditing = false;
-                    //grid3.editSettings.allowDeleting = false;
-
-                    grid4.editSettings.allowAdding = false;
-                    grid4.editSettings.allowEditing = false;
-                    grid4.editSettings.allowDeleting = false;
-                }
-                if (data == 1 | data == 2) {
-                    grid.editSettings.allowAdding = true;
-                    grid.editSettings.allowEditing = true;
-                    grid.editSettings.allowDeleting = true;
-
-                    grid2.editSettings.allowAdding = true;
-                    grid2.editSettings.allowEditing = true;
-                    grid2.editSettings.allowDeleting = true;
-
-                    //grid3.editSettings.allowAdding = true;
-                    //grid3.editSettings.allowEditing = true;
-                    //grid3.editSettings.allowDeleting = true;
-
-                    grid4.editSettings.allowAdding = true;
-                    grid4.editSettings.allowEditing = true;
-                    grid4.editSettings.allowDeleting = true;
-                }
-            });
     }
 
 
@@ -149,6 +214,7 @@ End code
 
             $.post('/Facilities/SetFacilityGroupSessionValues', request)
                 .done(function (data) {
+                    // debugger;
                     if (data == 'True') {
                         CheckUserRole();
 
@@ -162,6 +228,11 @@ End code
                             adaptor: new ej.data.UrlAdaptor()
                             //.Query().addParams("FacilityID",FacilityGroup.FacilityGroupID)
                         });
+
+
+
+
+
 
 
 
@@ -242,6 +313,7 @@ End code
         //var content = tabObj.itemIndexArray[e.selectedIndex]
         //var content2 = 'a' + e.selectedItem.textContent.replace(/ /g, "_");
 
+        //debugger;
         GetFacilityGrid(e.selectedItem.textContent)
 
 
@@ -269,7 +341,7 @@ End code
         width: 500px;
     }
 
- 
+
 
     /*.e-tab-custom-class {
     }
@@ -369,6 +441,8 @@ End code
         border-left: 1px solid #c8c8c8;
     }
 </style>
+
+
 
 
 

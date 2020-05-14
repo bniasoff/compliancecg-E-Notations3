@@ -41,6 +41,8 @@ End code
 End Code
 
 
+
+
 <div id="target" class="col-lg-12 control-section" style="display:none; height:600px;">
     @Html.EJS().Dialog("ExternalDialog").IsModal(True).AnimationSettings(New DialogAnimationSettings() With {.Effect = DialogEffect.None}).ContentTemplate(@@<div>
 
@@ -82,7 +84,7 @@ End Code
 @*<div><span>Test</span></div>*@
 
 <div style="margin-left:20px;margin-top:40px;">
-    @Html.EJS().Grid("Grid").DataSource(Function(DataManager) DataManager.Url("/Facilities/UrlDatasource").InsertUrl("/Facilities/Insert").UpdateUrl("/Facilities/Update").RemoveUrl("/Facilities/Delete").Adaptor("UrlAdaptor")).Height("550").Width("1450").AllowPaging(True).ActionComplete("actionComplete").Load("load").Columns(Sub(col)
+    @Html.EJS().Grid("Grid").DataSource(Function(DataManager) DataManager.Url("/Facilities/UrlDatasource").InsertUrl("/Facilities/Insert").UpdateUrl("/Facilities/Update").RemoveUrl("/Facilities/Delete").Adaptor("UrlAdaptor")).Height("600").Width("1450").AllowPaging(True).ActionComplete("actionComplete").Load("load").Columns(Sub(col)
                                                                                                                                                                                                                                                                                                                                                        col.HeaderText("Users").Width("90").Commands(commands2).Add()
                                                                                                                                                                                                                                                                                                                                                        col.Field("FacilityID").HeaderText("FacilityID").IsPrimaryKey(True).Visible(False).Add()
                                                                                                                                                                                                                                                                                                                                                        col.Field("Name").HeaderText("Name").Width("250").ValidationRules(New With {.required = True, .minLength = 3}).Add()
@@ -99,6 +101,9 @@ End Code
 
 
 </div>
+
+
+
 <script id="datetemplate" type="text/x-template">
     <span class="e-icon-calender e-icons headericon"></span> DateofEntry
 </script>
@@ -330,7 +335,7 @@ End Code
                url: '/Facilities/GetFacilitUserEmails',
                 type: 'POST',
                 data: jQuery.param({ FacilityID: rowData1.FacilityID}),
-                success: function (data) {             
+                success: function (data) {
                     FacilitUserEmails = JSON.parse(data)
                 },
                 error: function () {
@@ -360,12 +365,18 @@ End Code
 
             $.post('/Facilities/SetUserSessionValues', request)
                 .done(function (data) {
+
+
                     if (data == 'True') {
+
+
                         $.ajax({
                             url: '/Facilities/GetFacilityUsersRoles',
                             type: 'POST',
                             data: jQuery.param({ FacilityID: rowData1.FacilityID, UserID: rowData2.UserID }),
                             success: function (data) {
+
+                                debugger;
                                 var dataObject = JSON.parse(data)
 
                                 var dialog = document.getElementById("ExternalDialog2").ej2_instances[0];
@@ -483,7 +494,7 @@ End Code
 
 
     function customFn(args) {
-        let FacilitUserEmail = FacilitUserEmails.find(g => g.toLowerCase() === args['value'].toLowerCase()); 
+        let FacilitUserEmail = FacilitUserEmails.find(g => g.toLowerCase() === args['value'].toLowerCase());
 
         if (EditMode == 'Edit') {
             if (FacilitUserEmail == undefined) { return true };

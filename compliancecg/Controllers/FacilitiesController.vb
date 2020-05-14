@@ -1495,6 +1495,159 @@ Namespace Controllers
             'Return Json(New With {.result = orddata, .count = orddata.Count})
         End Function
 
+
+        Public Function UrlDatasource5(ByVal dm As DataManagerRequest) As ActionResult
+            Try
+                Dim User As User = HomeController.GetCurrentUser()
+                Dim UserInfo As New List(Of GetUserInfo_Result)
+                Dim FacilityGroups As New List(Of FacilityGroup)
+                Dim DataSource As IEnumerable = Nothing
+
+                FacilityGroups = DataRepository.GetFacilityGroups2
+
+                DataSource = FacilityGroups
+
+
+                Dim operation As DataOperations = New DataOperations()
+
+                If dm.Search IsNot Nothing AndAlso dm.Search.Count > 0 Then
+                    DataSource = operation.PerformSearching(DataSource, dm.Search)
+                End If
+
+                If dm.Sorted IsNot Nothing AndAlso dm.Sorted.Count > 0 Then
+                    DataSource = operation.PerformSorting(DataSource, dm.Sorted)
+                End If
+
+                If dm.Where IsNot Nothing AndAlso dm.Where.Count > 0 Then
+                    DataSource = operation.PerformFiltering(DataSource, dm.Where, dm.Where(0).[Operator])
+                End If
+
+                Dim count As Integer = DataSource.Cast(Of FacilityGroup)().Count()
+
+                If dm.Skip <> 0 Then
+                    DataSource = operation.PerformSkip(DataSource, dm.Skip)
+                End If
+
+                If dm.Take <> 0 Then
+                    DataSource = operation.PerformTake(DataSource, dm.Take)
+                End If
+
+                Return If(dm.RequiresCounts, Json(New With {.result = DataSource, .count = count}), Json(DataSource))
+            Catch ex As Exception
+                logger.Error(ex)
+
+            End Try
+
+        End Function
+
+        Public Function Update5(ByVal CRUDModel As ICRUDModel(Of FacilityGroup)) As ActionResult
+            Try
+                Dim FacilityGroup As FacilityGroup = CRUDModel.Value
+                Dim FoundFacilityGroup = DataRepository.GetFacilityGroup(FacilityGroup.FacilityGroupID)
+
+                Dim CurrentUser As ApplicationUser = Nothing
+                If Session("CurrentUser") IsNot Nothing Then
+                    CurrentUser = Session("CurrentUser")
+                    ' Facility.UserEditor = CurrentUser.Email
+                End If
+
+                If FoundFacilityGroup IsNot Nothing Then
+                    FoundFacilityGroup.GroupName = FacilityGroup.GroupName
+                    FoundFacilityGroup.InActive = FacilityGroup.InActive
+                    FoundFacilityGroup.AllowPolicyPrint = FacilityGroup.AllowPolicyPrint
+                    FoundFacilityGroup.DateModified = Now
+                End If
+                Dim Updated = DataRepository.SaveChanges
+
+                ' Dim Updated = DataRepository.SaveChanges()
+            Catch ex As Exception
+                logger.Error(ex)
+
+            End Try
+
+        End Function
+
+        Public Function Insert5(ByVal CRUDModel As ICRUDModel(Of FacilityGroup)) As ActionResult
+            Try
+                Dim FacilityGroup As FacilityGroup = CRUDModel.Value
+                Dim CurrentUser As User = HomeController.GetCurrentUser()
+                Dim Facility As Facility = Nothing
+                Dim UpdatedRecords As Integer = 0
+                Dim Active As Boolean = True
+
+                Dim FoundFacilityGroup = DataRepository.GetGroupFromGroupName(FacilityGroup.GroupName)
+
+                If FoundFacilityGroup Is Nothing Then
+                    Dim newFacilityGroup As New FacilityGroup
+                    newFacilityGroup.GroupName = FacilityGroup.GroupName
+                    newFacilityGroup.AllowPolicyPrint = FacilityGroup.AllowPolicyPrint
+                    newFacilityGroup.DateCreated = Now
+                    newFacilityGroup.DateModified = Now
+                    DataRepository.InsertAndSave(Of FacilityGroup)(newFacilityGroup)
+                    FoundFacilityGroup = DataRepository.GetGroupFromGroupName(FacilityGroup.GroupName)
+                End If
+
+
+                'If Session("Facility") IsNot Nothing Then
+                '    Facility = Session("Facility")
+                'End If
+
+                'If Session("FacilityUsersGridActive") IsNot Nothing Then
+                '    If Session("FacilityUsersGridActive") = 0 Then Active = False
+                'End If
+
+                'Dim FoundUser As User = Nothing
+                'Dim FacilityUser As FacilityUser = Nothing
+
+                'If User.UserID > 0 Then
+                '    FoundUser = DataRepository.GetUser(User.UserID)
+                'End If
+
+                'If FoundUser Is Nothing And User.EmailAddress IsNot Nothing Then
+                '    FoundUser = DataRepository.GetUser(User.EmailAddress)
+                '    If FoundUser Is Nothing Then
+                '        Dim newUser As New User
+                '        'newUser.LastName = User.LastName
+                '        'newUser.FirstName = User.FirstName
+                '        'newUser.EmailAddress = User.EmailAddress
+                '        'newUser.Phone1 = CurrentUser.Phone1
+                '        'newUser.Phone2 = CurrentUser.Phone2
+                '        User.UserEditor = CurrentUser.EmailAddress
+                '        User.DateCreated = Now
+                '        User.DateModified = Now
+                '        DataRepository.InsertAndSave(Of User)(User)
+                '        FoundUser = DataRepository.GetUser(User.EmailAddress)
+                '    End If
+                'End If
+
+
+                'If FoundUser IsNot Nothing And Facility IsNot Nothing Then
+                '    FacilityUser = DataRepository.GetFacilityUser(Facility.FacilityID, FoundUser.UserID, Active)
+
+                '    If FacilityUser Is Nothing Then
+                '        Dim newFacilityUser As New FacilityUser
+                '        newFacilityUser.FacilityID = Facility.FacilityID
+                '        newFacilityUser.UserID = FoundUser.UserID
+                '        newFacilityUser.DateCreated = Now
+                '        newFacilityUser.DateModified = Now
+                '        newFacilityUser.UserEditor = CurrentUser.EmailAddress
+                '        DataRepository.InsertAndSave(Of FacilityUser)(newFacilityUser)
+                '    End If
+                'End If
+
+            Catch ex As Exception
+                logger.Error(ex)
+
+            End Try
+        End Function
+
+
+        Public Function Delete5(ByVal key As Integer) As ActionResult
+            Dim CurrentUser As User = HomeController.GetCurrentUser()
+            'OrdersDetails.GetAllRecords().Remove(OrdersDetails.GetAllRecords().Where(Function([or]) [or].OrderID = key).FirstOrDefault())
+            'Dim data = OrdersDetails.GetAllRecords()
+            'Return Json(data)
+        End Function
         Public Function CheckUserRole() As Integer
 
             Try
