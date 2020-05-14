@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="647e9e1d0f5d41a58d385e74d9ef1ebb" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="CCGDataModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="CCGDataModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="5.375" />
+        <EntityTypeShape EntityType="CCGDataModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="2.875" />
+        <EntityTypeShape EntityType="CCGDataModel.AspNetUser" Width="1.5" PointX="3" PointY="4.5" />
+        <AssociationConnector Association="CCGDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CCGDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CCGDataModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="CCGDataModel.UserHistory" Width="1.5" PointX="5.25" PointY="8.125" />
+        <AssociationConnector Association="CCGDataModel.FK_UserHistory_AspNetUsers" />
+        <EntityTypeShape EntityType="CCGDataModel.JobTitle" Width="1.5" PointX="13" PointY="0.75" />
+        <EntityTypeShape EntityType="CCGDataModel.LoginsAdd" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="CCGDataModel.ClientContact" Width="1.5" PointX="2.75" PointY="13.375" />
+        <EntityTypeShape EntityType="CCGDataModel.FacilityUsersJob" Width="1.5" PointX="15.25" PointY="4.625" />
+        <AssociationConnector Association="CCGDataModel.FK_FacilityUsersJobs_JobTitles" />
+        <EntityTypeShape EntityType="CCGDataModel.ChangeLog" Width="1.5" PointX="4.75" PointY="13.375" />
+        <EntityTypeShape EntityType="CCGDataModel.FacilityOwner" Width="1.5" PointX="10" PointY="4.75" />
+        <EntityTypeShape EntityType="CCGDataModel.Facility" Width="1.5" PointX="10.75" PointY="9.875" />
+        <EntityTypeShape EntityType="CCGDataModel.FacilityGroup" Width="1.5" PointX="8.5" PointY="11.75" />
+        <EntityTypeShape EntityType="CCGDataModel.User" Width="1.5" PointX="7.75" PointY="3.375" />
+        <AssociationConnector Association="CCGDataModel.FK_Facilities_FacilityGroups" />
+        <AssociationConnector Association="CCGDataModel.FK_FacilityOwners_Users" />
+        <EntityTypeShape EntityType="CCGDataModel.FacilityUserRole" Width="1.5" PointX="12.75" PointY="9.375" />
+        <EntityTypeShape EntityType="CCGDataModel.FacilityUser" Width="1.5" PointX="13" PointY="4.25" />
+        <AssociationConnector Association="CCGDataModel.FK_FacilityUsers_Facilities" />
+        <AssociationConnector Association="CCGDataModel.FK_FacilityUsers_Users" />
+        <AssociationConnector Association="CCGDataModel.FK_FacilityUsersJobs_FacilityUsers" />
+        <EntityTypeShape EntityType="CCGDataModel.UsersByTitle" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CCGDataModel.GetFacility" Width="1.5" PointX="7.375" PointY="15.75" />
+        <EntityTypeShape EntityType="CCGDataModel.GetUser" Width="1.5" PointX="13.375" PointY="12.75" />
+        <EntityTypeShape EntityType="CCGDataModel.SectionIndex" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CCGDataModel.StaffMember" Width="1.5" PointX="15.375" PointY="8.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

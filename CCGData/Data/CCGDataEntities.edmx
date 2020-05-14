@@ -1,0 +1,1649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CCGDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hometown" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="Password2" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofEntry" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.ChangeLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChangeLogs">
+          <Key>
+            <PropertyRef Name="ChangeLogID" />
+          </Key>
+          <Property Name="ChangeLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrimaryKeyValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateChanged" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClientContacts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Account #" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name of Facility" Type="nvarchar" MaxLength="100" />
+          <Property Name="Group Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="First Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Column 5" Type="nvarchar" MaxLength="100" />
+          <Property Name="Job Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Facility #" Type="nvarchar" MaxLength="100" />
+          <Property Name="Admin Cell #" Type="nvarchar" MaxLength="100" />
+          <Property Name="Full Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Street Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="100" />
+          <Property Name="# of beds" Type="nvarchar" MaxLength="100" />
+          <Property Name="Shift Change" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateofEntry" Type="datetime" />
+          <Property Name="ValidEmail" Type="bit" />
+        </EntityType>
+        <EntityType Name="Facilities">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityGroupID" Type="int" Nullable="false" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="Del" Type="bit" />
+          <Property Name="Alt" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="2" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="5" />
+          <Property Name="Beds" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShiftChange" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacilityType" Type="nvarchar" MaxLength="50" />
+          <Property Name="BeginDate" Type="smalldatetime" />
+          <Property Name="ComplianceOfficer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="LogoPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+          <Property Name="DateModified" Type="smalldatetime" />
+          <Property Name="FacilityGroupName" Type="varchar" MaxLength="255" StoreGeneratedPattern="Computed" />
+          <Property Name="GroupPolicyPrint" Type="bit" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="FacilityGroups">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AllowPolicyPrint" Type="bit" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+          <Property Name="DateModified" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="FacilityOwners">
+          <Key>
+            <PropertyRef Name="FacilityOwnerID" />
+          </Key>
+          <Property Name="FacilityOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityGroupID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FacilityUsers">
+          <Key>
+            <PropertyRef Name="FacilityUserID" />
+          </Key>
+          <Property Name="FacilityUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="255" StoreGeneratedPattern="Computed" />
+          <Property Name="RolesID" Type="nvarchar" MaxLength="255" StoreGeneratedPattern="Computed" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="smalldatetime" />
+          <Property Name="DateModified" Type="smalldatetime" />
+          <Property Name="del" Type="bit" />
+        </EntityType>
+        <EntityType Name="FacilityUsersJobs">
+          <Key>
+            <PropertyRef Name="FacilityUserJobID" />
+          </Key>
+          <Property Name="FacilityUserJobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityUserID" Type="int" Nullable="false" />
+          <Property Name="JobTitleID" Type="int" Nullable="false" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="JobTitles">
+          <Key>
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="JobTitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="TitleOrder" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofEntry" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LoginsAdd">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Added" Type="bit" />
+          <Property Name="DateAdded" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SectionIndexes">
+          <Key>
+            <PropertyRef Name="SectionIndexID" />
+          </Key>
+          <Property Name="SectionIndexID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="PolicyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="SectionFrom" Type="int" />
+          <Property Name="SectionTo" Type="int" />
+        </EntityType>
+        <EntityType Name="StaffMembers">
+          <Key>
+            <PropertyRef Name="StaffMembersID" />
+          </Key>
+          <Property Name="StaffMembersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityGroupID" Type="int" />
+          <Property Name="FacilityID" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateAdded" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserHistory">
+          <Key>
+            <PropertyRef Name="UserHistoryID" />
+          </Key>
+          <Property Name="UserHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="datetime" />
+          <Property Name="Logoff" Type="datetime" />
+          <Property Name="Success" Type="bit" />
+          <Property Name="SignInStatus" Type="int" />
+          <Property Name="URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAgent" Type="nvarchar" MaxLength="250" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofEntry" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AspNetUserID" Type="int" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+          <Property Name="ProfileImagePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="JobTitle2" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserEditor" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Del" Type="bit" />
+          <Property Name="ValidEmail" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.FacilityUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacilityUserRoles">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="int" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TitleOrder" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobTitleID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.GetFacilities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetFacilities">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="int" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="2" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="5" />
+          <Property Name="Beds" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShiftChange" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacilityGroupName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.GetUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetUsers">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+            <PropertyRef Name="FacilityUserID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="int" Nullable="false" />
+          <Property Name="FacilityID" Type="int" Nullable="false" />
+          <Property Name="FacilityUserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="2" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="255" />
+          <Property Name="RolesID" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersByTitle">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="JobTitleID" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="JobTitleID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Facilities_FacilityGroups">
+          <End Role="FacilityGroups" Type="Self.FacilityGroups" Multiplicity="1" />
+          <End Role="Facilities" Type="Self.Facilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityGroups">
+              <PropertyRef Name="FacilityGroupID" />
+            </Principal>
+            <Dependent Role="Facilities">
+              <PropertyRef Name="FacilityGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityOwners_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FacilityOwners" Type="Self.FacilityOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacilityOwners">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsers_Facilities">
+          <End Role="Facilities" Type="Self.Facilities" Multiplicity="1" />
+          <End Role="FacilityUsers" Type="Self.FacilityUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facilities">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="FacilityUsers">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsers_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FacilityUsers" Type="Self.FacilityUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacilityUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsersJobs_FacilityUsers">
+          <End Role="FacilityUsers" Type="Self.FacilityUsers" Multiplicity="1" />
+          <End Role="FacilityUsersJobs" Type="Self.FacilityUsersJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityUsers">
+              <PropertyRef Name="FacilityUserID" />
+            </Principal>
+            <Dependent Role="FacilityUsersJobs">
+              <PropertyRef Name="FacilityUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsersJobs_JobTitles">
+          <End Role="JobTitles" Type="Self.JobTitles" Multiplicity="1" />
+          <End Role="FacilityUsersJobs" Type="Self.FacilityUsersJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitles">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="FacilityUsersJobs">
+              <PropertyRef Name="JobTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetFacilitiesFromUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetFacilityUsersWithRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacilityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetFacilityUsersWithTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacilityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGroupsFromUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetGroupUserAdminsWithRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacilityGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGroupUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacilityGroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetJobDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="TitleOrder" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetJobTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="TitleOrder" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CCGDataModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientContacts" EntityType="Self.ClientContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facilities" EntityType="Self.Facilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityGroups" EntityType="Self.FacilityGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityOwners" EntityType="Self.FacilityOwners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityUsers" EntityType="Self.FacilityUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityUsersJobs" EntityType="Self.FacilityUsersJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitles" EntityType="Self.JobTitles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginsAdd" EntityType="Self.LoginsAdd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionIndexes" EntityType="Self.SectionIndexes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffMembers" EntityType="Self.StaffMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserHistory" EntityType="Self.UserHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetRoles].[Id] AS [Id], 
+    [AspNetRoles].[Name] AS [Name]
+    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserClaims].[Id] AS [Id], 
+    [AspNetUserClaims].[UserId] AS [UserId], 
+    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
+    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
+    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
+    [AspNetUserLogins].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChangeLogs" EntityType="Self.ChangeLogs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChangeLogs].[ChangeLogID] AS [ChangeLogID], 
+    [ChangeLogs].[EntityName] AS [EntityName], 
+    [ChangeLogs].[PropertyName] AS [PropertyName], 
+    [ChangeLogs].[PrimaryKeyValue] AS [PrimaryKeyValue], 
+    [ChangeLogs].[OldValue] AS [OldValue], 
+    [ChangeLogs].[NewValue] AS [NewValue], 
+    [ChangeLogs].[DateChanged] AS [DateChanged]
+    FROM [dbo].[ChangeLogs] AS [ChangeLogs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FacilityUserRoles" EntityType="Self.FacilityUserRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacilityUserRoles].[FacilityGroupID] AS [FacilityGroupID], 
+    [FacilityUserRoles].[FacilityID] AS [FacilityID], 
+    [FacilityUserRoles].[Title] AS [Title], 
+    [FacilityUserRoles].[EmailAddress] AS [EmailAddress], 
+    [FacilityUserRoles].[TitleOrder] AS [TitleOrder], 
+    [FacilityUserRoles].[Description] AS [Description], 
+    [FacilityUserRoles].[JobTitleID] AS [JobTitleID]
+    FROM [dbo].[FacilityUserRoles] AS [FacilityUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetFacilities" EntityType="Self.GetFacilities" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetFacilities].[FacilityGroupID] AS [FacilityGroupID], 
+    [GetFacilities].[FacilityID] AS [FacilityID], 
+    [GetFacilities].[GroupName] AS [GroupName], 
+    [GetFacilities].[FacilityName] AS [FacilityName], 
+    [GetFacilities].[State] AS [State], 
+    [GetFacilities].[InActive] AS [InActive], 
+    [GetFacilities].[Address] AS [Address], 
+    [GetFacilities].[City] AS [City], 
+    [GetFacilities].[Zip] AS [Zip], 
+    [GetFacilities].[Beds] AS [Beds], 
+    [GetFacilities].[ShiftChange] AS [ShiftChange], 
+    [GetFacilities].[Phone1] AS [Phone1], 
+    [GetFacilities].[Fax] AS [Fax], 
+    [GetFacilities].[FacilityGroupName] AS [FacilityGroupName]
+    FROM [dbo].[GetFacilities] AS [GetFacilities]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetUsers" EntityType="Self.GetUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetUsers].[FacilityGroupID] AS [FacilityGroupID], 
+    [GetUsers].[FacilityID] AS [FacilityID], 
+    [GetUsers].[FacilityUserID] AS [FacilityUserID], 
+    [GetUsers].[UserID] AS [UserID], 
+    [GetUsers].[GroupName] AS [GroupName], 
+    [GetUsers].[FacilityName] AS [FacilityName], 
+    [GetUsers].[LastName] AS [LastName], 
+    [GetUsers].[FirstName] AS [FirstName], 
+    [GetUsers].[InActive] AS [InActive], 
+    [GetUsers].[EmailAddress] AS [EmailAddress], 
+    [GetUsers].[Phone1] AS [Phone1], 
+    [GetUsers].[Phone2] AS [Phone2], 
+    [GetUsers].[State] AS [State], 
+    [GetUsers].[Roles] AS [Roles], 
+    [GetUsers].[RolesID] AS [RolesID]
+    FROM [dbo].[GetUsers] AS [GetUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersByTitle" EntityType="Self.UsersByTitle" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersByTitle].[UserID] AS [UserID], 
+    [UsersByTitle].[LastName] AS [LastName], 
+    [UsersByTitle].[FirstName] AS [FirstName], 
+    [UsersByTitle].[JobTitleID] AS [JobTitleID], 
+    [UsersByTitle].[Title] AS [Title], 
+    [UsersByTitle].[InActive] AS [InActive], 
+    [UsersByTitle].[EmailAddress] AS [EmailAddress], 
+    [UsersByTitle].[Phone1] AS [Phone1], 
+    [UsersByTitle].[Phone2] AS [Phone2], 
+    [UsersByTitle].[FacilityName] AS [FacilityName]
+    FROM [dbo].[UsersByTitle] AS [UsersByTitle]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Facilities_FacilityGroups" Association="Self.FK_Facilities_FacilityGroups">
+            <End Role="FacilityGroups" EntitySet="FacilityGroups" />
+            <End Role="Facilities" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityOwners_Users" Association="Self.FK_FacilityOwners_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FacilityOwners" EntitySet="FacilityOwners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsers_Facilities" Association="Self.FK_FacilityUsers_Facilities">
+            <End Role="Facilities" EntitySet="Facilities" />
+            <End Role="FacilityUsers" EntitySet="FacilityUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsers_Users" Association="Self.FK_FacilityUsers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FacilityUsers" EntitySet="FacilityUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsersJobs_FacilityUsers" Association="Self.FK_FacilityUsersJobs_FacilityUsers">
+            <End Role="FacilityUsers" EntitySet="FacilityUsers" />
+            <End Role="FacilityUsersJobs" EntitySet="FacilityUsersJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsersJobs_JobTitles" Association="Self.FK_FacilityUsersJobs_JobTitles">
+            <End Role="JobTitles" EntitySet="JobTitles" />
+            <End Role="FacilityUsersJobs" EntitySet="FacilityUsersJobs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CCGDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CCGDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="CCGDataModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="CCGDataModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="CCGDataModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="CCGDataModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="CCGDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="CCGDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="CCGDataModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="UserHistories" EntityType="CCGDataModel.UserHistory" />
+          <AssociationSet Name="FK_UserHistory_AspNetUsers" Association="CCGDataModel.FK_UserHistory_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="UserHistory" EntitySet="UserHistories" />
+          </AssociationSet>
+          <EntitySet Name="JobTitles" EntityType="CCGDataModel.JobTitle" />
+          <EntitySet Name="LoginsAdds" EntityType="CCGDataModel.LoginsAdd" />
+          <EntitySet Name="ClientContacts" EntityType="CCGDataModel.ClientContact" />
+          <EntitySet Name="FacilityUsersJobs" EntityType="CCGDataModel.FacilityUsersJob" />
+          <AssociationSet Name="FK_FacilityUsersJobs_JobTitles" Association="CCGDataModel.FK_FacilityUsersJobs_JobTitles">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="FacilityUsersJob" EntitySet="FacilityUsersJobs" />
+          </AssociationSet>
+          <EntitySet Name="ChangeLogs" EntityType="CCGDataModel.ChangeLog" />
+          <FunctionImport Name="GetFacilitiesFromUser" ReturnType="Collection(Int32)">
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFacilityUsersWithRole" ReturnType="Collection(CCGDataModel.GetFacilityUsersWithRole_Result)">
+          <Parameter Name="FacilityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGroupsFromUser" ReturnType="Collection(Int32)">
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGroupUserAdminsWithRole" ReturnType="Collection(CCGDataModel.GetGroupUserAdminsWithRole_Result)">
+          <Parameter Name="FacilityGroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGroupUsers" ReturnType="Collection(Int32)">
+          <Parameter Name="FacilityGroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserInfo" ReturnType="Collection(CCGDataModel.GetUserInfo_Result)">
+          <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetFacilityUsersWithTitle" ReturnType="Collection(CCGDataModel.GetFacilityUsersWithTitle_Result)">
+          <Parameter Name="FacilityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="FacilityOwners" EntityType="CCGDataModel.FacilityOwner" />
+          <EntitySet Name="Facilities" EntityType="CCGDataModel.Facility" />
+          <EntitySet Name="FacilityGroups" EntityType="CCGDataModel.FacilityGroup" />
+          <EntitySet Name="Users" EntityType="CCGDataModel.User" />
+          <AssociationSet Name="FK_Facilities_FacilityGroups" Association="CCGDataModel.FK_Facilities_FacilityGroups">
+            <End Role="FacilityGroup" EntitySet="FacilityGroups" />
+            <End Role="Facility" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityOwners_Users" Association="CCGDataModel.FK_FacilityOwners_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FacilityOwner" EntitySet="FacilityOwners" />
+          </AssociationSet>
+          <EntitySet Name="FacilityUserRoles" EntityType="CCGDataModel.FacilityUserRole" />
+          <EntitySet Name="FacilityUsers" EntityType="CCGDataModel.FacilityUser" />
+          <AssociationSet Name="FK_FacilityUsers_Facilities" Association="CCGDataModel.FK_FacilityUsers_Facilities">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="FacilityUser" EntitySet="FacilityUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsers_Users" Association="CCGDataModel.FK_FacilityUsers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FacilityUser" EntitySet="FacilityUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacilityUsersJobs_FacilityUsers" Association="CCGDataModel.FK_FacilityUsersJobs_FacilityUsers">
+            <End Role="FacilityUser" EntitySet="FacilityUsers" />
+            <End Role="FacilityUsersJob" EntitySet="FacilityUsersJobs" />
+          </AssociationSet>
+          <EntitySet Name="UsersByTitles" EntityType="CCGDataModel.UsersByTitle" />
+          <EntitySet Name="GetFacilities" EntityType="CCGDataModel.GetFacility" />
+          <EntitySet Name="GetUsers" EntityType="CCGDataModel.GetUser" />
+          <EntitySet Name="SectionIndexes" EntityType="CCGDataModel.SectionIndex" />
+          <EntitySet Name="StaffMembers" EntityType="CCGDataModel.StaffMember" />
+          </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCGDataModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="CCGDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="CCGDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="CCGDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="CCGDataModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="CCGDataModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="UserHistories" Relationship="CCGDataModel.FK_UserHistory_AspNetUsers" FromRole="AspNetUser" ToRole="UserHistory" />
+          <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofEntry" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="CCGDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCGDataModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="CCGDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCGDataModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="CCGDataModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="CCGDataModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserHistory">
+          <Key>
+            <PropertyRef Name="UserHistoryID" />
+          </Key>
+          <Property Name="UserHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="DateTime" Precision="3" />
+          <Property Name="Logoff" Type="DateTime" Precision="3" />
+          <Property Name="Success" Type="Boolean" />
+          <Property Name="SignInStatus" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofEntry" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="CCGDataModel.FK_UserHistory_AspNetUsers" FromRole="UserHistory" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_UserHistory_AspNetUsers">
+          <End Type="CCGDataModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="CCGDataModel.UserHistory" Role="UserHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="JobTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleOrder" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofEntry" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FacilityUsersJobs" Relationship="CCGDataModel.FK_FacilityUsersJobs_JobTitles" FromRole="JobTitle" ToRole="FacilityUsersJob" />
+        </EntityType>
+        <EntityType Name="LoginsAdd">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="Added" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ClientContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Account__" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name_of_Facility" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Group_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Column_5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Facility__" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Cell__" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Full_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Street_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C__of_beds" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Shift_Change" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateofEntry" Type="DateTime" Precision="3" />
+          <Property Name="ValidEmail" Type="Boolean" />
+          <Property Name="Email2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FacilityUsersJob">
+          <Key>
+            <PropertyRef Name="FacilityUserJobID" />
+          </Key>
+          <Property Name="FacilityUserJobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityUserID" Type="Int32" Nullable="false" />
+          <Property Name="JobTitleID" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="JobTitle" Relationship="CCGDataModel.FK_FacilityUsersJobs_JobTitles" FromRole="FacilityUsersJob" ToRole="JobTitle" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FacilityUser" Relationship="CCGDataModel.FK_FacilityUsersJobs_FacilityUsers" FromRole="FacilityUsersJob" ToRole="FacilityUser" />
+        </EntityType>
+        <Association Name="FK_FacilityUsersJobs_JobTitles">
+          <End Type="CCGDataModel.JobTitle" Role="JobTitle" Multiplicity="1" />
+          <End Type="CCGDataModel.FacilityUsersJob" Role="FacilityUsersJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="FacilityUsersJob">
+              <PropertyRef Name="JobTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChangeLog">
+          <Key>
+            <PropertyRef Name="ChangeLogID" />
+          </Key>
+          <Property Name="ChangeLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryKeyValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OldValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateChanged" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="GetFacilityUsersWithRole_Result">
+          <Property Type="Int32" Name="FacilityID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TitleOrder" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FacilityUserID" Nullable="false" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetGroupUserAdminsWithRole_Result">
+          <Property Type="Int32" Name="FacilityOwnerID" Nullable="false" />
+          <Property Type="Int32" Name="FacilityGroupID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="TitleOrder" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetUserInfo_Result">
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="FacilityID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="FacilityGroupID" Nullable="false" />
+          <Property Type="Int32" Name="TitleOrder" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetFacilityUsersWithTitle_Result">
+          <Property Type="Int32" Name="FacilityID" Nullable="false" />
+          <Property Type="Int32" Name="FacilityUserID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="FacilityUserJobID" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="FacilityOwner">
+          <Key>
+            <PropertyRef Name="FacilityOwnerID" />
+          </Key>
+          <Property Name="FacilityOwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="CCGDataModel.FK_FacilityOwners_Users" FromRole="FacilityOwner" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="Del" Type="Boolean" />
+          <Property Name="Alt" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Beds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftChange" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BeginDate" Type="DateTime" Precision="0" />
+          <Property Name="ComplianceOfficer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LogoPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="FacilityGroup" Relationship="CCGDataModel.FK_Facilities_FacilityGroups" FromRole="Facility" ToRole="FacilityGroup" />
+          <NavigationProperty Name="FacilityUsers" Relationship="CCGDataModel.FK_FacilityUsers_Facilities" FromRole="Facility" ToRole="FacilityUser" />
+          <Property Name="FacilityGroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="GroupPolicyPrint" Type="Boolean" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="FacilityGroup">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Facilities" Relationship="CCGDataModel.FK_Facilities_FacilityGroups" FromRole="FacilityGroup" ToRole="Facility" />
+          <Property Name="AllowPolicyPrint" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AspNetUserID" Type="Int32" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProfileImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Del" Type="Boolean" />
+          <Property Name="ValidEmail" Type="Boolean" />
+          <NavigationProperty Name="FacilityOwners" Relationship="CCGDataModel.FK_FacilityOwners_Users" FromRole="User" ToRole="FacilityOwner" />
+          <NavigationProperty Name="FacilityUsers" Relationship="CCGDataModel.FK_FacilityUsers_Users" FromRole="User" ToRole="FacilityUser" />
+        </EntityType>
+        <Association Name="FK_Facilities_FacilityGroups">
+          <End Type="CCGDataModel.FacilityGroup" Role="FacilityGroup" Multiplicity="1" />
+          <End Type="CCGDataModel.Facility" Role="Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityGroup">
+              <PropertyRef Name="FacilityGroupID" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="FacilityGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityOwners_Users">
+          <End Type="CCGDataModel.User" Role="User" Multiplicity="1" />
+          <End Type="CCGDataModel.FacilityOwner" Role="FacilityOwner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacilityOwner">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FacilityUserRole">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" />
+          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TitleOrder" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitleID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacilityUser">
+          <Key>
+            <PropertyRef Name="FacilityUserID" />
+          </Key>
+          <Property Name="FacilityUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="Roles" Type="String" MaxLength="255" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UserEditor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Precision="0" />
+          <Property Name="del" Type="Boolean" />
+          <NavigationProperty Name="Facility" Relationship="CCGDataModel.FK_FacilityUsers_Facilities" FromRole="FacilityUser" ToRole="Facility" />
+          <NavigationProperty Name="User" Relationship="CCGDataModel.FK_FacilityUsers_Users" FromRole="FacilityUser" ToRole="User" />
+          <NavigationProperty Name="FacilityUsersJobs" Relationship="CCGDataModel.FK_FacilityUsersJobs_FacilityUsers" FromRole="FacilityUser" ToRole="FacilityUsersJob" />
+          <Property Name="RolesID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_FacilityUsers_Facilities">
+          <End Type="CCGDataModel.Facility" Role="Facility" Multiplicity="1" />
+          <End Type="CCGDataModel.FacilityUser" Role="FacilityUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="FacilityUser">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsers_Users">
+          <End Type="CCGDataModel.User" Role="User" Multiplicity="1" />
+          <End Type="CCGDataModel.FacilityUser" Role="FacilityUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacilityUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacilityUsersJobs_FacilityUsers">
+          <End Type="CCGDataModel.FacilityUser" Role="FacilityUser" Multiplicity="1" />
+          <End Type="CCGDataModel.FacilityUsersJob" Role="FacilityUsersJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityUser">
+              <PropertyRef Name="FacilityUserID" />
+            </Principal>
+            <Dependent Role="FacilityUsersJob">
+              <PropertyRef Name="FacilityUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UsersByTitle">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="JobTitleID" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitleID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GetFacility">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" />
+          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Beds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftChange" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityGroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GetUser">
+          <Key>
+            <PropertyRef Name="FacilityGroupID" />
+            <PropertyRef Name="FacilityID" />
+            <PropertyRef Name="FacilityUserID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="FacilityGroupID" Type="Int32" Nullable="false" />
+          <Property Name="FacilityID" Type="Int32" Nullable="false" />
+          <Property Name="FacilityUserID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Roles" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RolesID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SectionIndex">
+          <Key>
+            <PropertyRef Name="SectionIndexID" />
+          </Key>
+          <Property Name="SectionIndexID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SectionFrom" Type="Int32" />
+          <Property Name="SectionTo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StaffMember">
+          <Key>
+            <PropertyRef Name="StaffMembersID" />
+          </Key>
+          <Property Name="StaffMembersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityGroupID" Type="Int32" />
+          <Property Name="FacilityID" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CCGDataModelStoreContainer" CdmEntityContainer="CCGDataEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="CCGDataModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="CCGDataModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="CCGDataModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="CCGDataModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="DateofEntry" ColumnName="DateofEntry" />
+                <ScalarProperty Name="Password2" ColumnName="Password2" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="CCGDataModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="UserHistories">
+            <EntityTypeMapping TypeName="CCGDataModel.UserHistory">
+              <MappingFragment StoreEntitySet="UserHistory">
+                <ScalarProperty Name="DateofEntry" ColumnName="DateofEntry" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SignInStatus" ColumnName="SignInStatus" />
+                <ScalarProperty Name="Success" ColumnName="Success" />
+                <ScalarProperty Name="Logoff" ColumnName="Logoff" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserHistoryID" ColumnName="UserHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="CCGDataModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitles">
+                <ScalarProperty Name="DateofEntry" ColumnName="DateofEntry" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TitleOrder" ColumnName="TitleOrder" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginsAdds">
+            <EntityTypeMapping TypeName="CCGDataModel.LoginsAdd">
+              <MappingFragment StoreEntitySet="LoginsAdd">
+                <ScalarProperty Name="Added" ColumnName="Added" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientContacts">
+            <EntityTypeMapping TypeName="CCGDataModel.ClientContact">
+              <MappingFragment StoreEntitySet="ClientContacts">
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="ValidEmail" ColumnName="ValidEmail" />
+                <ScalarProperty Name="DateofEntry" ColumnName="DateofEntry" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Shift_Change" ColumnName="Shift Change" />
+                <ScalarProperty Name="C__of_beds" ColumnName="# of beds" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street_Address" ColumnName="Street Address" />
+                <ScalarProperty Name="Full_Address" ColumnName="Full Address" />
+                <ScalarProperty Name="Admin_Cell__" ColumnName="Admin Cell #" />
+                <ScalarProperty Name="Facility__" ColumnName="Facility #" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job Title" />
+                <ScalarProperty Name="Column_5" ColumnName="Column 5" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Group_Name" ColumnName="Group Name" />
+                <ScalarProperty Name="Name_of_Facility" ColumnName="Name of Facility" />
+                <ScalarProperty Name="Account__" ColumnName="Account #" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityUsersJobs">
+            <EntityTypeMapping TypeName="CCGDataModel.FacilityUsersJob">
+              <MappingFragment StoreEntitySet="FacilityUsersJobs">
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="FacilityUserID" ColumnName="FacilityUserID" />
+                <ScalarProperty Name="FacilityUserJobID" ColumnName="FacilityUserJobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChangeLogs">
+            <EntityTypeMapping TypeName="CCGDataModel.ChangeLog">
+              <MappingFragment StoreEntitySet="ChangeLogs">
+                <ScalarProperty Name="DateChanged" ColumnName="DateChanged" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="PrimaryKeyValue" ColumnName="PrimaryKeyValue" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="ChangeLogID" ColumnName="ChangeLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetFacilitiesFromUser" FunctionName="CCGDataModel.Store.GetFacilitiesFromUser" />
+          <FunctionImportMapping FunctionImportName="GetFacilityUsersWithRole" FunctionName="CCGDataModel.Store.GetFacilityUsersWithRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CCGDataModel.GetFacilityUsersWithRole_Result">
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="TitleOrder" ColumnName="TitleOrder" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FacilityUserID" ColumnName="FacilityUserID" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGroupsFromUser" FunctionName="CCGDataModel.Store.GetGroupsFromUser" />
+          <FunctionImportMapping FunctionImportName="GetGroupUserAdminsWithRole" FunctionName="CCGDataModel.Store.GetGroupUserAdminsWithRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CCGDataModel.GetGroupUserAdminsWithRole_Result">
+                <ScalarProperty Name="FacilityOwnerID" ColumnName="FacilityOwnerID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="TitleOrder" ColumnName="TitleOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGroupUsers" FunctionName="CCGDataModel.Store.GetGroupUsers" />
+          <FunctionImportMapping FunctionImportName="GetUserInfo" FunctionName="CCGDataModel.Store.GetUserInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CCGDataModel.GetUserInfo_Result">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+                <ScalarProperty Name="TitleOrder" ColumnName="TitleOrder" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFacilityUsersWithTitle" FunctionName="CCGDataModel.Store.GetFacilityUsersWithTitle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CCGDataModel.GetFacilityUsersWithTitle_Result">
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityUserID" ColumnName="FacilityUserID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FacilityUserJobID" ColumnName="FacilityUserJobID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="FacilityOwners">
+            <EntityTypeMapping TypeName="CCGDataModel.FacilityOwner">
+              <MappingFragment StoreEntitySet="FacilityOwners">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+                <ScalarProperty Name="FacilityOwnerID" ColumnName="FacilityOwnerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="CCGDataModel.Facility">
+              <MappingFragment StoreEntitySet="Facilities">
+                <ScalarProperty Name="GroupPolicyPrint" ColumnName="GroupPolicyPrint" />
+                <ScalarProperty Name="FacilityGroupName" ColumnName="FacilityGroupName" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="LogoPath" ColumnName="LogoPath" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="ComplianceOfficer" ColumnName="ComplianceOfficer" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="FacilityType" ColumnName="FacilityType" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="ShiftChange" ColumnName="ShiftChange" />
+                <ScalarProperty Name="Beds" ColumnName="Beds" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alt" ColumnName="Alt" />
+                <ScalarProperty Name="Del" ColumnName="Del" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityGroups">
+            <EntityTypeMapping TypeName="CCGDataModel.FacilityGroup">
+              <MappingFragment StoreEntitySet="FacilityGroups">
+                <ScalarProperty Name="AllowPolicyPrint" ColumnName="AllowPolicyPrint" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CCGDataModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ValidEmail" ColumnName="ValidEmail" />
+                <ScalarProperty Name="Del" ColumnName="Del" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="JobTitle2" ColumnName="JobTitle2" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityUserRoles">
+            <EntityTypeMapping TypeName="CCGDataModel.FacilityUserRole">
+              <MappingFragment StoreEntitySet="FacilityUserRoles">
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TitleOrder" ColumnName="TitleOrder" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityUsers">
+            <EntityTypeMapping TypeName="CCGDataModel.FacilityUser">
+              <MappingFragment StoreEntitySet="FacilityUsers">
+                <ScalarProperty Name="RolesID" ColumnName="RolesID" />
+                <ScalarProperty Name="del" ColumnName="del" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserEditor" ColumnName="UserEditor" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityUserID" ColumnName="FacilityUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersByTitles">
+            <EntityTypeMapping TypeName="CCGDataModel.UsersByTitle">
+              <MappingFragment StoreEntitySet="UsersByTitle">
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetFacilities">
+            <EntityTypeMapping TypeName="CCGDataModel.GetFacility">
+              <MappingFragment StoreEntitySet="GetFacilities">
+                <ScalarProperty Name="FacilityGroupName" ColumnName="FacilityGroupName" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="ShiftChange" ColumnName="ShiftChange" />
+                <ScalarProperty Name="Beds" ColumnName="Beds" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetUsers">
+            <EntityTypeMapping TypeName="CCGDataModel.GetUser">
+              <MappingFragment StoreEntitySet="GetUsers">
+                <ScalarProperty Name="RolesID" ColumnName="RolesID" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacilityUserID" ColumnName="FacilityUserID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionIndexes">
+            <EntityTypeMapping TypeName="CCGDataModel.SectionIndex">
+              <MappingFragment StoreEntitySet="SectionIndexes">
+                <ScalarProperty Name="SectionTo" ColumnName="SectionTo" />
+                <ScalarProperty Name="SectionFrom" ColumnName="SectionFrom" />
+                <ScalarProperty Name="PolicyNo" ColumnName="PolicyNo" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="SectionIndexID" ColumnName="SectionIndexID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffMembers">
+            <EntityTypeMapping TypeName="CCGDataModel.StaffMember">
+              <MappingFragment StoreEntitySet="StaffMembers">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
+                <ScalarProperty Name="StaffMembersID" ColumnName="StaffMembersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

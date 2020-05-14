@@ -1,0 +1,12 @@
+﻿Generated model file: CCGDataEntities.edmx.
+Loading metadata from the database took 00:00:00.5190747.
+Generating the model took 00:00:01.1107550.
+Generated model file: CCGDataEntities.edmx.
+Loading metadata from the database took 00:00:00.4044600.
+Generating the model took 00:00:00.9874934.
+Generated model file: CCGDataEntities.edmx.
+Loading metadata from the database took 00:00:00.3993418.
+Generating the model took 00:00:00.9846760.
+Generated model file: CCGDataEntities.edmx.
+Loading metadata from the database took 00:00:00.4454115.
+Generating the model took 00:00:01.0415935.

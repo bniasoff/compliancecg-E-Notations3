@@ -1,0 +1,1 @@
+﻿<div class="col-lg-12 control-section"> <div class='col-lg-6 nested-data'> <div class='content'> <h4>Hierarchical Data</h4> <div id="tree"></div> </div> </div> <div class='col-lg-6 list-data'> <div class='content'> <h4>List Data</h4> <div id="listtree"></div> </div> </div> </div> 

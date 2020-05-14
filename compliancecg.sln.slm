@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<SolutionLoadInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ActiveProfileName>&lt;Active Profile&gt;</ActiveProfileName>
+  <Profiles>
+    <SolutionLoadProfile>
+      <ProfileName>&lt;Active Profile&gt;</ProfileName>
+      <Projects>
+        <ProjectLoadInfo>
+          <ProjectGuid>8f5aaac6-031b-4f18-adbc-9791a7c003bc</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+        <ProjectLoadInfo>
+          <ProjectGuid>5f8d914c-0982-4cea-81d6-84200cdcf0fa</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+        <ProjectLoadInfo>
+          <ProjectGuid>cf40ddea-6309-428c-80b9-c41ff0d4bdb2</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+        <ProjectLoadInfo>
+          <ProjectGuid>dcf8352e-4613-47ea-99b1-723e5c8c45b6</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+        <ProjectLoadInfo>
+          <ProjectGuid>a27294bb-98b4-48fc-9571-4ec5fb04d16a</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+        <ProjectLoadInfo>
+          <ProjectGuid>00000000-0000-0000-0000-000000000000</ProjectGuid>
+          <LoadPriority>LoadIfNeeded</LoadPriority>
+        </ProjectLoadInfo>
+      </Projects>
+    </SolutionLoadProfile>
+  </Profiles>
+</SolutionLoadInfo>

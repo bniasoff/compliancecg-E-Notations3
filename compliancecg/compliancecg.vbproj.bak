@@ -1,0 +1,2495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F5AAAC6-031B-4F18-ADBC-9791A7C003BC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>compliancecg</RootNamespace>
+    <AssemblyName>compliancecg</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44390</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.5</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>compliancecg.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>compliancecg.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.Designer.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxRichEdit.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1.Extensions, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1.UI, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.10.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.10.0-beta0002\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.3.0.4\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.21\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.19\lib\net461\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Extensions.Logging.1.6.1\lib\net461\NLog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.OCR.AspNet.17.4.0.39\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocIO.AspNet.17.4.0.39\lib\net46\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocToPdfConverter.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocToPDFConverter.AspNet.17.4.0.39\lib\net46\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2, Version=17.4500.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.17.4.0.39\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2.PdfViewer, Version=17.4450.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.17.4.0.39\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.17.4.0.39\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OCRProcessor.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.OCR.AspNet.17.4.0.39\lib\net46\Syncfusion.OCRProcessor.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChart.Base.17.4.0.39\lib\net46\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=17.4460.0.39, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.AspNet.17.4.0.39\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0-preview5.19224.8\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0-preview.18571.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.Mvc" />
+    <Import Include="System.Web.Mvc.Ajax" />
+    <Import Include="System.Web.Mvc.Html" />
+    <Import Include="System.Web.Routing" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.vb" />
+    <Compile Include="App_Start\FilterConfig.vb" />
+    <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="App_Start\WebApiConfig.vb" />
+    <Compile Include="Authorization\IdentityResult.vb" />
+    <Compile Include="Authorization\IIdentityValidator.vb" />
+    <Compile Include="Authorization\IUserPasswordStore.vb" />
+    <Compile Include="Authorization\UserStore.vb" />
+    <Compile Include="Authorization\Identity3\Crypto.vb" />
+    <Compile Include="Authorization\Identity3\IdentityConfig.vb" />
+    <Compile Include="Authorization\Identity3\IdentityModels.vb" />
+    <Compile Include="Authorization\Identity3\Startup.Auth.vb" />
+    <Compile Include="Authorization\Identity3\Users.vb" />
+    <Compile Include="ConnectionString.vb" />
+    <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\DevExpressController.vb" />
+    <Compile Include="Controllers\ErrorController.vb" />
+    <Compile Include="Controllers\FacilitiesController.vb" />
+    <Compile Include="Controllers\FormsController.vb" />
+    <Compile Include="Controllers\GridController.vb" />
+    <Compile Include="Controllers\ManageController.vb" />
+    <Compile Include="Controllers\MenuController.vb" />
+    <Compile Include="Controllers\PDFViewerController3.vb" />
+    <Compile Include="Controllers\PoliciesController.vb" />
+    <Compile Include="Controllers\SyncfusionController.vb" />
+    <Compile Include="Controllers\TrainingController.vb" />
+    <Compile Include="DevExpress\Utils.vb" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Class3.vb" />
+    <Compile Include="Helper\Class4.vb" />
+    <Compile Include="Helper\Class5.vb" />
+    <Compile Include="Helper\Class6.vb" />
+    <Compile Include="Helper\Class7.vb" />
+    <Compile Include="Helper\Class8.vb" />
+    <Compile Include="Helper\DocVariableHelper.vb" />
+    <Compile Include="Helper\EmailServer.vb" />
+    <Compile Include="Helper\Errors.vb" />
+    <Compile Include="Helper\Helper.vb" />
+    <Compile Include="Helper\IPHostGenerator.vb" />
+    <Compile Include="Helper\Password.vb" />
+    <Compile Include="Helper\PropertyInfo.vb" />
+    <Compile Include="Helper\ToSentanceCase.vb" />
+    <Compile Include="Helper\UserHistory.vb" />
+    <Compile Include="Helper\WordFunctions.vb" />
+    <Compile Include="Helper\WordToPDF.vb" />
+    <Compile Include="Models\AccountViewModels.vb" />
+    <Compile Include="Models\Customer.vb" />
+    <Compile Include="Models\Docs\DataClassesDataContext.vb" />
+    <Compile Include="Models\Docs\DataHelper.vb" />
+    <Compile Include="Models\Docs\Doc.vb" />
+    <Compile Include="Models\Efile.vb" />
+    <Compile Include="Models\EmailModel.vb" />
+    <Compile Include="Models\FacilityUserResponse.vb" />
+    <Compile Include="Models\ImageModel.vb" />
+    <Compile Include="Models\ManageViewModels.vb" />
+    <Compile Include="Models\Northwind.vb" />
+    <Compile Include="Models\UploadControlValidationSettings.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="Resource1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.vb" />
+    <Compile Include="Views\Syncfusion\IconsandImagesController.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ckeditor\adapters\jquery.js" />
+    <Content Include="ckeditor\build-config.js" />
+    <Content Include="ckeditor\ckeditor.js" />
+    <Content Include="ckeditor\config.js" />
+    <Content Include="ckeditor\contents.css" />
+    <Content Include="ckeditor\lang\af.js" />
+    <Content Include="ckeditor\lang\ar.js" />
+    <Content Include="ckeditor\lang\az.js" />
+    <Content Include="ckeditor\lang\bg.js" />
+    <Content Include="ckeditor\lang\bn.js" />
+    <Content Include="ckeditor\lang\bs.js" />
+    <Content Include="ckeditor\lang\ca.js" />
+    <Content Include="ckeditor\lang\cs.js" />
+    <Content Include="ckeditor\lang\cy.js" />
+    <Content Include="ckeditor\lang\da.js" />
+    <Content Include="ckeditor\lang\de-ch.js" />
+    <Content Include="ckeditor\lang\de.js" />
+    <Content Include="ckeditor\lang\el.js" />
+    <Content Include="ckeditor\lang\en-au.js" />
+    <Content Include="ckeditor\lang\en-ca.js" />
+    <Content Include="ckeditor\lang\en-gb.js" />
+    <Content Include="ckeditor\lang\en.js" />
+    <Content Include="ckeditor\lang\eo.js" />
+    <Content Include="ckeditor\lang\es-mx.js" />
+    <Content Include="ckeditor\lang\es.js" />
+    <Content Include="ckeditor\lang\et.js" />
+    <Content Include="ckeditor\lang\eu.js" />
+    <Content Include="ckeditor\lang\fa.js" />
+    <Content Include="ckeditor\lang\fi.js" />
+    <Content Include="ckeditor\lang\fo.js" />
+    <Content Include="ckeditor\lang\fr-ca.js" />
+    <Content Include="ckeditor\lang\fr.js" />
+    <Content Include="ckeditor\lang\gl.js" />
+    <Content Include="ckeditor\lang\gu.js" />
+    <Content Include="ckeditor\lang\he.js" />
+    <Content Include="ckeditor\lang\hi.js" />
+    <Content Include="ckeditor\lang\hr.js" />
+    <Content Include="ckeditor\lang\hu.js" />
+    <Content Include="ckeditor\lang\id.js" />
+    <Content Include="ckeditor\lang\is.js" />
+    <Content Include="ckeditor\lang\it.js" />
+    <Content Include="ckeditor\lang\ja.js" />
+    <Content Include="ckeditor\lang\ka.js" />
+    <Content Include="ckeditor\lang\km.js" />
+    <Content Include="ckeditor\lang\ko.js" />
+    <Content Include="ckeditor\lang\ku.js" />
+    <Content Include="ckeditor\lang\lt.js" />
+    <Content Include="ckeditor\lang\lv.js" />
+    <Content Include="ckeditor\lang\mk.js" />
+    <Content Include="ckeditor\lang\mn.js" />
+    <Content Include="ckeditor\lang\ms.js" />
+    <Content Include="ckeditor\lang\nb.js" />
+    <Content Include="ckeditor\lang\nl.js" />
+    <Content Include="ckeditor\lang\no.js" />
+    <Content Include="ckeditor\lang\oc.js" />
+    <Content Include="ckeditor\lang\pl.js" />
+    <Content Include="ckeditor\lang\pt-br.js" />
+    <Content Include="ckeditor\lang\pt.js" />
+    <Content Include="ckeditor\lang\ro.js" />
+    <Content Include="ckeditor\lang\ru.js" />
+    <Content Include="ckeditor\lang\si.js" />
+    <Content Include="ckeditor\lang\sk.js" />
+    <Content Include="ckeditor\lang\sl.js" />
+    <Content Include="ckeditor\lang\sq.js" />
+    <Content Include="ckeditor\lang\sr-latn.js" />
+    <Content Include="ckeditor\lang\sr.js" />
+    <Content Include="ckeditor\lang\sv.js" />
+    <Content Include="ckeditor\lang\th.js" />
+    <Content Include="ckeditor\lang\tr.js" />
+    <Content Include="ckeditor\lang\tt.js" />
+    <Content Include="ckeditor\lang\ug.js" />
+    <Content Include="ckeditor\lang\uk.js" />
+    <Content Include="ckeditor\lang\vi.js" />
+    <Content Include="ckeditor\lang\zh-cn.js" />
+    <Content Include="ckeditor\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="ckeditor\plugins\colordialog\dialogs\colordialog.css" />
+    <Content Include="ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="ckeditor\plugins\copyformatting\cursors\cursor-disabled.svg" />
+    <Content Include="ckeditor\plugins\copyformatting\cursors\cursor.svg" />
+    <Content Include="ckeditor\plugins\copyformatting\styles\copyformatting.css" />
+    <Content Include="ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="ckeditor\plugins\icons.png" />
+    <Content Include="ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="ckeditor\plugins\preview\preview.html" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\angel_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\angry_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\broken_heart.png" />
+    <Content Include="ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\confused_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\cry_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\devil_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\envelope.png" />
+    <Content Include="ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\heart.png" />
+    <Content Include="ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\kiss.png" />
+    <Content Include="ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\lightbulb.png" />
+    <Content Include="ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\omg_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\regular_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\sad_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\shades_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\wink_smile.png" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="ckeditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="ckeditor\plugins\wsc\skins\moono-lisa\wsc.css" />
+    <Content Include="ckeditor\samples\css\samples.css" />
+    <Content Include="ckeditor\samples\img\github-top.png" />
+    <Content Include="ckeditor\samples\img\header-bg.png" />
+    <Content Include="ckeditor\samples\img\header-separator.png" />
+    <Content Include="ckeditor\samples\img\logo.png" />
+    <Content Include="ckeditor\samples\img\logo.svg" />
+    <Content Include="ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="ckeditor\samples\index.html" />
+    <Content Include="ckeditor\samples\js\sample.js" />
+    <Content Include="ckeditor\samples\js\sf.js" />
+    <Content Include="ckeditor\samples\old\ajax.html" />
+    <Content Include="ckeditor\samples\old\api.html" />
+    <Content Include="ckeditor\samples\old\appendto.html" />
+    <Content Include="ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="ckeditor\samples\old\datafiltering.html" />
+    <Content Include="ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="ckeditor\samples\old\divreplace.html" />
+    <Content Include="ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="ckeditor\samples\old\index.html" />
+    <Content Include="ckeditor\samples\old\inlineall.html" />
+    <Content Include="ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="ckeditor\samples\old\jquery.html" />
+    <Content Include="ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="ckeditor\samples\old\readonly.html" />
+    <Content Include="ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="ckeditor\samples\old\replacebycode.html" />
+    <Content Include="ckeditor\samples\old\sample.css" />
+    <Content Include="ckeditor\samples\old\sample.js" />
+    <Content Include="ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="ckeditor\samples\old\tabindex.html" />
+    <Content Include="ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="ckeditor\samples\old\uicolor.html" />
+    <Content Include="ckeditor\samples\old\uilanguages.html" />
+    <Content Include="ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="ckeditor\styles.js" />
+    <Content Include="ckeditor\CHANGES.md" />
+    <Content Include="ckeditor\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="ckeditor\plugins\scayt\README.md" />
+    <Content Include="ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="ckeditor\plugins\wsc\README.md" />
+    <Content Include="ckeditor\README.md" />
+    <Content Include="ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Connected Services\AzureStorage1\ConnectedService.json" />
+    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ej2\bootstrap.css" />
+    <Content Include="Content\ej2\bootstrap4.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap4.css" />
+    <Content Include="Content\ej2\compatibility\fabric.css" />
+    <Content Include="Content\ej2\compatibility\highcontrast.css" />
+    <Content Include="Content\ej2\compatibility\material.css" />
+    <Content Include="Content\ej2\Dialog\index.css" />
+    <Content Include="Content\ej2\Dialog\index.js" />
+    <Content Include="Content\ej2\Dialog\index2.css" />
+    <Content Include="Content\ej2\Dialog\index2.js" />
+    <Content Include="Content\ej2\dist\bootstrap.css" />
+    <Content Include="Content\ej2\dist\bootstrap4.css" />
+    <Content Include="Content\ej2\dist\ej2.min.js" />
+    <Content Include="Content\ej2\dist\fabric.css" />
+    <Content Include="Content\ej2\dist\fuse.min.js" />
+    <Content Include="Content\ej2\dist\highcontrast.css" />
+    <Content Include="Content\ej2\dist\locale-string.js" />
+    <Content Include="Content\ej2\dist\material.css" />
+    <Content Include="Content\ej2\fabric.css" />
+    <Content Include="Content\ej2\highcontrast.css" />
+    <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\FileManager\Thumbnails\7963085398bf1545b3b7b6590d84802c\favicon.ico.png" />
+    <Content Include="Content\Images\Depositphotos_13388844_original-2-1024x768.jpg" />
+    <Content Include="Content\Images\file_icons.png" />
+    <Content Include="Content\Images\image_01-1024x640.jpg" />
+    <Content Include="Content\Images\image_011-1024x640.jpg" />
+    <Content Include="Content\Images\image_012.jpg" />
+    <Content Include="Content\Images\image_02-1024x640.jpg" />
+    <Content Include="Content\Images\image_022.jpg" />
+    <Content Include="Content\Images\image_03-1024x640.jpg" />
+    <Content Include="Content\Images\image_031.jpg" />
+    <Content Include="Content\Images\image_04.jpg" />
+    <Content Include="Content\Images\image_06.jpg" />
+    <Content Include="Content\Images\image_07.jpg" />
+    <Content Include="Content\Images\image_08.jpg" />
+    <Content Include="Content\Images\image_09.jpg" />
+    <Content Include="Content\Images\image_10.jpg" />
+    <Content Include="Content\Images\image_11.jpg" />
+    <Content Include="Content\Images\Logo G White-01.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_BW.jpg" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_BW.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR.jpg" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR2.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR3.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR4.png" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_GRAYSCALE.jpg" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_GRAYSCALE.png" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress.html" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\7cb33c8741a8a357edc6f359e02f0173.jpg" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\7cb33c8741a8a357edc6f359e02f0173_002.jpg" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\admin-global.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\admin-style.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\admin.js" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\css.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\default.png" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\global.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\icon-small.png" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\imgareaselect.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\load-scripts.php" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\load-scripts_002.php" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\load-styles.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\mediaelementplayer.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\paay-gravity-form.html" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\style.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\style_002.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\thickbox.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\visual_composer.png" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wf-adminbar.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wf-font-awesome.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wf-global.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wfdashboard.js" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wfglobal.js" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wfpopover.js" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wordfence-logo.svg" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wordfenceBox.css" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wp-emoji-release.js" />
+    <Content Include="Content\Images\Media Library ‹ Compliance Consulting Group, LLC — WordPress_files\wp-mediaelement.css" />
+    <Content Include="Content\Images\slide1-1024x683-1024x683.jpg" />
+    <Content Include="Content\Images\slide1-1024x683.jpg" />
+    <Content Include="Content\Images\slide2-1024x683-1024x683.jpg" />
+    <Content Include="Content\Images\slide2-1024x683.jpg" />
+    <Content Include="Content\Images\slide3-1024x683-1024x683.jpg" />
+    <Content Include="Content\Images\slide3-1024x683.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site2.css" />
+    <Content Include="Content\Site3.css" />
+    <Content Include="libman.json" />
+    <Content Include="App_Data\Policies\Blank.docx" />
+    <Content Include="App_Data\Policies\Table of Content\1a Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Table of Content\2 Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Table of Content\3 Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Table of Content\4 Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Table of Content\5 Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Table of Content\1 Table of Contents.docx" />
+    <Content Include="App_Data\Policies\Blank2.docx" />
+    <Content Include="App_Data\Forms\Compliance Officer\Compliance Officer checklist.pdf" />
+    <Content Include="App_Data\Forms\Compliance Officer\Compliance Officer Evaluation.pdf" />
+    <Content Include="App_Data\Forms\Compliance Officer\Compliance Officer Quarterly Report to the Governing Body.pdf" />
+    <Content Include="App_Data\Forms\Compliance Officer\Resolution Designating a Compliance Officer.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Annual Conflicts of Interest Disclosure Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Authorization to Record %28Audio-Visual%29 Resident.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Business Associate Agreement Cover Letter.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Business Associate Agreement.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00215a Identity Theft Victim%27s Complaint and Affidavit.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305c FMLA Designation Notice.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305d Notice of Eligibility and Rights and Responsibilities.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305e Certification for Qualifying Exigency for Military Family Leave.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305f Certification for Serious Injury or Illness of a Current Service Member for Military Family Leave.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305g Certification for Serious Injury or Illness of a Veteran for Military Caregiver Leave.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305h Certification of Health Care Provider for Employee%27s Serious Health Condition.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CCG Form 00305i Certification of Health Care Provider for Family Member.pdf" />
+    <Content Include="App_Data\Forms\General Forms\CMS Guidance on Texting.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Compliance Committee Meeting Minutes.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Compliance Reporting Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Corrective Action Plan Template.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Data Use Agreement.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Designating a Governing Body.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Facility Assessment Tool.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Faxing Protected Health Information Policy and Procedure.pdf" />
+    <Content Include="App_Data\Forms\General Forms\FMLA Request Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Grievance Decision.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Grievance Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\HIPAA Authorization.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Inventory of Locations, Phy Systems, Devices,  Media Containing PHI.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Notice of Privacy Practices and Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Physician Credentialing Packet and Agreements.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Request for Correction of Protected Health Information Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Resident Fund Authorization.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Resident Smoking Agreement.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Resolution Appointing HIPAA Privacy And Security Officer.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Resolution Designating a Compliance and Ethics Committee.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Right to Accounting of Disclosures of Protected Health Information Form.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Right to Request Restrictions on Use or Disclosure of PHI Policy and Procedure.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Trauma-Informed Care Explained.pdf" />
+    <Content Include="App_Data\Forms\General Forms\Volunteer Screening Authorization.pdf" />
+    <Content Include="App_Data\Forms\Posters\CCG Form 00305b FMLA Poster.pdf" />
+    <Content Include="App_Data\Forms\Posters\Elder Justice Act  Notice.pdf" />
+    <Content Include="App_Data\Forms\Posters\Grievance poster.pdf" />
+    <Content Include="App_Data\Forms\Posters\Nondiscrimination Notice.pdf" />
+    <Content Include="App_Data\Forms\Posters\Notice of Privacy Practices and Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Posters\Resident Privacy Poster.pdf" />
+    <Content Include="App_Data\Forms\Training\Eight Elements Training Script, Acknowledgement Form and Sign in Sheets.pdf" />
+    <Content Include="App_Data\Forms\Training\Fraud, Waste and Abuse Training Script, Acknowledgment Form and Sign in Sheets.pdf" />
+    <Content Include="App_Data\Forms\Training\HIPAA Training Script, Acknowledgment Form and Sign in Sheets.pdf" />
+    <Content Include="App_Data\Resources\Exclusion List.pdf" />
+    <Content Include="App_Data\Resources\HIPAA Incident Package.pdf" />
+    <Content Include="App_Data\Temp2\Hyperlink.docx" />
+    <Content Include="App_Data\Temp2\Sample.docx" />
+    <Content Include="App_Data\Forms\Posters\Common Taglines.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00102a Code of Conduct and Compliance and Ethics Plan Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00201a Deficit Reduction Act Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00207b Overpayment Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00304b Elder Justice Act Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00307a Substance Abuse Acknowledgement of Receipt and Review.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00308a Workplace Searches Acknowledgment of Receipt and Review.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00312a Disability and Pregnancy Accommodations Acknowledgement.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00447a Resident Privacy Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00516a Resident Rights Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\CCG 00102a Code of Conduct and Compliance and Ethics Plan Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\CCG 00201a Deficit Reduction Act Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\CCG 00304b Elder Justice Act Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Code of Conduct Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Code of Conduct Line Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Eight Elements Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Eight Elements Line Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Elder Justice Act Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Elder Justice Act Line Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Fraud, Waste and Abuse Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Fraud, Waste and Abuse Line Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\HIPAA Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\HIPAA Line Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Temp2\Data Use Agreement.pdf" />
+    <Content Include="App_Data\Data\PDF Succinctly.pdf" />
+    <Content Include="App_Data\Policies\DE Masters.docx" />
+    <Content Include="App_Data\Policies\GA Masters.docx" />
+    <Content Include="App_Data\Policies\IA Masters.docx" />
+    <Content Include="App_Data\Policies\IL Masters.docx" />
+    <Content Include="App_Data\Policies\KS Masters.docx" />
+    <Content Include="App_Data\Policies\MA Masters.docx" />
+    <Content Include="App_Data\Policies\MD Masters.docx" />
+    <Content Include="App_Data\Policies\MI Masters.docx" />
+    <Content Include="App_Data\Policies\MN Masters.docx" />
+    <Content Include="App_Data\Policies\MO Masters.docx" />
+    <Content Include="App_Data\Policies\NE Masters.docx" />
+    <Content Include="App_Data\Policies\NH Masters.docx" />
+    <Content Include="App_Data\Policies\NJ Masters.docx" />
+    <Content Include="App_Data\Policies\NYC Masters.docx" />
+    <Content Include="App_Data\Policies\NY Masters.docx" />
+    <Content Include="App_Data\Policies\OH Masters.docx" />
+    <Content Include="App_Data\Policies\PA Masters.docx" />
+    <Content Include="App_Data\Policies\RI Masters.docx" />
+    <Content Include="App_Data\Policies\TN Masters.docx" />
+    <Content Include="App_Data\Policies\WA Masters.docx" />
+    <Content Include="App_Data\Policies\WI Masters.docx" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Eight Elements Training Script  and Acknowledgement.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Fraud, Waste and Abuse Training Script.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\HIPAA Training Script and Acknowledgment.pdf" />
+    <Content Include="App_Data\Data\Sample Secured.pdf" />
+    <Content Include="App_Data\Data\Sample Unsecured.pdf" />
+    <Content Include="App_Data\Data\Sample Secured2.pdf" />
+    <Content Include="App_Data\Data\Sample Secured3.pdf" />
+    <Content Include="App_Data\Forms\Acknolwedgment Forms\CCG 00202a Fraud Waste and Abuse Acknowledgment Form.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\CCG 00202a Fraud Waste and Abuse Acknowledgment Form.pdf" />
+    <Content Include="App_Data\Policies\VA Masters.docx" />
+    <Content Include="Content\ej2\dist\ej2.min.js.map" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_BW.ai" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_BW.pdf" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR.ai" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_COLOR.pdf" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_GRAYSCALE.ai" />
+    <Content Include="Content\Images\Logos\CCG_LOGO_GRAYSCALE.pdf" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Basics of the Compliance Program Department Head Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Basics of the Compliance Program Staff Sign-in Sheet.pdf" />
+    <Content Include="App_Data\Forms\Yearly Required Trainings\Basics of the Compliance Program Training and Acknowledgement.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00102b Code of Conduct Acknowledgment Form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00201a DRA acknowledgement form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00202a Acknowledgement of Receipt of training in FWA.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00207b Overpayment Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00209a Annual Conflicts of Interest Disclosure Form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00304b EJA Acknowledgement form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00307a Substance Abuse Acknowledgement of Receipt and Review.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00308a Workplace Searches Acknowledgment of Receipt and Review.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00312a Disability and Pregnancy Accommodations Acknowledgement.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00447a Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\Acknolwedgment Forms\CCG 00516a Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00105 Resolution Designating a Compliance Officer.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00106 Resolution Designating a Compliance Committee.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00113a Compliance Reporting Form.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00117a Corrective Action Plan Template.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00505a Grievance Form.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\CCG 00505c Grievance Decision.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Compliance Committee Meeting Minutes.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Compliance Officer checklist.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Compliance Officer Evaluation.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Compliance Officer Quarterly Report to the Governing Body.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Designating a Governing Body.pdf" />
+    <Content Include="App_Data\Resources\Compliance Officer\Facility Assessment Tool.pdf" />
+    <Content Include="App_Data\Resources\Exclusion List\Exclusion List.pdf" />
+    <Content Include="App_Data\Resources\General Forms and Information\CCG 00508 Resident Smoking Agreement.pdf" />
+    <Content Include="App_Data\Resources\General Forms and Information\CCG Form 00215a Identity Theft Victim%27s Complaint and Affidavit.pdf" />
+    <Content Include="App_Data\Resources\General Forms and Information\Resident Fund Authorization.pdf" />
+    <Content Include="App_Data\Resources\General Forms and Information\Trauma-Informed Care Explained.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00107 Resolution Appointing HIPAA Privacy And Security Officer.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00214 Business Associate Agreement.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00408b Inventory of Locations, Phy Systems, Devices,  Media Containing PHI.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00412a Fax Cover Page.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00423a Request for Correction of Protected Health Information Form.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00424a Right to Accounting of Disclosures of Protected Health Information Form.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00425a Request to Restrict Use and Disclosure of Protected Health Information Form.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00428a HIPAA authorization.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00447a Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CMS Guidance on Texting.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\Suspected HIPAA Breach Incident Packet.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG 00305a FMLA Request Form.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG 00311 Physician Credentialing Packet and Agreements.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG 00512a Volunteer Screening Authorization.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305c FMLA Designation Notice.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305d Notice of Eligibility and Rights and Responsibilities.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305e Certification for Qualifying Exigency for Military Family Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305f Certification for Serious Injury or Illness of a Current Service Member for Military Family Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305g Certification for Serious Injury or Illness of a Veteran for Military Caregiver Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305h Certification of Health Care Provider for Employee%27s Serious Health Condition.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305i Certification of Health Care Provider for Family Member.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00305b FMLA Notice.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00412b Fax Machine Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00446a Resident Privacy Poster, Media Device Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00503a Nondiscrimination Notice.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00505b Grievance Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\Common Taglines.pdf" />
+    <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.docx" />
+    <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.pdf" />
+    <Content Include="App_Data\Resources\State Specific\MI\CCG Form 003MIBCb Long Term Care Workforce Background Check Forms.docx" />
+    <Content Include="App_Data\Resources\State Specific\MI\CCG Form 003MIBCb Long Term Care Workforce Background Check Forms.pdf" />
+    <Content Include="App_Data\Resources\State Specific\MI\Resident Smoking Agreement.docx" />
+    <Content Include="App_Data\Resources\State Specific\MI\Resident Smoking Agreement.pdf" />
+    <Content Include="App_Data\Resources\State Specific\MO\Criminal History Records Disclosure Consent Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\MO\Criminal History Records Disclosure Consent Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NJ\CCG 003NJPLa Peggys Law Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NJ\Human Trafficking Web Based Education.docx" />
+    <Content Include="App_Data\Resources\State Specific\NJ\Human Trafficking Web Based Education.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NJ\Peggys Law Acknowledgement Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 00301c NYS Sexual Harassment Prevention Model Training.docx" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 00301c NYS Sexual Harassment Prevention Model Training.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 00301g NYS Sexual Harassment Prevention Training.docx" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 00301g NYS Sexual Harassment Prevention Training.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 003NYFL PFL-1 Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\NYC\CCG Form 003NYFL PFL-1 Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NYC\NYS Eight Elements Training Script, Acknowledgement Form and Sign in Sheets.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NYC\NYS Employer Sexual Harassment Complaint Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\NYC\NYS Employer Sexual Harassment Complaint Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 00301c NYS Sexual Harassment Prevention Model Training.docx" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 00301c NYS Sexual Harassment Prevention Model Training.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 00301f NYS Sexual Harassment Prevention Training.docx" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 00301f NYS Sexual Harassment Prevention Training.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 003NYFL PFL-1 Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\NY\CCG Form 003NYFL PFL-1 Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NY\NY -Basics of the Compliance Program Training and Acknowledgement.pdf" />
+    <Content Include="App_Data\Resources\State Specific\NY\NYS Employer Sexual Harassment Complaint Form.docx" />
+    <Content Include="App_Data\Resources\State Specific\NY\NYS Employer Sexual Harassment Complaint Form.pdf" />
+    <Content Include="App_Data\Resources\State Specific\TX\CCG Form 00207c Texas Overpayment Self-Disclosure Protocol.docx" />
+    <Content Include="App_Data\Resources\State Specific\TX\CCG Form 00207c Texas Overpayment Self-Disclosure Protocol.pdf" />
+    <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.docx" />
+    <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.pdf" />
+    <Content Include="App_Data\Resources\HIPAA\CCG 00214a Business Associate Agreement Cover Lettter.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\PublishProfiles\compliancecg - Web Deploy.pubxml" />
+    <None Include="My Project\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\Bootstrap\bootsnav.css" />
+    <Content Include="Scripts\Bootstrap\bootsnav.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.css" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\box-slider-all.jquery.min.js" />
+    <Content Include="Scripts\box-slider-blinds.jquery.min.js" />
+    <Content Include="Scripts\box-slider-fade.jquery.min.js" />
+    <Content Include="Scripts\box-slider-responder.jquery.js" />
+    <Content Include="Scripts\box-slider-scroll-3d.jquery.min.js" />
+    <Content Include="Scripts\box-slider-scroll.jquery.min.js" />
+    <Content Include="Scripts\box-slider-tile.jquery.min.js" />
+    <Content Include="Scripts\box-slider.jquery.js" />
+    <Content Include="Scripts\DevExpress-RichEdit-CommandAPI.js" />
+    <Content Include="Scripts\DevExpress-RichEdit-ContextMenuCustomization.js" />
+    <Content Include="Scripts\DevExpress-RichEdit-CustomToolBar.js" />
+    <Content Include="Scripts\effects\box-slider-fx-blinds.js" />
+    <Content Include="Scripts\effects\box-slider-fx-carousel-3d.js" />
+    <Content Include="Scripts\effects\box-slider-fx-fade.js" />
+    <Content Include="Scripts\effects\box-slider-fx-scroll-3d.js" />
+    <Content Include="Scripts\effects\box-slider-fx-scroll.js" />
+    <Content Include="Scripts\effects\box-slider-fx-STUB.js" />
+    <Content Include="Scripts\effects\box-slider-fx-tile-3d.js" />
+    <Content Include="Scripts\ej2\ej2.min.js" />
+    <Content Include="Scripts\ej2\ej2.min.js.map" />
+    <None Include="Scripts\ej\web\ej.web.all.min.intellisense.js" />
+    <None Include="Scripts\ej\web\ej.web.all-vsdoc.js" />
+    <Content Include="Scripts\ej\common\ej.core.min.js" />
+    <Content Include="Scripts\ej\common\ej.data.min.js" />
+    <Content Include="Scripts\ej\common\ej.draggable.min.js" />
+    <Content Include="Scripts\ej\common\ej.globalize.min.js" />
+    <Content Include="Scripts\ej\common\ej.scroller.min.js" />
+    <Content Include="Scripts\ej\common\ej.touch.min.js" />
+    <Content Include="Scripts\ej\common\ej.unobtrusive.min.js" />
+    <Content Include="Scripts\ej\common\ej.web.react.min.js" />
+    <Content Include="Scripts\ej\common\ej.widget.angular.min.js" />
+    <Content Include="Scripts\ej\common\ej.widget.ko.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.barcode.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.bulletgraph.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.chart.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.circulargauge.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.diagram.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.digitalgauge.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.gauge.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.heatmap.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.lineargauge.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.map.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.rangenavigator.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.sparkline.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.sunburstchart.min.js" />
+    <Content Include="Scripts\ej\datavisualization\ej.treemap.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.ar-AE.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.de-DE.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.en-GB.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.en-US.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.es-ES.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.fr-FR.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.vi-VN.min.js" />
+    <Content Include="Scripts\ej\i18n\ej.culture.zh-CN.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.ar-AE.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.de-DE.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.en-GB.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.en-US.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.es-ES.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.fr-FR.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.vi-VN.min.js" />
+    <Content Include="Scripts\ej\l10n\ej.localetexts.zh-CN.min.js" />
+    <Content Include="Scripts\ej\l10n\reportdesigner\ej.localetexts.de-DE.min.js" />
+    <Content Include="Scripts\ej\l10n\reportdesigner\ej.localetexts.en-US.min.js" />
+    <Content Include="Scripts\ej\l10n\reportdesigner\ej.localetexts.es-ES.min.js" />
+    <Content Include="Scripts\ej\l10n\reportdesigner\ej.localetexts.fr-FR.min.js" />
+    <Content Include="Scripts\ej\l10n\reportdesigner\ej.localetexts.zh-CN.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.accordion.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.all.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.application.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.autocomplete.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.button.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.core.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.datepicker.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.dialog.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.dropdownlist.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.editor.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.groupbutton.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.inputbutton.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.listview.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.menu.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.navigationbar.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.progressbar.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.radialmenu.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.radialslider.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.rating.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.rotator.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.scrollpanel.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.slider.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.splitpane.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.tab.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.tile.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.timepicker.min.js" />
+    <Content Include="Scripts\ej\mobile\ej.mobile.togglebutton.min.js" />
+    <Content Include="Scripts\ej\web\ej.accordion.min.js" />
+    <Content Include="Scripts\ej\web\ej.autocomplete.min.js" />
+    <Content Include="Scripts\ej\web\ej.button.min.js" />
+    <Content Include="Scripts\ej\web\ej.calculate.min.js" />
+    <Content Include="Scripts\ej\web\ej.captcha.min.js" />
+    <Content Include="Scripts\ej\web\ej.checkbox.min.js" />
+    <Content Include="Scripts\ej\web\ej.colorpicker.min.js" />
+    <Content Include="Scripts\ej\web\ej.combobox.min.js" />
+    <Content Include="Scripts\ej\web\ej.datepicker.min.js" />
+    <Content Include="Scripts\ej\web\ej.daterangepicker.min.js" />
+    <Content Include="Scripts\ej\web\ej.datetimepicker.min.js" />
+    <Content Include="Scripts\ej\web\ej.dialog.min.js" />
+    <Content Include="Scripts\ej\web\ej.documenteditor.min.js" />
+    <Content Include="Scripts\ej\web\ej.dropdownlist.min.js" />
+    <Content Include="Scripts\ej\web\ej.dropdowntree.min.js" />
+    <Content Include="Scripts\ej\web\ej.editor.min.js" />
+    <Content Include="Scripts\ej\web\ej.excelfilter.min.js" />
+    <Content Include="Scripts\ej\web\ej.fileexplorer.min.js" />
+    <Content Include="Scripts\ej\web\ej.gantt.min.js" />
+    <Content Include="Scripts\ej\web\ej.grid.min.js" />
+    <Content Include="Scripts\ej\web\ej.groupbutton.min.js" />
+    <Content Include="Scripts\ej\web\ej.kanban.min.js" />
+    <Content Include="Scripts\ej\web\ej.listbox.min.js" />
+    <Content Include="Scripts\ej\web\ej.listview.min.js" />
+    <Content Include="Scripts\ej\web\ej.maskedit.min.js" />
+    <Content Include="Scripts\ej\web\ej.mediaplayer.min.js" />
+    <Content Include="Scripts\ej\web\ej.menu.min.js" />
+    <Content Include="Scripts\ej\web\ej.navigationdrawer.min.js" />
+    <Content Include="Scripts\ej\web\ej.olap.base.min.js" />
+    <Content Include="Scripts\ej\web\ej.pager.min.js" />
+    <Content Include="Scripts\ej\web\ej.pdfviewer.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivot.common.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotanalysis.base.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotchart.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotclient.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotgauge.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotgrid.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotpager.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivotschemadesigner.min.js" />
+    <Content Include="Scripts\ej\web\ej.pivottreemap.min.js" />
+    <Content Include="Scripts\ej\web\ej.print.min.js" />
+    <Content Include="Scripts\ej\web\ej.progressbar.min.js" />
+    <Content Include="Scripts\ej\web\ej.radialmenu.min.js" />
+    <Content Include="Scripts\ej\web\ej.radialslider.min.js" />
+    <Content Include="Scripts\ej\web\ej.radiobutton.min.js" />
+    <Content Include="Scripts\ej\web\ej.rating.min.js" />
+    <Content Include="Scripts\ej\web\ej.recurrenceeditor.min.js" />
+    <Content Include="Scripts\ej\web\ej.reportviewer.min.js" />
+    <Content Include="Scripts\ej\web\ej.ribbon.min.js" />
+    <Content Include="Scripts\ej\web\ej.rotator.min.js" />
+    <Content Include="Scripts\ej\web\ej.rte.min.js" />
+    <Content Include="Scripts\ej\web\ej.schedule.min.js" />
+    <Content Include="Scripts\ej\web\ej.signature.min.js" />
+    <Content Include="Scripts\ej\web\ej.slider.min.js" />
+    <Content Include="Scripts\ej\web\ej.spellcheck.min.js" />
+    <Content Include="Scripts\ej\web\ej.splitbutton.min.js" />
+    <Content Include="Scripts\ej\web\ej.splitter.min.js" />
+    <Content Include="Scripts\ej\web\ej.spreadsheet.min.js" />
+    <Content Include="Scripts\ej\web\ej.tab.min.js" />
+    <Content Include="Scripts\ej\web\ej.tagcloud.min.js" />
+    <Content Include="Scripts\ej\web\ej.tile.min.js" />
+    <Content Include="Scripts\ej\web\ej.timepicker.min.js" />
+    <Content Include="Scripts\ej\web\ej.togglebutton.min.js" />
+    <Content Include="Scripts\ej\web\ej.toolbar.min.js" />
+    <Content Include="Scripts\ej\web\ej.tooltip.min.js" />
+    <Content Include="Scripts\ej\web\ej.treegrid.min.js" />
+    <Content Include="Scripts\ej\web\ej.treeview.min.js" />
+    <Content Include="Scripts\ej\web\ej.uploadbox.min.js" />
+    <Content Include="Scripts\ej\web\ej.waitingpopup.min.js" />
+    <Content Include="Scripts\ej\web\ej.web.all.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jssor\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jssor\jssor.slider.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Syncfusion\TreeView\local-data\index.css" />
+    <Content Include="Syncfusion\TreeView\local-data\index.html" />
+    <Content Include="Syncfusion\TreeView\local-data\index.min.js" />
+    <Content Include="Syncfusion\TreeView\navigations.min.js" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.vbhtml" />
+    <Content Include="Views\Account\ConfirmEmail.vbhtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.vbhtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.vbhtml" />
+    <Content Include="Views\Account\ForgotPassword.vbhtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.vbhtml" />
+    <Content Include="Views\Account\Login.vbhtml" />
+    <Content Include="Views\Account\Register.vbhtml" />
+    <Content Include="Views\Account\ResetPassword.vbhtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.vbhtml" />
+    <Content Include="Views\Account\SendCode.vbhtml" />
+    <Content Include="Views\Account\VerifyCode.vbhtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.vbhtml" />
+    <Content Include="Views\Manage\ChangePassword.vbhtml" />
+    <Content Include="Views\Manage\Index.vbhtml" />
+    <Content Include="Views\Manage\ManageLogins.vbhtml" />
+    <Content Include="Views\Manage\SetPassword.vbhtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.vbhtml" />
+    <Content Include="Views\Shared\Lockout.vbhtml" />
+    <Content Include="Views\Home\Create.vbhtml" />
+    <Content Include="Views\Facilities2\Create.vbhtml" />
+    <Content Include="Views\Facilities2\Delete.vbhtml" />
+    <Content Include="Views\Facilities2\Details.vbhtml" />
+    <Content Include="Views\Facilities2\Edit.vbhtml" />
+    <Content Include="Views\Facilities2\Index.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\Main3.vbhtml" />
+    <Content Include="Views\Syncfusion\ResponsivePanel.vbhtml" />
+    <Content Include="Views\Syncfusion\ResponsivePanelJS.vbhtml" />
+    <Content Include="Views\Facilities\FacilitiesPartial.vbhtml" />
+    <Content Include="Syncfusion\TreeView\local-data\dataSource.json" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\DevExpress\Index.vbhtml" />
+    <Content Include="Views\DevExpress\_CallbackPanelPartial.vbhtml" />
+    <Content Include="Views\DevExpress\RichEditPartial.vbhtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultilineText.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.vbhtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.vbhtml" />
+    <Content Include="Views\DevExpress\UploadControlPartial.vbhtml" />
+    <Content Include="Views\DevExpress\Index2.vbhtml" />
+    <Content Include="Views\DevExpress\_DocumentViewPartial.vbhtml" />
+    <Content Include="Views\DocumentManager\Index.vbhtml" />
+    <Content Include="Views\DocumentManager\_FileManagerPartial.vbhtml" />
+    <Content Include="Views\Home\Sent.vbhtml" />
+    <Content Include="Views\Syncfusion\Card.vbhtml" />
+    <Content Include="Views\Shared\_Layout.vbhtml" />
+    <Content Include="Views\Grid\Index.vbhtml" />
+    <Content Include="Views\Syncfusion\ProgressBar.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\DocEditor.vbhtml" />
+    <Content Include="Views\Policies\RichEditPartial.vbhtml" />
+    <Content Include="Views\Policies\TreeView.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView1.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView2.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView3.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView4.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\Treeview5.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\Treeview6.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView7.vbhtml" />
+    <Content Include="Views\Forms\Index.vbhtml" />
+    <Content Include="Views\Facilities\Search.vbhtml" />
+    <Content Include="Views\Home\About2.vbhtml" />
+    <Content Include="Views\Home\ImageSlider3.vbhtml" />
+    <Content Include="Views\Home\ImageSlider2.vbhtml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Shared\Menu.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial2.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial3.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\Search2.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\Main2.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial3a.vbhtml" />
+    <Content Include="Views\Shared\_LoginPartial.vbhtml" />
+    <Content Include="Views\Shared\_LoginAuthenticated.vbhtml" />
+    <Content Include="Views\Shared\_Login.vbhtml" />
+    <Content Include="Views\Shared\_LoginAuthenticated2.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\Main - Copy.vbhtml" />
+    <Content Include="Views\Shared\_Layout2.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\Main - Copy %282%29.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial3b.vbhtml" />
+    <Content Include="Views\Facilities\Main.vbhtml" />
+    <Content Include="Views\Home\Index2.vbhtml" />
+    <Content Include="Views\Home\Index3.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\TreeView - Copy.vbhtml" />
+    <Content Include="Views\Home\Acknowledgement.vbhtml" />
+    <Content Include="Views\Home\Acknowledgement\Provisions - CCG Retainer.vbhtml" />
+    <Content Include="Views\Home\Index.vbhtml" />
+    <Content Include="Views\Home\ImageSlider.vbhtml" />
+    <Content Include="Views\Policies\NewFolder1\RichEditPartial2.vbhtml" />
+    <Content Include="Views\Account\DisplayEmail.vbhtml" />
+    <Content Include="Views\Forms\Resources.vbhtml" />
+    <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial - Copy.vbhtml" />
+    <Content Include="Views\Policies\PDFViewer.vbhtml" />
+    <Content Include="Views\PDFViewer\Index.vbhtml" />
+    <Content Include="Views\Shared\_Layout3.vbhtml" />
+    <Content Include="Views\Training\Index.vbhtml" />
+    <Content Include="Views\Training\FileListPartial1.vbhtml" />
+    <Content Include="Views\Training\FileListPartial2.vbhtml" />
+    <Content Include="Views\Training\FileListPartial5.vbhtml" />
+    <Content Include="Views\Training\FileListPartial4.vbhtml" />
+    <Content Include="Views\Training\FileListPartial3.vbhtml" />
+    <Content Include="Views\Training\FileListPartial6.vbhtml" />
+    <Content Include="Views\PDFViewer\Index2.vbhtml" />
+    <Content Include="Views\PDFViewer\Index3.vbhtml" />
+    <Content Include="Views\PDFViewer\Index4.vbhtml" />
+    <Content Include="Views\PDFViewer\Index5.vbhtml" />
+    <Content Include="Views\PDFViewer\Index8.vbhtml" />
+    <Content Include="Views\PDFViewer\Index6.vbhtml" />
+    <Content Include="Views\Shared\_Layout - Copy.vbhtml" />
+    <Content Include="Views\PDFViewer\Index7.vbhtml" />
+    <Content Include="Views\Forms\Index2.vbhtml" />
+    <Content Include="Views\Forms\Compliance Officer.vbhtml" />
+    <Content Include="Views\Forms\Exclusion List.vbhtml" />
+    <Content Include="Views\Forms\General Forms.vbhtml" />
+    <Content Include="Views\Forms\HIPPA.vbhtml" />
+    <Content Include="Views\Forms\Human Resources.vbhtml" />
+    <Content Include="Views\Forms\Required Posters.vbhtml" />
+    <Content Include="Views\Syncfusion\TabControl - Copy.vbhtml" />
+    <Content Include="Views\Syncfusion\Card2.vbhtml" />
+    <Content Include="Views\Forms\Acknowledgment Forms - Copy.vbhtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\_ViewStart.vbhtml" />
+    <Content Include="Views\Home\About.vbhtml" />
+    <Content Include="Views\Home\Contact.vbhtml" />
+    <Content Include="Views\Home\Acknowledgement\Client Portal User Agreement.vbhtml" />
+    <Content Include="Views\Shared\Error.vbhtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Policies\Updates\" />
+    <Folder Include="ckeditor\.github\ISSUE_TEMPLATE\" />
+    <Folder Include="ckeditor\.npm\" />
+    <Folder Include="ckeditor\core\creators\" />
+    <Folder Include="ckeditor\core\dom\" />
+    <Folder Include="ckeditor\core\htmlparser\" />
+    <Folder Include="ckeditor\dev\builder\" />
+    <Folder Include="ckeditor\dev\console\" />
+    <Folder Include="ckeditor\dev\dtd\" />
+    <Folder Include="ckeditor\dev\getemoji\" />
+    <Folder Include="ckeditor\dev\iconmaker\lib\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.core\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-a11yhelp-dialogs\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-about\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-autoembed\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-basicstyles\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-bidi\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-blockquote\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-clipboard\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-codesnippet\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-colorbutton\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-colordialog\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-contextmenu\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-copyformatting\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-devtools\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-div\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-docprops\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-easyimage\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-elementspath\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-embedbase\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-emoji\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-fakeobjects\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-filetools\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-findandreplace\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-find\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-flash\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-font\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-format\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-forms\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-horizontalrule\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-iframe\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-image2\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-imagebase\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-image\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-indent\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-language\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-link\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-liststyle\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-list\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-magicline\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-mathjax\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-maximize\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-newpage\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-notification\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-pagebreak\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-pastefromword\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-pastetext\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-placeholder\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-preview\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-print\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-removeformat\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-save\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-scayt\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-selectall\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-showblocks\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-smiley\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-sourcearea\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-sourcedialog\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-specialchar-dialogs\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-specialchar\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-spellcheck\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-stylescombo\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-table\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-templates\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-toolbar\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-uicolor\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-undo\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-uploadwidget\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-widget\" />
+    <Folder Include="ckeditor\dev\langtool\meta\ckeditor.plugin-wsc\" />
+    <Folder Include="ckeditor\dev\license\" />
+    <Folder Include="ckeditor\dev\pastefromword\" />
+    <Folder Include="ckeditor\dev\samplesvalidator\" />
+    <Folder Include="ckeditor\dev\tasks\utils\" />
+    <Folder Include="ckeditor\dev\travis\" />
+    <Folder Include="ckeditor\plugins\about\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\about\lang\" />
+    <Folder Include="ckeditor\plugins\adobeair\" />
+    <Folder Include="ckeditor\plugins\ajax\" />
+    <Folder Include="ckeditor\plugins\autocomplete\samples\" />
+    <Folder Include="ckeditor\plugins\autocomplete\skins\" />
+    <Folder Include="ckeditor\plugins\autoembed\lang\" />
+    <Folder Include="ckeditor\plugins\autogrow\samples\" />
+    <Folder Include="ckeditor\plugins\autolink\" />
+    <Folder Include="ckeditor\plugins\balloonpanel\skins\kama\" />
+    <Folder Include="ckeditor\plugins\balloonpanel\skins\moono-lisa\images\hidpi\" />
+    <Folder Include="ckeditor\plugins\balloonpanel\skins\moono\images\hidpi\" />
+    <Folder Include="ckeditor\plugins\balloontoolbar\skins\kama\" />
+    <Folder Include="ckeditor\plugins\balloontoolbar\skins\moono-lisa\" />
+    <Folder Include="ckeditor\plugins\balloontoolbar\skins\moono\" />
+    <Folder Include="ckeditor\plugins\basicstyles\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\basicstyles\lang\" />
+    <Folder Include="ckeditor\plugins\bbcode\dev\" />
+    <Folder Include="ckeditor\plugins\bbcode\samples\" />
+    <Folder Include="ckeditor\plugins\bidi\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\bidi\lang\" />
+    <Folder Include="ckeditor\plugins\blockquote\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\blockquote\lang\" />
+    <Folder Include="ckeditor\plugins\button\" />
+    <Folder Include="ckeditor\plugins\clipboard\dev\" />
+    <Folder Include="ckeditor\plugins\clipboard\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\clipboard\lang\" />
+    <Folder Include="ckeditor\plugins\cloudservices\" />
+    <Folder Include="ckeditor\plugins\codesnippetgeshi\dev\geshi\contrib\" />
+    <Folder Include="ckeditor\plugins\codesnippetgeshi\dev\geshi\docs\api\geshi\core\" />
+    <Folder Include="ckeditor\plugins\codesnippetgeshi\dev\geshi\docs\api\media\images\" />
+    <Folder Include="ckeditor\plugins\codesnippetgeshi\dev\geshi\docs\api\__filesource\" />
+    <Folder Include="ckeditor\plugins\codesnippetgeshi\dev\geshi\geshi\" />
+    <Folder Include="ckeditor\plugins\codesnippet\dialogs\" />
+    <Folder Include="ckeditor\plugins\codesnippet\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\codesnippet\lang\" />
+    <Folder Include="ckeditor\plugins\codesnippet\lib\highlight\styles\" />
+    <Folder Include="ckeditor\plugins\codesnippet\samples\" />
+    <Folder Include="ckeditor\plugins\colorbutton\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\colorbutton\lang\" />
+    <Folder Include="ckeditor\plugins\colordialog\lang\" />
+    <Folder Include="ckeditor\plugins\contextmenu\lang\" />
+    <Folder Include="ckeditor\plugins\copyformatting\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\copyformatting\lang\" />
+    <Folder Include="ckeditor\plugins\devtools\lang\" />
+    <Folder Include="ckeditor\plugins\devtools\samples\" />
+    <Folder Include="ckeditor\plugins\dialogadvtab\" />
+    <Folder Include="ckeditor\plugins\dialogui\" />
+    <Folder Include="ckeditor\plugins\dialog\samples\assets\" />
+    <Folder Include="ckeditor\plugins\divarea\samples\" />
+    <Folder Include="ckeditor\plugins\div\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\div\lang\" />
+    <Folder Include="ckeditor\plugins\docprops\dialogs\" />
+    <Folder Include="ckeditor\plugins\docprops\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\docprops\lang\" />
+    <Folder Include="ckeditor\plugins\docprops\samples\" />
+    <Folder Include="ckeditor\plugins\easyimage\dialogs\" />
+    <Folder Include="ckeditor\plugins\easyimage\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\easyimage\lang\" />
+    <Folder Include="ckeditor\plugins\easyimage\samples\" />
+    <Folder Include="ckeditor\plugins\easyimage\styles\" />
+    <Folder Include="ckeditor\plugins\elementspath\lang\" />
+    <Folder Include="ckeditor\plugins\embedbase\dialogs\" />
+    <Folder Include="ckeditor\plugins\embedbase\lang\" />
+    <Folder Include="ckeditor\plugins\embedsemantic\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\embed\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\emoji\assets\" />
+    <Folder Include="ckeditor\plugins\emoji\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\emoji\lang\" />
+    <Folder Include="ckeditor\plugins\emoji\samples\" />
+    <Folder Include="ckeditor\plugins\emoji\skins\" />
+    <Folder Include="ckeditor\plugins\enterkey\samples\" />
+    <Folder Include="ckeditor\plugins\entities\" />
+    <Folder Include="ckeditor\plugins\fakeobjects\lang\" />
+    <Folder Include="ckeditor\plugins\filebrowser\" />
+    <Folder Include="ckeditor\plugins\filetools\dev\" />
+    <Folder Include="ckeditor\plugins\filetools\lang\" />
+    <Folder Include="ckeditor\plugins\find\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\find\lang\" />
+    <Folder Include="ckeditor\plugins\flash\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\flash\lang\" />
+    <Folder Include="ckeditor\plugins\floatingspace\" />
+    <Folder Include="ckeditor\plugins\floatpanel\" />
+    <Folder Include="ckeditor\plugins\font\lang\" />
+    <Folder Include="ckeditor\plugins\format\lang\" />
+    <Folder Include="ckeditor\plugins\forms\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\forms\lang\" />
+    <Folder Include="ckeditor\plugins\horizontalrule\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\horizontalrule\lang\" />
+    <Folder Include="ckeditor\plugins\htmlwriter\samples\assets\outputforflash\" />
+    <Folder Include="ckeditor\plugins\iframedialog\" />
+    <Folder Include="ckeditor\plugins\iframe\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\iframe\lang\" />
+    <Folder Include="ckeditor\plugins\image2\dev\assets\" />
+    <Folder Include="ckeditor\plugins\image2\dialogs\" />
+    <Folder Include="ckeditor\plugins\image2\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\image2\lang\" />
+    <Folder Include="ckeditor\plugins\image2\samples\assets\" />
+    <Folder Include="ckeditor\plugins\imagebase\lang\" />
+    <Folder Include="ckeditor\plugins\imagebase\styles\" />
+    <Folder Include="ckeditor\plugins\image\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\image\lang\" />
+    <Folder Include="ckeditor\plugins\indentblock\" />
+    <Folder Include="ckeditor\plugins\indentlist\" />
+    <Folder Include="ckeditor\plugins\indent\dev\" />
+    <Folder Include="ckeditor\plugins\indent\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\indent\lang\" />
+    <Folder Include="ckeditor\plugins\justify\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\language\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\language\lang\" />
+    <Folder Include="ckeditor\plugins\lineutils\dev\" />
+    <Folder Include="ckeditor\plugins\link\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\link\lang\" />
+    <Folder Include="ckeditor\plugins\listblock\" />
+    <Folder Include="ckeditor\plugins\liststyle\lang\" />
+    <Folder Include="ckeditor\plugins\list\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\list\lang\" />
+    <Folder Include="ckeditor\plugins\magicline\dev\" />
+    <Folder Include="ckeditor\plugins\magicline\lang\" />
+    <Folder Include="ckeditor\plugins\magicline\samples\" />
+    <Folder Include="ckeditor\plugins\mathjax\dev\" />
+    <Folder Include="ckeditor\plugins\mathjax\dialogs\" />
+    <Folder Include="ckeditor\plugins\mathjax\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\mathjax\images\" />
+    <Folder Include="ckeditor\plugins\mathjax\lang\" />
+    <Folder Include="ckeditor\plugins\mathjax\samples\" />
+    <Folder Include="ckeditor\plugins\maximize\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\maximize\lang\" />
+    <Folder Include="ckeditor\plugins\mentions\samples\" />
+    <Folder Include="ckeditor\plugins\menubutton\" />
+    <Folder Include="ckeditor\plugins\menu\" />
+    <Folder Include="ckeditor\plugins\newpage\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\newpage\lang\" />
+    <Folder Include="ckeditor\plugins\notificationaggregator\" />
+    <Folder Include="ckeditor\plugins\notification\lang\" />
+    <Folder Include="ckeditor\plugins\pagebreak\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\pagebreak\lang\" />
+    <Folder Include="ckeditor\plugins\panelbutton\" />
+    <Folder Include="ckeditor\plugins\panel\" />
+    <Folder Include="ckeditor\plugins\pastefromword\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\pastefromword\lang\" />
+    <Folder Include="ckeditor\plugins\pastetext\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\pastetext\lang\" />
+    <Folder Include="ckeditor\plugins\placeholder\dev\" />
+    <Folder Include="ckeditor\plugins\placeholder\dialogs\" />
+    <Folder Include="ckeditor\plugins\placeholder\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\placeholder\lang\" />
+    <Folder Include="ckeditor\plugins\placeholder\samples\" />
+    <Folder Include="ckeditor\plugins\popup\" />
+    <Folder Include="ckeditor\plugins\preview\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\preview\lang\" />
+    <Folder Include="ckeditor\plugins\print\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\print\lang\" />
+    <Folder Include="ckeditor\plugins\removeformat\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\removeformat\lang\" />
+    <Folder Include="ckeditor\plugins\resize\" />
+    <Folder Include="ckeditor\plugins\richcombo\" />
+    <Folder Include="ckeditor\plugins\save\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\save\lang\" />
+    <Folder Include="ckeditor\plugins\selectall\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\selectall\lang\" />
+    <Folder Include="ckeditor\plugins\sharedspace\samples\" />
+    <Folder Include="ckeditor\plugins\showblocks\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\showblocks\lang\" />
+    <Folder Include="ckeditor\plugins\showborders\" />
+    <Folder Include="ckeditor\plugins\smiley\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\smiley\lang\" />
+    <Folder Include="ckeditor\plugins\sourcearea\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\sourcearea\lang\" />
+    <Folder Include="ckeditor\plugins\sourcedialog\dialogs\" />
+    <Folder Include="ckeditor\plugins\sourcedialog\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\sourcedialog\lang\" />
+    <Folder Include="ckeditor\plugins\sourcedialog\samples\" />
+    <Folder Include="ckeditor\plugins\specialchar\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\specialchar\lang\" />
+    <Folder Include="ckeditor\plugins\stylescombo\lang\" />
+    <Folder Include="ckeditor\plugins\stylesheetparser\samples\assets\" />
+    <Folder Include="ckeditor\plugins\tableresize\dev\" />
+    <Folder Include="ckeditor\plugins\tableresize\samples\" />
+    <Folder Include="ckeditor\plugins\table\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\table\lang\" />
+    <Folder Include="ckeditor\plugins\tab\" />
+    <Folder Include="ckeditor\plugins\templates\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\templates\lang\" />
+    <Folder Include="ckeditor\plugins\textmatch\" />
+    <Folder Include="ckeditor\plugins\textwatcher\" />
+    <Folder Include="ckeditor\plugins\toolbar\lang\" />
+    <Folder Include="ckeditor\plugins\toolbar\samples\" />
+    <Folder Include="ckeditor\plugins\uicolor\dialogs\" />
+    <Folder Include="ckeditor\plugins\uicolor\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\uicolor\lang\" />
+    <Folder Include="ckeditor\plugins\uicolor\samples\" />
+    <Folder Include="ckeditor\plugins\undo\dev\" />
+    <Folder Include="ckeditor\plugins\undo\icons\hidpi\" />
+    <Folder Include="ckeditor\plugins\undo\lang\" />
+    <Folder Include="ckeditor\plugins\uploadfile\" />
+    <Folder Include="ckeditor\plugins\uploadimage\" />
+    <Folder Include="ckeditor\plugins\uploadwidget\dev\" />
+    <Folder Include="ckeditor\plugins\uploadwidget\lang\" />
+    <Folder Include="ckeditor\plugins\widgetselection\" />
+    <Folder Include="ckeditor\plugins\widget\dev\assets\simplebox\dialogs\" />
+    <Folder Include="ckeditor\plugins\widget\dev\assets\simplebox\icons\" />
+    <Folder Include="ckeditor\plugins\widget\lang\" />
+    <Folder Include="ckeditor\plugins\wysiwygarea\samples\" />
+    <Folder Include="ckeditor\plugins\xml\" />
+    <Folder Include="ckeditor\samples\less\" />
+    <Folder Include="ckeditor\samples\toolbarconfigurator\less\" />
+    <Folder Include="ckeditor\samples\toolbarconfigurator\tests\" />
+    <Folder Include="ckeditor\skins\kama\icons\" />
+    <Folder Include="ckeditor\skins\kama\images\" />
+    <Folder Include="ckeditor\skins\moono-lisa\dev\" />
+    <Folder Include="ckeditor\skins\moono\dev\" />
+    <Folder Include="ckeditor\skins\moono\icons\hidpi\" />
+    <Folder Include="ckeditor\skins\moono\images\hidpi\" />
+    <Folder Include="ckeditor\tests\adapters\jquery\manual\" />
+    <Folder Include="ckeditor\tests\adapters\jquery\_assets\" />
+    <Folder Include="ckeditor\tests\core\ckeditor\" />
+    <Folder Include="ckeditor\tests\core\command\" />
+    <Folder Include="ckeditor\tests\core\config\manual\" />
+    <Folder Include="ckeditor\tests\core\creators\" />
+    <Folder Include="ckeditor\tests\core\dom\elementpath\" />
+    <Folder Include="ckeditor\tests\core\dom\element\manual\" />
+    <Folder Include="ckeditor\tests\core\dom\element\_assets\" />
+    <Folder Include="ckeditor\tests\core\dom\range\manual\" />
+    <Folder Include="ckeditor\tests\core\dom\_helpers\" />
+    <Folder Include="ckeditor\tests\core\editable\keystrokes\delbackspacequirks\manual\" />
+    <Folder Include="ckeditor\tests\core\editable\keystrokes\delbackspacequirks\_helpers\" />
+    <Folder Include="ckeditor\tests\core\editable\manual\_assets\" />
+    <Folder Include="ckeditor\tests\core\editable\_assets\" />
+    <Folder Include="ckeditor\tests\core\editable\_docs\" />
+    <Folder Include="ckeditor\tests\core\editable\_helpers\" />
+    <Folder Include="ckeditor\tests\core\editor\manual\" />
+    <Folder Include="ckeditor\tests\core\editor\_assets\" />
+    <Folder Include="ckeditor\tests\core\filter\manual\" />
+    <Folder Include="ckeditor\tests\core\filter\_helpers\" />
+    <Folder Include="ckeditor\tests\core\focusmanager\manual\" />
+    <Folder Include="ckeditor\tests\core\htmldataprocessor\manual\" />
+    <Folder Include="ckeditor\tests\core\htmlparser\fragment\" />
+    <Folder Include="ckeditor\tests\core\language\manual\" />
+    <Folder Include="ckeditor\tests\core\manual\" />
+    <Folder Include="ckeditor\tests\core\plugins\_assets\myplugins\sample\" />
+    <Folder Include="ckeditor\tests\core\selection\manual\" />
+    <Folder Include="ckeditor\tests\core\selection\_helpers\" />
+    <Folder Include="ckeditor\tests\core\skin\manual\_assets\" />
+    <Folder Include="ckeditor\tests\core\skin\_assets\skins\skinnochameleon\" />
+    <Folder Include="ckeditor\tests\core\style\manual\" />
+    <Folder Include="ckeditor\tests\core\tools\manual\" />
+    <Folder Include="ckeditor\tests\plugins\a11yhelp\manual\" />
+    <Folder Include="ckeditor\tests\plugins\ajax\manual\" />
+    <Folder Include="ckeditor\tests\plugins\autocomplete\manual\skins\" />
+    <Folder Include="ckeditor\tests\plugins\autocomplete\manual\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\autoembed\manual\" />
+    <Folder Include="ckeditor\tests\plugins\autogrow\manual\" />
+    <Folder Include="ckeditor\tests\plugins\autolink\manual\" />
+    <Folder Include="ckeditor\tests\plugins\balloonpanel\manual\" />
+    <Folder Include="ckeditor\tests\plugins\balloonpanel\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\balloontoolbar\context\manual\" />
+    <Folder Include="ckeditor\tests\plugins\balloontoolbar\context\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\balloontoolbar\manual\" />
+    <Folder Include="ckeditor\tests\plugins\balloontoolbar\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\basicstyles\manual\" />
+    <Folder Include="ckeditor\tests\plugins\bbcode\manual\" />
+    <Folder Include="ckeditor\tests\plugins\bidi\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\blockquote\" />
+    <Folder Include="ckeditor\tests\plugins\button\manual\" />
+    <Folder Include="ckeditor\tests\plugins\clipboard\manual\" />
+    <Folder Include="ckeditor\tests\plugins\clipboard\_docs\" />
+    <Folder Include="ckeditor\tests\plugins\clipboard\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\cloudservices\manual\" />
+    <Folder Include="ckeditor\tests\plugins\codesnippetgeshi\" />
+    <Folder Include="ckeditor\tests\plugins\codesnippet\" />
+    <Folder Include="ckeditor\tests\plugins\colorbutton\manual\" />
+    <Folder Include="ckeditor\tests\plugins\colordialog\manual\" />
+    <Folder Include="ckeditor\tests\plugins\contextmenu\manual\" />
+    <Folder Include="ckeditor\tests\plugins\contextmenu\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\copyformatting\manual\lists\" />
+    <Folder Include="ckeditor\tests\plugins\copyformatting\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\dialogadvtab\manual\" />
+    <Folder Include="ckeditor\tests\plugins\dialogui\manual\" />
+    <Folder Include="ckeditor\tests\plugins\dialog\manual\" />
+    <Folder Include="ckeditor\tests\plugins\dialog\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\divarea\manual\" />
+    <Folder Include="ckeditor\tests\plugins\div\manual\" />
+    <Folder Include="ckeditor\tests\plugins\docprops\" />
+    <Folder Include="ckeditor\tests\plugins\easyimage\manual\balloontoolbar\" />
+    <Folder Include="ckeditor\tests\plugins\easyimage\manual\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\easyimage\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\easyimage\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\elementspath\manual\" />
+    <Folder Include="ckeditor\tests\plugins\elementspath\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\embedbase\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\embedbase\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\embedsemantic\manual\" />
+    <Folder Include="ckeditor\tests\plugins\embed\manual\" />
+    <Folder Include="ckeditor\tests\plugins\emoji\manual\dropdown\" />
+    <Folder Include="ckeditor\tests\plugins\emoji\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\emoji\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\enterkey\manual\" />
+    <Folder Include="ckeditor\tests\plugins\entities\manual\" />
+    <Folder Include="ckeditor\tests\plugins\fakeobjects\" />
+    <Folder Include="ckeditor\tests\plugins\filebrowser\manual\" />
+    <Folder Include="ckeditor\tests\plugins\filetools\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\find\manual\" />
+    <Folder Include="ckeditor\tests\plugins\flash\" />
+    <Folder Include="ckeditor\tests\plugins\floatingspace\" />
+    <Folder Include="ckeditor\tests\plugins\floatpanel\manual\" />
+    <Folder Include="ckeditor\tests\plugins\font\manual\" />
+    <Folder Include="ckeditor\tests\plugins\format\manual\" />
+    <Folder Include="ckeditor\tests\plugins\forms\manual\" />
+    <Folder Include="ckeditor\tests\plugins\forms\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\horizontalrule\" />
+    <Folder Include="ckeditor\tests\plugins\htmlwriter\manual\" />
+    <Folder Include="ckeditor\tests\plugins\iframe\" />
+    <Folder Include="ckeditor\tests\plugins\image2\manual\" />
+    <Folder Include="ckeditor\tests\plugins\image2\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\image2\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\imagebase\features\manual\" />
+    <Folder Include="ckeditor\tests\plugins\imagebase\features\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\imagebase\manual\" />
+    <Folder Include="ckeditor\tests\plugins\image\manual\" />
+    <Folder Include="ckeditor\tests\plugins\indentlist\manual\" />
+    <Folder Include="ckeditor\tests\plugins\indentlist\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\indent\manual\" />
+    <Folder Include="ckeditor\tests\plugins\justify\manual\" />
+    <Folder Include="ckeditor\tests\plugins\justify\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\language\manual\" />
+    <Folder Include="ckeditor\tests\plugins\lineutils\manual\" />
+    <Folder Include="ckeditor\tests\plugins\lineutils\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\link\manual\" />
+    <Folder Include="ckeditor\tests\plugins\listblock\manual\" />
+    <Folder Include="ckeditor\tests\plugins\list\manual\" />
+    <Folder Include="ckeditor\tests\plugins\magicline\manual\" />
+    <Folder Include="ckeditor\tests\plugins\mathjax\" />
+    <Folder Include="ckeditor\tests\plugins\maximize\" />
+    <Folder Include="ckeditor\tests\plugins\mentions\manual\" />
+    <Folder Include="ckeditor\tests\plugins\menubutton\" />
+    <Folder Include="ckeditor\tests\plugins\menu\manual\" />
+    <Folder Include="ckeditor\tests\plugins\newpage\manual\" />
+    <Folder Include="ckeditor\tests\plugins\notificationaggregator\manual\complex\" />
+    <Folder Include="ckeditor\tests\plugins\notification\manual\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\notification\manual\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\pagebreak\manual\" />
+    <Folder Include="ckeditor\tests\plugins\panelbutton\" />
+    <Folder Include="ckeditor\tests\plugins\panel\manual\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Bold\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Bold\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Colors\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Colors\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Config_remove_font_styles\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Config_remove_font_styles\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Custom_list_markers\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Enter_BR\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Fonts\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Fonts\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Image\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Image\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\InlineStyles\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\InlineStyles\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Italic\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Italic\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Link\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Link\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\List_skipped_numbering\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Meta_generator\Excel\excel2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Multi_dig_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\No_heuristics\Ordered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\No_heuristics\Ordered_list_multiple\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\No_heuristics\Tickets\16745MixedListsAndParagraphs\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\No_heuristics\Unordered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\No_heuristics\Unordered_list_multiple\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Object\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Only_paragraphs\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Only_paragraphs\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_multiple\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_multiple\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_multiple\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_multiple_edgy\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_multiple_edgy\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_symbol_in_text\Word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Ordered_list_symbol_in_text\Word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Page_break\office365\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Page_break\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Paragraphs_with_headers\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Paragraphs_with_headers\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Paragraph_indentation\Word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Paragraph_indentation\Word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Gruped_adjacent_shapes_and_images\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Gruped_adjacent_shapes_and_images\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Gruped_adjacent_shapes_and_images\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_alternative_text\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_alternative_text\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_alternative_text\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_reflection\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_reflection\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_reflection\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_rotation\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_rotation\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Image_rotation\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Link_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Link_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Link_image\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Online_and_offline_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Online_and_offline_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Online_and_offline_image\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Shapes_and_online_and_offline_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Shapes_and_online_and_offline_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Shapes_and_online_and_offline_image\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Simple_offline_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Simple_offline_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Simple_offline_image\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Wrapped_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Wrapped_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\PFW_image\Wrapped_image\word2016_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Adjacent_shapes\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Adjacent_shapes\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Canvas\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Nested_groups\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Nested_groups\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Shape_and_image\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Shape_and_image\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Single\word2011_osx\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Shapes\Single\word2013_win\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Simple_table\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Simple_table\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Spacing\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Spacing\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Styles\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_alignment\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_alignment\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_text_attributes\Cell_text\excel2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_text_attributes\Cell_text\excel2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_text_attributes\Mixed\excel2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_text_attributes\Mixed\excel2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_vertical_alignment\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Table_vertical_alignment\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Text_alignment\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Text_alignment\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10011CMSPasteTest-1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10053doubles\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10285test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10485sample_test_doc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10643sample1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10672Lists_Test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10780word_margin_bug\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10783list-break2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\10784line_missing\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11005Test_WordDoc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11054CKEditor-Bug\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11136bugged_file\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11215sample_error_word\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11218sample\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11237borderBug\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11294NotesFormatting\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11376bullets_v1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11477Table_in_word\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11529Table_OO\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11683CKEditor_Source\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11683pasteData\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11699PasteExample-1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11950Test_Table\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\11987sample1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12385number_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12406Doc1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12406Document1_%283%29\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12740CKEditor_-_Internal_Error_on_Paste_as_CTRL-V%281%29\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12740WSGCN-3550_Test_document_minimal\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\12821ELL_Forum_Invitation\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13021testdoc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13174Testdocument2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13174Testdocument3\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13174Testdocument\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13339Internal_Error_on_Paste_as_CTRL-V\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13590ckeditor-numberlist\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13616\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13634example\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13651ckeditor_report_bug\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\13810test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\14257test2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\1457list-test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\14867examples\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16593regular_paste\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16682listWithMargin\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16682noIndentation\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16745MixedListsAndParagraphs\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16817SampleDocForDataLossBug\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16817SampleDocForDataLossBug\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16826OrderedList\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16826OrderedList\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16833Numbered_lists\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16833Numbered_lists\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16860Faked_list\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16860Faked_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\16860Faked_list\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\1707bug_fckeditor\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\3039blog_test_2003_%282%29\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\3744BigWikiArticle\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\3828TestList\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\3959Test_doc_without_date\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\3959Test_doc_with_date\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\4427test-document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\445Spanish_5-2-07\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\4883_Test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\4894CustomStyleTest\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\4895ListFontSizeTests\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\5134Sample\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\5300Sample\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\5399This_is_a_line_of_text\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\5743bulletlist\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\5808Word_test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6086test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6241Sample_word_doc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6286Sample_6286\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6330bullets\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6362Numbering\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6449Sample\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6493Questions_and_answers\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6533test_doc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6570ordered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6570ordered_list_97\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6594\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6595\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6608\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6639nested_list_with_empty_lines\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6658CKEditor_Word_tabs_between_list_items_Sample\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6662bullets\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6662\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6711Text_Boxes\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6751disappearing_spaces_example2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6751TextToPaste\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6751\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\682tester\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6956CKEditor_pasting_issue\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6973CKEditor_pasting_issue\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6973TestNegativeHeadingIndent\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\6973This_is_a_line_of_text.2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7131customNumbering\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7131TC_7131_2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7131\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7209test2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7262preformatted_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7269Test_with_footnote\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7371BugReport_Example\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7480BulletedList\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7494Numbers_&amp;_Bulltes_lists\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7521simple_table\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7581fancyList\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7581Numbering\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7584Numbered_list_with_diff_start_value\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7593Numbere_&amp;_Bullet_list_with_list_styles_applied\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7610Multi_level_Numbered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7620AlphabeticNumberingLists\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7661Multilevel_lists\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7696empty_table\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7797fonts\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7857pasting_RTL_lists_from_word_defect\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7872lists\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7918Numbering\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7950Sample_word_doc\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\7954list_with_Roman_Numerals_&amp;_Start_Value_5\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8437WORD_ABC\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8501FromWord\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8665Tartalom\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8734list_test2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8734list_test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\8780ckeditor_tablebug_document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9144test\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9274CKEditor_formating_issue\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9322Sample_Document2\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9330Sample_Anchor_Document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9331ckBugWord1\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9340test_ckeditor\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9422for_cke\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9424CK_Sample_word_document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9426CK_Sample_word_document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9456list_paste_from_msword\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9456Stuff_to_get\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9456text-with-bullet-list-example\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9475list2003\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9475List2010\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9616word_table\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9685ckeditor_tablebug_document\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Tickets\9685testResumeTest\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Underline\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Underline\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list_adjusted_margin\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list_multiple\word2007\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list_multiple\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list_multiple\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_list_special_char_bullet\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Unordered_nested_list\onenote\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Vertical_margin\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\Vertical_margin\word2016\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_fixtures\White_space\word2013\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\generated\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\manual\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\_fixtures\" />
+    <Folder Include="ckeditor\tests\plugins\pastefromword\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\pastetext\manual\" />
+    <Folder Include="ckeditor\tests\plugins\placeholder\manual\" />
+    <Folder Include="ckeditor\tests\plugins\preview\" />
+    <Folder Include="ckeditor\tests\plugins\removeformat\manual\" />
+    <Folder Include="ckeditor\tests\plugins\resize\manual\" />
+    <Folder Include="ckeditor\tests\plugins\richcombo\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\save\manual\" />
+    <Folder Include="ckeditor\tests\plugins\selectall\manual\" />
+    <Folder Include="ckeditor\tests\plugins\sharedspace\" />
+    <Folder Include="ckeditor\tests\plugins\showblocks\" />
+    <Folder Include="ckeditor\tests\plugins\sourcearea\" />
+    <Folder Include="ckeditor\tests\plugins\sourcedialog\" />
+    <Folder Include="ckeditor\tests\plugins\stylescombo\manual\" />
+    <Folder Include="ckeditor\tests\plugins\tableresize\manual\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\clipboard\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\core\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\enterkey\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\image2\manual\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\image2\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\link\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\selectall\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\integrations\tabletools\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\basicstyles\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\clipboard\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\enterkey\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\image2\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\link\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\selectall\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\manual\integrations\tabletools\" />
+    <Folder Include="ckeditor\tests\plugins\tableselection\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\tabletools\manual\transformations\" />
+    <Folder Include="ckeditor\tests\plugins\table\manual\" />
+    <Folder Include="ckeditor\tests\plugins\tab\manual\" />
+    <Folder Include="ckeditor\tests\plugins\tab\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\textmatch\manual\" />
+    <Folder Include="ckeditor\tests\plugins\textwatcher\manual\" />
+    <Folder Include="ckeditor\tests\plugins\toolbar\manual\" />
+    <Folder Include="ckeditor\tests\plugins\uicolor\manual\" />
+    <Folder Include="ckeditor\tests\plugins\undo\manual\" />
+    <Folder Include="ckeditor\tests\plugins\undo\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\uploadfile\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\uploadimage\manual\" />
+    <Folder Include="ckeditor\tests\plugins\uploadwidget\manual\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\widgetselection\manual\" />
+    <Folder Include="ckeditor\tests\plugins\widgetselection\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\widget\integration\table\manual\" />
+    <Folder Include="ckeditor\tests\plugins\widget\integration\table\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\widget\integration\wysiwygarea\manual\" />
+    <Folder Include="ckeditor\tests\plugins\widget\manual\" />
+    <Folder Include="ckeditor\tests\plugins\widget\_helpers\" />
+    <Folder Include="ckeditor\tests\plugins\wysiwygarea\_assets\" />
+    <Folder Include="ckeditor\tests\plugins\xml\" />
+    <Folder Include="ckeditor\tests\tickets\10015\" />
+    <Folder Include="ckeditor\tests\tickets\10146\" />
+    <Folder Include="ckeditor\tests\tickets\10212\" />
+    <Folder Include="ckeditor\tests\tickets\10285\" />
+    <Folder Include="ckeditor\tests\tickets\10367\" />
+    <Folder Include="ckeditor\tests\tickets\10448\" />
+    <Folder Include="ckeditor\tests\tickets\10778\" />
+    <Folder Include="ckeditor\tests\tickets\10913\_assets\plugin1\lang\" />
+    <Folder Include="ckeditor\tests\tickets\10913\_assets\plugin2\lang\" />
+    <Folder Include="ckeditor\tests\tickets\10913\_assets\plugin3\lang\" />
+    <Folder Include="ckeditor\tests\tickets\10913\_assets\plugin4\lang\" />
+    <Folder Include="ckeditor\tests\tickets\11009\" />
+    <Folder Include="ckeditor\tests\tickets\11110\" />
+    <Folder Include="ckeditor\tests\tickets\11121\" />
+    <Folder Include="ckeditor\tests\tickets\11307\" />
+    <Folder Include="ckeditor\tests\tickets\11372\" />
+    <Folder Include="ckeditor\tests\tickets\11384\" />
+    <Folder Include="ckeditor\tests\tickets\11478\" />
+    <Folder Include="ckeditor\tests\tickets\11500\" />
+    <Folder Include="ckeditor\tests\tickets\11504\" />
+    <Folder Include="ckeditor\tests\tickets\11568\" />
+    <Folder Include="ckeditor\tests\tickets\11574\" />
+    <Folder Include="ckeditor\tests\tickets\11616\" />
+    <Folder Include="ckeditor\tests\tickets\11641\" />
+    <Folder Include="ckeditor\tests\tickets\12111\" />
+    <Folder Include="ckeditor\tests\tickets\12377\" />
+    <Folder Include="ckeditor\tests\tickets\12484\" />
+    <Folder Include="ckeditor\tests\tickets\12621\" />
+    <Folder Include="ckeditor\tests\tickets\12733\" />
+    <Folder Include="ckeditor\tests\tickets\12735\" />
+    <Folder Include="ckeditor\tests\tickets\12747\" />
+    <Folder Include="ckeditor\tests\tickets\12777\" />
+    <Folder Include="ckeditor\tests\tickets\12812\_assets\" />
+    <Folder Include="ckeditor\tests\tickets\13011\" />
+    <Folder Include="ckeditor\tests\tickets\13105\" />
+    <Folder Include="ckeditor\tests\tickets\13158\" />
+    <Folder Include="ckeditor\tests\tickets\13254\" />
+    <Folder Include="ckeditor\tests\tickets\13284\" />
+    <Folder Include="ckeditor\tests\tickets\13361\_assets\" />
+    <Folder Include="ckeditor\tests\tickets\13362\_assets\" />
+    <Folder Include="ckeditor\tests\tickets\13386\" />
+    <Folder Include="ckeditor\tests\tickets\13393\" />
+    <Folder Include="ckeditor\tests\tickets\13441\" />
+    <Folder Include="ckeditor\tests\tickets\13453\" />
+    <Folder Include="ckeditor\tests\tickets\13465\" />
+    <Folder Include="ckeditor\tests\tickets\13468\" />
+    <Folder Include="ckeditor\tests\tickets\13548\" />
+    <Folder Include="ckeditor\tests\tickets\13554\" />
+    <Folder Include="ckeditor\tests\tickets\13771\" />
+    <Folder Include="ckeditor\tests\tickets\13790\" />
+    <Folder Include="ckeditor\tests\tickets\13812\" />
+    <Folder Include="ckeditor\tests\tickets\13867\_helpers\" />
+    <Folder Include="ckeditor\tests\tickets\14312\" />
+    <Folder Include="ckeditor\tests\tickets\14451\" />
+    <Folder Include="ckeditor\tests\tickets\14573\manual\" />
+    <Folder Include="ckeditor\tests\tickets\14659\manual\" />
+    <Folder Include="ckeditor\tests\tickets\14714\manual\" />
+    <Folder Include="ckeditor\tests\tickets\14755\manual\" />
+    <Folder Include="ckeditor\tests\tickets\14825\" />
+    <Folder Include="ckeditor\tests\tickets\16393\manual\" />
+    <Folder Include="ckeditor\tests\tickets\16745\manual\" />
+    <Folder Include="ckeditor\tests\tickets\16818\manual\" />
+    <Folder Include="ckeditor\tests\tickets\16820\manual\" />
+    <Folder Include="ckeditor\tests\tickets\16821\" />
+    <Folder Include="ckeditor\tests\tickets\16826\" />
+    <Folder Include="ckeditor\tests\tickets\17001\" />
+    <Folder Include="ckeditor\tests\tickets\174\" />
+    <Folder Include="ckeditor\tests\tickets\4527\" />
+    <Folder Include="ckeditor\tests\tickets\8584\" />
+    <Folder Include="ckeditor\tests\tickets\9330\_assets\" />
+    <Folder Include="ckeditor\tests\tickets\9780\manual\" />
+    <Folder Include="ckeditor\tests\tickets\9883\" />
+    <Folder Include="ckeditor\tests\tickets\gh663\manual\" />
+    <Folder Include="ckeditor\tests\utils\assert\" />
+    <Folder Include="ckeditor\tests\utils\html\" />
+    <Folder Include="ckeditor\tests\utils\initeditor\" />
+    <Folder Include="ckeditor\tests\utils\range\" />
+    <Folder Include="ckeditor\tests\utils\selection\" />
+    <Folder Include="ckeditor\tests\_assets\" />
+    <Folder Include="ckeditor\tests\_benderjs\ckeditor\lib\" />
+    <Folder Include="ckeditor\tests\_benderjs\ckeditor\static\" />
+    <Folder Include="ckeditor\tests\_benderjs\ssl\" />
+    <Folder Include="Data\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="TS\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Shared\NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCGData\CCGData.vbproj">
+      <Project>{cf40ddea-6309-428c-80b9-c41ff0d4bdb2}</Project>
+      <Name>CCGData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52421</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44390/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

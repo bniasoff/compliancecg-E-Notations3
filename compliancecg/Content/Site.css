@@ -1,0 +1,382 @@
+﻿html, body, .wrapper {
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+    height: 100%;
+}
+body {
+    font-family: 'Raleway';
+}
+
+
+    /* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+   /* max-width: 280px;*/
+}
+:root {
+    --bg_color: #073a78;
+    --text_color: white;
+}
+/*
+nav.navbar.bootsnav {
+    background-color: var(--bg_color);
+    font-family: 'Fira Sans', sans-serif;
+    padding: 8px;
+    border: none;
+}
+
+nav.navbar.bootsnav ul.nav > li {
+    margin-right: 20px;
+}
+
+nav.navbar.bootsnav ul.nav > li > a {
+    color: var(--text_color);
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all .5s ease;
+}
+
+
+nav.navbar.bootsnav ul.nav {
+    height: 100px;
+}
+
+
+nav.navbar.bootsnav ul.nav > li.dropdown > a {
+    padding: 8px 30px 8px 15px;
+}
+
+nav.navbar.bootsnav ul.nav > li.active > a,
+nav.navbar.bootsnav ul.nav > li.active > a:hover,
+nav.navbar.bootsnav ul.nav > li > a:hover,
+nav.navbar.bootsnav ul.nav > li.on > a {
+    color: var(--text_color);
+    background: transparent !important;
+    box-shadow: 0 0 5px var(--text_color) inset;
+    border-color: transparent;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content li a:hover,
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu li a:hover,
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu li a.dropdown-toggle:active,
+nav.navbar ul.nav li.dropdown.on ul.dropdown-menu li.dropdown.on > a {
+    color: red;
+}
+
+nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
+    color: var(--text_color);
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    margin: 0 0 0 7px;
+}
+
+nav.navbar.bootsnav ul.nav > li.dropdown > ul {
+    opacity: 0;
+    visibility: hidden;
+    transform: perspective(600px) rotateY(-30deg) scaleX(0);
+    transform-origin: top center;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+nav.navbar.bootsnav ul.nav > li.dropdown.on > ul {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: perspective(600px) rotateY(0deg) scale(1);
+}
+
+.dropdown-menu.multi-dropdown {
+    position: absolute;
+    left: -100% !important;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    top: 124%;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content {
+top: 100%;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content li {
+    font-size: 14px;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content .menu-col li a {
+    padding-left: 10px;
+}
+
+nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content .title {
+    color: var(--text_color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width:990px) {
+    .dropdown-menu.multi-dropdown {
+        left: 0 !important;
+    }
+
+    nav.navbar.bootsnav .navbar-toggle {
+        color: var(--text_color);
+        background: transparent !important;
+    }
+
+    nav.navbar.bootsnav ul.nav > li {
+        margin: 5px auto 15px;
+    }
+
+    nav.navbar.bootsnav.navbar-mobile .navbar-collapse {
+        background-color: var(--bg_color);
+    }
+
+    nav.navbar.bootsnav.navbar-mobile ul.nav > li > a {
+        text-align: center;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    nav.navbar.bootsnav ul.nav > li.dropdown > a {
+        padding: 10px 10px 10px 17px;
+    }
+
+        nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:before {
+            color: var(--text_color);
+        }
+
+    nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
+        color: var(--text_color);
+        padding-left: 10px;
+        border-bottom-color: none;
+    }
+
+    nav.navbar.bootsnav ul.nav > li.dropdown > ul {
+        top: 100%;
+    }
+
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content .title {
+        font-size: 14px;
+        font-weight: normal;
+        color: var(--text_color);
+    }
+
+    nav.navbar.bootsnav li.dropdown ul.dropdown-menu.megamenu-content .col-menu li a {
+        color: var(--text_color);
+    }
+}
+
+*/
+
+
+.documentView{padding-right:0px;}
+.menuRow {
+    background: #173978;
+}
+.footerRow {
+    background: #173978;
+    height: 50px;
+    /*position: absolute;
+    bottom: 0;*/
+    width: 100%;
+}
+.nav-item a{
+    color:#fff;
+    text-transform:uppercase;
+}
+.mainRow {
+    /*max-width: 100%;*/
+    border: 2px solid #b8b3b3;
+    box-shadow: 0 0 12px #7d7878;
+    border-radius: 20px;
+    padding: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #fff;
+}
+.mainRow h2, .formsRow h2 {
+    color: #ccc;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.5rem;
+    margin:20px 0;
+}
+.pPass a {
+    color: #343a40;
+}
+.registerDiv {
+    font-size: 14px;
+    color:white;
+    /*position: absolute;
+    top: 0;
+    right: 0;*/
+}
+
+.registerDiv div a {
+    color: #343a40;
+}
+.mainRow input[type=submit], .mainRow input[type=button],  .registerDiv div {
+    border-radius: 15px;
+}
+.loginContainer {
+    background-image: url("./Images/siteBkgdCompliance.jpg");
+    background-size: cover;
+    height: calc(90vh - 160px);
+    justify-content: center;
+    position: relative;
+}
+.outerContainer {
+    
+    height: calc(90vh - 160px);
+    justify-content: center;
+}
+.mainRow input[type=text], .mainRow input[type=password] {
+    width: 300px;
+    max-width: 100%;
+}
+.menuRow{
+    min-height:50px;
+}
+.ackRow {
+    width: 550px;
+    max-width: 100%;
+}
+.ackText {
+    line-height: 2;
+    padding: 10px;
+    text-align: justify;
+    max-height:200px;
+    overflow-y:auto;
+}
+.menuRow a{
+    color:white;
+}
+.menuRow a:hover {
+    text-decoration:none;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    text-decoration: none;
+    background-color: #cdcfd1;
+}
+li.nav-item.active, li.nav-item:hover {
+    background: white;
+    border-radius: 10px;
+}
+li.nav-item.active a, li.nav-item:hover a {
+    color: #173978;
+}
+.menuRow li.dropdown-item a:hover {
+    text-decoration: none;
+}
+
+.menuRow li.dropdown-item a {
+    color: #212529;
+    text-transform: inherit;
+}
+
+.col.colfacDD{
+    max-width:450px;
+}
+
+.col.colfacDD .e-input-group.e-ddl {
+    width: 100%;
+    border: thin solid grey;
+    padding: 3px 10px 0px 13px;
+    border-radius: 10px;
+}
+
+#PartialView.container {
+    max-width: 1440px;
+    background: white;
+    margin-top: 35px;
+    border-radius: 20px;
+    border: 2px solid #b8b3b3;
+    box-shadow: 0 0 12px #7d7878;
+}
+.page_policies #PartialView.container {
+    background: initial;
+    border: initial;
+    box-shadow: initial;
+}
+.secondRow {
+    visibility: hidden;
+}
+
+#document #RichEdit {
+    /*transform: scale(0.9);
+    transform-origin: left;*/
+    width:100%;
+    height:100%;
+}
+
+#Grid1 #Grid{
+    width:100% !important;
+  
+}
+
+
+@media only screen and (max-width:990px) {
+    .secondRow .documentView {
+        padding: 20px 0 0 0;
+    }
+
+    #Grid1 #Grid {
+        width: 400px !important;
+    }
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+}
+
+li.e-list-item.e-level-1 > .e-text-content > .e-list-text {
+    font-weight: bold;
+}
+
+#page-content-wrapper{/*.page_policies*/ 
+    background-image: url("/Content/Images/siteBkgdCompliance.jpg");
+    background-size: cover;
+   height: 100%;
+     /* height: calc(90vh - 160px);*/
+ padding-bottom: 30px;
+}
+#page-content-wrapper {
+    overflow: auto;
+   
+    width: 100%;
+  
+}
+
+.formsRow h2 {
+    margin:20px;
+}
+
+ .formsRow{
+    overflow:auto;
+}
+.divTable {
+    padding: 20px;
+}
