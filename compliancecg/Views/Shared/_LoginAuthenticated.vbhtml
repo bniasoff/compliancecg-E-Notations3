@@ -6,7 +6,7 @@
         <li id="policies" Class="nav-item p-2 m-2"><a href="javascript:SetActive('policies')" data-hover="policies">Policies <span data-hover="policies"></span></a></li>
 
         <li id="resources" class="dropdown nav-item p-2  m-2">
-            <a href="javascript:SetActive('resources')" class="dropdown-toggle " data-toggle="dropdown" >Resources</a>
+            <a href="javascript:SetActive('resources')" class="dropdown-toggle " data-toggle="dropdown">Resources</a>
             <ul class="dropdown-menu">
                 <li class="dropdown-item" id="acknowledgmentforms"><a href="javascript:myFunc3('acknowledgmentforms')">Acknowledgment Forms</a></li>
                 <li class="dropdown-item" id="complianceofficer"><a href="javascript:myFunc3('complianceofficer')">Compliance Officer</a></li>
@@ -20,8 +20,16 @@
 
 
         <li id="facilities" Class="nav-item p-2  m-2"> <a href="javascript:SetActive('facilities')" data-hover="facilities">Facilities <span data-hover="Facilities"></span></a></li>
-        <li id="search" style="display:none" class="nav-item p-2 m-2"> <a href="javascript:SetActive('search')" data-hover="Search">Search <span data-hover="Search"></span></a></li>
+        @*<li id="search" style="display:none" class="nav-item p-2 m-2"> <a href="javascript:SetActive('search')" data-hover="Search">Search <span data-hover="Search"></span></a></li>*@
         <li id="training" Class="nav-item p-2  m-2"> <a href="javascript:SetActive('training')" data-hover="training">Yearly Training <span data-hover="training"></span></a></li>
+       
+        <li id="Admin" class="dropdown nav-item p-2  m-2">
+            <a href="javascript:SetActive('admin')" class="dropdown-toggle " data-toggle="dropdown">Admin</a>
+            <ul class="dropdown-menu">
+                 <li class="dropdown-item" id="Search"><a href="javascript:SetActive('search')">Search</a></li>
+                 <li class="dropdown-item" id="uploadpolicies"><a href="javascript:SetActive('uploadpolicies')">Upload Policies</a></li>
+            </ul>
+        </li>
     </ul>
     <div style="margin-left: auto;align-self: center;" class="pr-3  "><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></div>
             
@@ -71,7 +79,6 @@
         jQuery("#home").removeClass("active");
         jQuery("#facilities").removeClass("active");
         jQuery("#forms").removeClass("active");
-        jQuery("#search").removeClass("active");
         jQuery("#policies").removeClass("active");
         jQuery("#about").removeClass("active");
         jQuery("#contact").removeClass("active");
@@ -80,7 +87,7 @@
         jQuery("#hotline").removeClass("active");
         jQuery("#resources").removeClass("active");
         jQuery("#training").removeClass("active");
-
+        jQuery("#admin").removeClass("active");
 
 
 
@@ -119,8 +126,16 @@
         };
 
 
+        if (arg == 'uploadpolicies') {
+            var ajax = new ej.base.Ajax("/Admin/Upload", 'POST', true);
+            ajax.send().then((data) => {
+                $("#PartialView").html(data);
+            });
+        };
+
+
         if (arg == 'search') {
-            var ajax = new ej.base.Ajax("/Facilities/Search", 'POST', true);
+            var ajax = new ej.base.Ajax("/Admin/Search", 'POST', true);
             ajax.send().then((data) => {
                 $("#PartialView").html(data);
             });

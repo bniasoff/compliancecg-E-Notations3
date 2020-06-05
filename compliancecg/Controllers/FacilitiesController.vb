@@ -1355,8 +1355,10 @@ Namespace Controllers
 
                 Dim CurrentUser As User = HomeController.GetCurrentUser()
                 Dim FacilityUser As FacilityUser = Nothing
+                Dim OldFacilityUser As FacilityUser = Nothing
                 Dim Facility As Facility = Nothing
                 Dim FoundUser As User = Nothing
+                Dim OldUser As User = Nothing
                 Dim FoundUserbyEmail As User = Nothing
                 Dim Active As Boolean = True
 
@@ -1365,32 +1367,72 @@ Namespace Controllers
                     Facility = Session("Facility")
                 End If
 
-
                 If Session("FacilityUsersGridActive") IsNot Nothing Then
                     If Session("FacilityUsersGridActive") = 0 Then Active = False
                 End If
 
 
-
-
                 If User.UserID > 0 Then
-                    FoundUser = DataRepository.GetUser(User.UserID)
+                    OldUser = DataRepository.GetUser(User.UserID)
+                    If OldUser IsNot Nothing Then
+                        If OldUser.EmailAddress <> User.EmailAddress Then
+                            OldFacilityUser = DataRepository.GetFacilityUser(Facility.FacilityID, OldUser.UserID, Active)
+                            If OldFacilityUser IsNot Nothing Then
+                                OldFacilityUser.InActive = User.FacilityInActive
+                                OldFacilityUser.DateModified = Now
+                                DataRepository.SaveChanges()
+                            End If
+                        End If
+                    End If
+                End If
+
+
+                If User.EmailAddress IsNot Nothing Then
+                    FoundUser = DataRepository.GetUser(User.EmailAddress)
+
+                    If FoundUser IsNot Nothing Then
+                        FoundUser.LastName = User.LastName
+                        FoundUser.FirstName = User.FirstName
+                        FoundUser.Phone1 = User.Phone1
+                        '  FoundUser.InActive = User.FacilityInActive
+                        FoundUser.DateModified = Now
+                    End If
+
+                    If FoundUser Is Nothing Then
+                        Dim newUser As New User
+                        newUser.LastName = User.LastName
+                        newUser.FirstName = User.FirstName
+                        newUser.Phone1 = User.Phone1
+                        ' newUser.InActive = User.FacilityInActive
+                        newUser.UserEditor = User.EmailAddress
+                        newUser.DateCreated = Now
+                        newUser.DateModified = Now
+                        DataRepository.InsertAndSave(Of User)(User)
+                        FoundUser = DataRepository.GetUser(newUser.EmailAddress)
+                    End If
+
+
 
                     If FoundUser IsNot Nothing Then
                         FacilityUser = DataRepository.GetFacilityUser(Facility.FacilityID, FoundUser.UserID, Active)
                         If FacilityUser IsNot Nothing Then
                             FacilityUser.InActive = User.FacilityInActive
+                            FacilityUser.DateModified = Now
+                        End If
 
-                            'If User.FacilityInActive = False Then
-                            '    FacilityUser.InActive = False
-                            '    ' DataRepository.SaveChanges()
-                            'End If
-                            'If User.FacilityInActive = True Then
-                            '    FacilityUser.InActive = True
-                            '    'DataRepository.SaveChanges()
-                            'End If
+                        If FacilityUser Is Nothing Then
+                            Dim newFacilityUser As New FacilityUser
+                            newFacilityUser.FacilityID = Facility.FacilityID
+                            newFacilityUser.UserID = FoundUser.UserID
+                            newFacilityUser.InActive = User.FacilityInActive
+                            newFacilityUser.DateCreated = Now
+                            newFacilityUser.DateModified = Now
+                            newFacilityUser.UserEditor = CurrentUser.EmailAddress
+                            DataRepository.InsertAndSave(Of FacilityUser)(newFacilityUser)
                         End If
                     End If
+
+                    DataRepository.SaveChanges()
 
 
 
@@ -1405,14 +1447,7 @@ Namespace Controllers
                     'End If
 
 
-                    FoundUser.InActive = 0
-                    FoundUser.LastName = User.LastName
-                    FoundUser.FirstName = User.FirstName
-                    FoundUser.EmailAddress = User.EmailAddress
-                    FoundUser.Phone1 = User.Phone1
 
-
-                    DataRepository.SaveChanges()
                     'DataRepository.AttachAndSave(Of User)(User)
 
                 End If

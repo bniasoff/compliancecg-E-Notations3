@@ -602,7 +602,7 @@ Public Class WordFunctions
     'End Function
 
 
-    Public Shared Function GetMasterDocument(Path As String, State As String) As FileInfo
+    Public Shared Function GetMasterDocument(Path As String, State As String) As Syncfusion.DocIO.DLS.WordDocument
         Try
             Dim WordFunctions As New WordFunctions
             'Dim Path As String = "C:\Projects\Policies\Masters for State\"
@@ -622,17 +622,37 @@ Public Class WordFunctions
 
             Dim FileName As String = $"{State} Masters.docx"
 
-            Dim File As FileInfo = Files.Where(Function(f) f.Name = FileName).SingleOrDefault
-            If File IsNot Nothing Then
-                Return File
-            End If
+            Dim Blob As New AzureFiles
+            Dim WordDocument As New Syncfusion.DocIO.DLS.WordDocument
+            WordDocument = Blob.GetBlobWordFile("policies", FileName)
 
+            If WordDocument IsNot Nothing Then Return WordDocument
+
+            'Dim Extension = FileName.Split(".")
+
+            'If Extension.Length > 1 Then
+            '    Select Case Extension.Last
+            '        Case "docx"
+            '            WordDocument = Blob.GetBlobWordFile("policies", FileName)
+            '        Case = "Pdf"
+
+            '    End Select
+            'End If
+
+
+
+
+            'Dim File As FileInfo = Files.Where(Function(f) f.Name = FileName).SingleOrDefault
+            'If File IsNot Nothing Then
+            '    Return File
+            'End If
 
         Catch ex As Exception
             logger.Error(ex)
 
         End Try
     End Function
+
 
 
 

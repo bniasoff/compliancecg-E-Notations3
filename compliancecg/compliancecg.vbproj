@@ -399,6 +399,7 @@
     <Compile Include="Authorization\Identity3\Users.vb" />
     <Compile Include="ConnectionString.vb" />
     <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\AdminController.vb" />
     <Compile Include="Controllers\DevExpressController.vb" />
     <Compile Include="Controllers\ErrorController.vb" />
     <Compile Include="Controllers\FacilitiesController.vb" />
@@ -414,6 +415,7 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AzureFiles.vb" />
     <Compile Include="Helper\Class3.vb" />
     <Compile Include="Helper\Class4.vb" />
     <Compile Include="Helper\Class5.vb" />
@@ -1592,6 +1594,8 @@
     <Content Include="Scripts\README.md" />
     <Content Include="Test\Script1.ps1" />
     <Content Include="Test\Script2.ps1" />
+    <Content Include="Views\Admin\Search.vbhtml" />
+    <Content Include="Views\Admin\Upload.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

@@ -100,7 +100,7 @@ Namespace Controllers
 
             Dim Document As New Syncfusion.DocIO.DLS.WordDocument
             Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), "NJ")
-            Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
+            'Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
 
             Session("MasterDocument") = Document
             ' Return PartialView("PDFViewer")
@@ -843,7 +843,8 @@ Namespace Controllers
 
                 If Session("State") <> State Then
                     Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
-                    Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
+                    'Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
+                    Document = MasterFile
                     SectionIndexes = WordFunctions.GetSectionTitle(Document, State)
                     If Document IsNot Nothing Then Session("MasterDocument") = Document
                     If SectionIndexes IsNot Nothing Then Session("SectionIndexes") = SectionIndexes
@@ -857,7 +858,8 @@ Namespace Controllers
 
                 If Session("MasterDocument") Is Nothing Then
                     Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
-                    Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
+                    Document = MasterFile
+                    ' Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
                     Session("MasterDocument") = Document
                 End If
 
@@ -890,7 +892,6 @@ Namespace Controllers
 
             End Try
         End Function
-
         'Function TreeView1b(State As String, SelectedFacilityName As String) As String
         '    Try
         '        Dim SectionIndexes As New List(Of SectionIndex)
