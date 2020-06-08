@@ -644,6 +644,11 @@ Namespace Controllers
         Public Async Function Index() As Task(Of ActionResult)
             Try
 
+                'Dim File As New FileInfo("c:\ccg\MI Masters.docx")
+                'Dim WordFunctions As New WordFunctions
+                'WordFunctions.SetUpDocument2(File)
+
+
                 'Dim WordFunctions As New WordFunctions
                 'Dim Document As New WordDocument
                 'Dim File As New FileInfo("c:\ccg\NJ Masters.docx")
@@ -1020,9 +1025,9 @@ Namespace Controllers
                 '    list = context.BlogTables.ToList()
                 'End Using
                 Return View()
-            'Return PartialView()
+                'Return PartialView()
             Catch ex As Exception
-            logger.Error(ex)
+                logger.Error(ex)
             End Try
 
         End Function

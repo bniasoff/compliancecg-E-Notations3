@@ -48,14 +48,14 @@
 
   
    
-    $('#search').hide();
+    $('#Admin').hide();
     //$('#search').show();
 
     $.post('/Home/GetLoginName')
         .done(function (data) {
 
             if (data.length > 2) {
-                if (data == 'info@compliancecg.com') { $('#search').show(); }
+                if (data == 'info@compliancecg.com') { $('#Admin').show(); }
 
                 if (data.includes("staff") == true) {
                     $('#facilities').hide();

@@ -6,7 +6,7 @@ Imports Microsoft.Office.Interop
 Imports Microsoft.Office.Interop.Word
 Imports Newtonsoft.Json
 Imports NLog
-
+Imports Syncfusion.DocIO
 
 Namespace Controllers
     Public Class AdminController
@@ -183,14 +183,27 @@ Namespace Controllers
                     Dim tmpFile = Path.GetTempFileName()
                     System.IO.File.WriteAllBytes(tmpFile, binData)
 
-                    Dim app As Application = New Word.Application()
-                    Dim WordFile As Word.Document = app.Documents.Open(tmpFile)
 
-                    SetUpDocument(WordFile)
+                    Dim File As New FileInfo(tmpFile)
+                    Dim WordFunctions As New WordFunctions
+                    WordFunctions.SetUpDocument2(File)
 
-                    WordFile.Save()
-                    WordFile.Close()
-                    app.Quit()
+
+                    'Dim WordFunctions As New WordFunctions
+                    'WordFunctions.SetBookMarks2(tmpFile)
+
+
+                    'Dim WordDocument As New Syncfusion.DocIO.DLS.WordDocument
+                    'WordDocument.Open(tmpFile, FormatType.Docx)
+
+                    'Dim app As Application = New Word.Application()
+                    'Dim WordFile As Word.Document = app.Documents.Open(tmpFile)
+
+                    ' SetUpDocument(WordFile)
+
+                    'WordFile.Save()
+                    'WordFile.Close()
+                    'app.Quit()
 
                     Dim Folders = tmpFile.Split("\")
                     Dim Folders2 = Folders.Take(Folders.Count - 1)
@@ -205,9 +218,10 @@ Namespace Controllers
                     Dim AzureFiles As New AzureFiles
                     Dim Uploaded = Await AzureFiles.UploadBlobFile("policies", tmpFileRename)
                     Return Uploaded
-                End If
+                    End If
 
             Catch ex As Exception
+                logger.Error(ex)
                 Return False
             End Try
         End Function
@@ -218,13 +232,13 @@ Namespace Controllers
                 Dim WordFunctions As New WordFunctions
 
                 WordFunctions.SetBookMarks(WordFile)
-                'WordFunctions.SetHyperLinks(WordFile)
+                '  WordFunctions.SetHyperLinks(WordFile)
             Catch ex As Exception
                 logger.Error(ex)
-
             End Try
-
         End Function
+
+
 
         '<HttpPost>
         'Public Async Function Upload(ByVal files As HttpPostedFileBase) As Threading.Tasks.Task(Of ActionResult)

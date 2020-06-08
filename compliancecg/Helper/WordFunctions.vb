@@ -20,28 +20,210 @@ Imports Syncfusion.Pdf.Parsing
 Imports Syncfusion.Pdf.Graphics
 Imports System.Drawing
 Imports Syncfusion.Pdf.Interactive
+Imports Bookmark = Microsoft.Office.Interop.Word.Bookmark
 
 Public Class WordFunctions
     Private DataRepository As New DataRepository
     Private Shared DocVariablesFields As New List(Of WField)
     Private Shared logger As Logger = NLog.LogManager.GetCurrentClassLogger()
 
-    'Private Sub SurroundingSub()
-    '    Dim oPara2 As Word.Paragraph
-    '    Dim doc As Word.Document = OpenDocument(WordFilePath, Word)
+    Public Function SyncfusionBookmarks(FileName As String)
 
-    '    Dim oRng As Object = doc.Bookmarks.get_Item(oEndOfDoc).Range
-    '    oPara2 = oDoc.Content.Paragraphs.Add(oRng)
-    '    oPara2.Range.Text = "Heading 2"
-    '    oPara2.Format.SpaceAfter = 6
-    '    oPara2.Range.InsertParagraphAfter()
-    '    oDoc.Bookmarks.Add("BookmakrName3", oRng)
-    '    Dim oAddress As Object = "#BookmakrName3"
-    '    wrdRng = oDoc.Bookmarks.get_Item(oEndOfDoc).Range
-    '    wrdRng.InsertParagraphAfter()
-    '    wrdRng.InsertAfter("Click here to jump")
-    '    wrdRng.Hyperlinks.Add(wrdRng, oAddress)
-    'End Sub
+        'Dim document As New WordDocument()
+        ''Adds a new section into the Word Document
+        'Dim section As IWSection = document.AddSection()
+        ''Adds a new paragraph into Word document and appends text into paragraph
+        'Dim paragraph As IWParagraph = section.AddParagraph()
+        'paragraph.AppendText("Northwind Database")
+        'paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center
+        ''Adds a paragraph into section
+        'paragraph = section.AddParagraph()
+        ''Adds a new bookmark start into paragraph with name "Northwind"
+        'paragraph.AppendBookmarkStart("Northwind")
+        ''Adds a text between the bookmark start and end into paragraph
+        'paragraph.AppendText("The Northwind sample database (Northwind.mdb) is included with all versions of Access. It provides data you can experiment with and database objects that demonstrate features you might want to implement in your own databases.")
+        ''Adds a new bookmark end into paragraph with name " Northwind "
+        'paragraph.AppendBookmarkEnd("Northwind")
+        ''Adds a text after the bookmark end
+        'paragraph.AppendText(" Using Northwind, you can become familiar with how a relational database is structured and how the database objects work together to help you enter, store, manipulate, and print your data.")
+        ''Saves the document in the given name and format
+        'document.Save("Bookmarks.docx", FormatType.Docx)
+        ''Releases the resources occupied by WordDocument instance
+        'document.Close()
+
+
+        'Dim document As New WordDocument("Bookmarks.docx", FormatType.Docx)
+        ''Gets the bookmark instance by using FindByName method of BookmarkCollection with bookmark name
+        'Dim bookmark As Syncfusion.DocIO.DLS.Bookmark = document.Bookmarks.FindByName("Northwind")
+        ''Accesses the bookmark start’s owner paragraph by using bookmark and changes its back color
+        'bookmark.BookmarkStart.OwnerParagraph.ParagraphFormat.BackColor = Color.AliceBlue
+        'document.Save("Result.docx", FormatType.Docx)
+        'document.Close()
+
+        'Dim document As New WordDocument("Bookmarks.docx", FormatType.Docx)
+        ''Gets the bookmark instance by using FindByName method of BookmarkCollection with bookmark name
+        'Dim bookmarkc = document.Bookmarks.FindByName("Northwind")
+        ''Removes the bookmark named "Northwind" from Word document.
+        'document.Bookmarks.Remove(bookmark)
+        'document.Save("Result.docx", FormatType.Docx)
+        'document.Close()
+
+    End Function
+
+    Public Function SetUpDocument2(File As FileInfo)
+        Try
+            AddVariablesToFiles(File)
+            SetBookMarks2(File)
+            '  WordFunctions.SetHyperLinks(WordFile)
+        Catch ex As Exception
+            logger.Error(ex)
+        End Try
+    End Function
+
+
+    Private Function AddVariablesToFiles(File As FileInfo)
+        Try
+
+            If File.Length > 500 Then
+                'Dim Document As New Syncfusion.DocIO.DLS.WordDocument
+                'Document.OpenReadOnly(File.FullName, FormatType.Docx)
+                Dim Document As New Syncfusion.DocIO.DLS.WordDocument(File.FullName, FormatType.Docx)
+
+                Dim FindText = "[FACILITY NAME]"
+                Dim ReplaceText = "{Facility}"
+                Dim Replaced As Boolean = AddDocVariables(Document, FindText, ReplaceText)
+                Document.Save(File.FullName, FormatType.Docx)
+                Document.Close()
+            End If
+
+
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+
+    End Function
+
+    Private Function SetBookMarks2(File As FileInfo)
+        Try
+            Dim BookMarkNames As New List(Of String)
+
+            If File.Exists And File.Length > 500 Then
+                Dim Document As New Syncfusion.DocIO.DLS.WordDocument(File.FullName, FormatType.Docx)
+                Document.Bookmarks.Clear()
+                Dim SectionCounter As Integer = 0
+                For Each Section As Syncfusion.DocIO.DLS.WSection In Document.Sections
+                    Dim BookMarkParagraph As WParagraph = Document.CreateParagraph
+                    Section.Paragraphs.Insert(0, BookMarkParagraph)
+
+                    Dim HeadersFooters As WHeadersFooters = Section.HeadersFooters
+                    Dim Footers As DLS.HeaderFooter = HeadersFooters.Footer
+                    Dim ChildEntities As EntityCollection = Footers.ChildEntities
+
+                    For Each Child As Entity In ChildEntities
+                        If Child.EntityType = EntityType.Paragraph Then
+                            Dim Paragraph As WParagraph = Child.Clone
+                            Dim FooterText As String = Paragraph.Text
+                            If FooterText.Contains("CCG") Then
+                                Dim Title = GetCCGIndex(FooterText)
+                                If Title IsNot Nothing Then
+                                    Dim BookMarkName = Title.Replace(" ", "")
+                                    If BookMarkNames.IndexOf(BookMarkName) = -1 Then
+                                        BookMarkNames.Add(BookMarkName)
+                                        BookMarkParagraph.AppendBookmarkStart(Title)
+                                        BookMarkParagraph.AppendText(Title)
+                                        BookMarkParagraph.AppendBookmarkEnd(Title)
+                                        Exit For
+                                    End If
+                                End If
+                            End If
+                        End If
+
+                        If Child.EntityType = EntityType.BlockContentControl Then
+                            Dim BlockContentControl As BlockContentControl = Child.Clone()
+                            Dim ChildEntities2 As EntityCollection = BlockContentControl.ChildEntities
+
+                            For Each Child2 As Entity In ChildEntities2
+                                If Child2.EntityType = EntityType.Paragraph Then
+                                    Dim Paragraph2 As WParagraph = Child2.Clone
+                                    Dim FooterText2 As String = Paragraph2.Text
+                                    Dim Title = GetCCGIndex(FooterText2)
+
+                                    If Title IsNot Nothing Then
+                                        Dim BookMarkName = Title.Replace(" ", "")
+                                        If BookMarkNames.IndexOf(BookMarkName) = -1 Then
+                                            BookMarkNames.Add(BookMarkName)
+                                            BookMarkParagraph.AppendBookmarkStart(Title)
+                                            BookMarkParagraph.AppendText(Title)
+                                            BookMarkParagraph.AppendBookmarkEnd(Title)
+                                            Exit For
+                                        End If
+                                    End If
+                                End If
+                            Next
+                        End If
+
+                    Next
+                    SectionCounter += 1
+                Next
+
+                'Document.Save("c: \CCG\Sample.docx", FormatType.Docx)
+                Document.Save(File.FullName, FormatType.Docx)
+                Document.Close()
+            End If
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
+
+    Public Function SetBookMarks3(FileName As String)
+        Try
+            ' Dim WordFunctions As New WordFunctions
+
+            Dim ReadFile As FileInfo = New FileInfo(FileName)
+            Dim word As Word.Application = New Word.Application()
+
+            Dim MasterDocument = OpenDocument(ReadFile.FullName, word)
+            If MasterDocument IsNot Nothing Then
+                For Each BookMark As Word.Bookmark In MasterDocument.Bookmarks
+                    BookMark.Delete()
+                Next
+
+                Dim BookMarkNames As New List(Of String)
+                Dim BookMarkCounter As Integer = 1
+                For Each section As Word.Section In MasterDocument.Sections
+                    Dim Range As Range = section.Range
+                    Dim FooterRange As Range = section.Footers(WdHeaderFooterIndex.wdHeaderFooterFirstPage).Range
+                    ' Dim bookmarkName As String = $"BookMark{BookMarkCounter}"
+
+                    Dim Footers = section.Footers
+                    For Each Footer In Footers
+                        Dim FooterText = Footer.range.text
+
+                        Dim Title = GetCCGIndex(FooterText)
+                        If Title IsNot Nothing Then
+                            Dim BookMarkName = Title.Replace(" ", "")
+                            If BookMarkNames.IndexOf(BookMarkName) = -1 Then
+                                BookMarkNames.Add(BookMarkName)
+                                section.Range.Bookmarks.Add(BookMarkName)
+                                BookMarkCounter += 1
+                                Exit For
+                            End If
+                        End If
+                    Next
+                Next
+                MasterDocument.Save()
+                MasterDocument.Close()
+            End If
+
+
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
+
 
 
 
@@ -255,7 +437,7 @@ Public Class WordFunctions
     End Function
 
 
-    Public Function AddDocVariables(Document As WordDocument, FindText As String, ReplaceText As String) As Boolean
+    Public Shared Function AddDocVariables(Document As WordDocument, FindText As String, ReplaceText As String) As Boolean
         Try
 
             'Dim ReplaceText = "{FACILITY NAME}"
@@ -1652,26 +1834,26 @@ Public Class WordFunctions
                             SectionIndexes.Add(SectionIndex2)
 
 
-                                'If SectionIndexforState.Count > 0 Then
-                                '    For Each Index As CCGData.CCGData.SectionIndex In SectionIndexforState
-                                '        SectionIndexFrom = Index.SectionFrom
-                                '        SectionIndexTo = Index.SectionTo
+                            'If SectionIndexforState.Count > 0 Then
+                            '    For Each Index As CCGData.CCGData.SectionIndex In SectionIndexforState
+                            '        SectionIndexFrom = Index.SectionFrom
+                            '        SectionIndexTo = Index.SectionTo
 
-                                '    Next
-                                'End If
-                                'If SectionIndexforState.Count = 0 Then
-                                '    SectionIndexFrom = SectionIndex
-                                '    SectionIndexTo = SectionIndex
-                                '    Dim SectionIndex2 As compliancecg.SectionIndex = New SectionIndex With {.FromIndex = SectionIndexFrom, .ToIndex = SectionIndexTo, .Title = Title, .Root = Root}
-                                '    SectionIndexes.Add(SectionIndex2)
-                                'End If
+                            '    Next
+                            'End If
+                            'If SectionIndexforState.Count = 0 Then
+                            '    SectionIndexFrom = SectionIndex
+                            '    SectionIndexTo = SectionIndex
+                            '    Dim SectionIndex2 As compliancecg.SectionIndex = New SectionIndex With {.FromIndex = SectionIndexFrom, .ToIndex = SectionIndexTo, .Title = Title, .Root = Root}
+                            '    SectionIndexes.Add(SectionIndex2)
+                            'End If
 
 
-                                'Dim SectionIndex2 As SectionIndex = New SectionIndex With {.Index = SectionIndex, .Title = Title, .Root = Root, .Header = SectionHeader}
+                            'Dim SectionIndex2 As SectionIndex = New SectionIndex With {.Index = SectionIndex, .Title = Title, .Root = Root, .Header = SectionHeader}
 
-                                ' SectionIndexes.Add(New SectionIndex With {.Index = SectionIndex, .Title = Title, .Root = Root, .Header = SectionHeader})
-                            End If
+                            ' SectionIndexes.Add(New SectionIndex With {.Index = SectionIndex, .Title = Title, .Root = Root, .Header = SectionHeader})
                         End If
+                    End If
                 End If
                 Return SectionIndexes
             End If
@@ -2265,9 +2447,9 @@ Public Class WordFunctions
             Dim TextColor = FromArgbExample()
 
             Dim TextWatermark As New TextWatermark()
-            DestinationDocument.Watermark = textWatermark
-            textWatermark.Size = 90
-            textWatermark.Layout = WatermarkLayout.Diagonal
+            DestinationDocument.Watermark = TextWatermark
+            TextWatermark.Size = 90
+            TextWatermark.Layout = WatermarkLayout.Diagonal
             'TextWatermark.ApplyStyle("Heading 2")
             ' TextWatermark.Color = TextColor
             TextWatermark.Color = Color.Black
