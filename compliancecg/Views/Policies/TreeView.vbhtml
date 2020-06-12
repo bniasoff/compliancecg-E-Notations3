@@ -20,31 +20,29 @@
 <input type="hidden" id="iconFieldsjson2" data-value="@ViewBag.iconFieldsjson2" />
 <input type="hidden" id="FacilityGroup" data-value="@ViewBag.FacilityGroup" />
 <input type="hidden" id="FacilitysHidden" data-value="@ViewBag.dataJson" />
-@code
-    Dim FacilityGroup = ViewBag.FacilityGroup
-End Code
-<div class="mainRow row justify-content-center my-4">
+@code Dim FacilityGroup = ViewBag.FacilityGroup End Code
+<div class="mainRow row justify-content-center may-4">
     <div class="col colfacDD">
-            <h2>Select your facility:</h2>
-            @Html.EJS().DropDownList("policiesDDL").Placeholder("Select your facility...").PopupHeight("200px").Change("onNodeSelected2").DataSource(ViewBag.data).GroupTemplate("<strong>${State}</strong>").Fields(Function(field) field.Value("FacilityGroupID").Text("Name").GroupBy("State")).Render()
+        <h2>Select your facility:</h2>
+        @Html.EJS().DropDownList("policiesDDL").Placeholder("Select your facility...").PopupHeight("200px").Change("onNodeSelected2").DataSource(ViewBag.data).GroupTemplate("<strong>${State}</strong>").Fields(Function(field) field.Value("FacilityID").Text("Name").GroupBy("State")).Render()
     </div>
 </div>
 <div class="row secondRow">
     @*<div class="treedata2">
              @Html.EJS().TreeView("tree1").Fields(ViewBag.iconFields2).ExpandOn(Syncfusion.EJ2.Navigations.ExpandOnSettings.Click).NodeSelected("onNodeSelected2").NodeClicked("onNodeClicked2").NodeExpanding("onNodeExpanded2").Render()   (IEnumerable < Object >).Fields(CType({Text = "Name", Value = "FacilityGroupID"}, Syncfusion.EJ2.DropDowns.DropDownListFieldSettings))
         </div>*@
-    
-        <div class="col-lg-5 mainRow col-md-12">
-            <h2 style="font-size:1.5rem;">Select your policy:</h2>
-            <div id="tree2"></div>
+
+    <div class="col-lg-5 mainRow col-md-12">
+        <h2 style="font-size:1.5rem;">Select your policy:</h2>
+        <div id="tree2"></div>
+    </div>
+    <div class="col-lg-7 col-md-12 documentView">
+        <div ID="DocumentView" class="col-12 mainRow ">
+            <form>
+                <div id="document"></div>
+            </form>
         </div>
-        <div class="col-lg-7 col-md-12 documentView">
-            <div ID="DocumentView" class="col-12 mainRow ">
-                <form>
-                    <div id="document"></div>
-                </form>
-            </div>       
-        </div>
+    </div>
 </div>
 
 
@@ -84,40 +82,40 @@ End Code
 
 
     function loadDocIndex(State, FacilityName) {
-         
-        $.ajax({
+        
+         $.ajax({
             type: "POST",
             cache: false,
             async: true,
             datatype: 'json',
             url: '../Policies/TreeViewPolicies?State=' + State + '&SelectedFacilityName=' + FacilityName,
             contentType: 'application/json',
-            success: function (response) {
+             success: function (response) {
                 var Policies = [];
                 $.each($.parseJSON(response), function (idx, obj) {
-                    if (obj.NodeId == "1") 
+                    if (obj.NodeId == "1")
                         obj.HasChild = true;
-                    
+
                     Policies.push(obj);
                 });
-                
+
                 var tree2 = document.getElementById('tree2').ej2_instances[0];
-         
+
                 // var tree2 = ej.base.getComponent(document.querySelector('#tree2'), 'treeview');
                 tree2.fields.dataSource = Policies
                 iconFields = Policies
-                 tree2.refresh();
+                //tree2.refresh();
                 treeData = tree2.getTreeData()
-           //      var node = tree2.getNode(treeData[0]); 
-               // tree2.expandAll(2); 
-              //     debugger;
-              //  openDoc(treeData[0].NodeChild[0].FullPath);
-                     loadEfile(treeData[0].NodeChild[0].FullPath, State, FacilityName);
+                //      var node = tree2.getNode(treeData[0]);
+                // tree2.expandAll(2);
+                //     debugger;
+                //  openDoc(treeData[0].NodeChild[0].FullPath);
+                //loadEfile(treeData[0].NodeChild[0].FullPath, State, FacilityName);
                 //tree2.expandNode($("#tree2_active")[0]);//treeObj.getNodeByIndex(0), $("#tree2"), false
-              //  $("#tree2_active").nodeSelected();
-               //  document.getElementById("tree2_active").style.display = "block";
-               // ;
-               // tree2.expandNode($("#tree2_active"));//treeObj.getNodeByIndex(0), $("#tree2"), false
+                //  $("#tree2_active").nodeSelected();
+                //  document.getElementById("tree2_active").style.display = "block";
+                // ;
+                // tree2.expandNode($("#tree2_active"));//treeObj.getNodeByIndex(0), $("#tree2"), false
                 //
                 //var treeObj = new ej.navigations.TreeView({ fields: { dataSource: response, id:  'NodeId', text: 'NodeText', child: 'NodeChild' } });
                 //treeObj.appendTo('#tree');
@@ -134,7 +132,7 @@ End Code
 
     //var iconFields = $("#iconFieldsjson").data("value");
     var iconFields2 = $("#iconFieldsjson2").data("value");
-    var facilities  =  $("#FacilitysHidden").data("value");
+    var facilities = $("#FacilitysHidden").data("value");
     var SelectedFacility, FacilityName, FacilityState
 
 
@@ -148,10 +146,10 @@ End Code
     }
 
     function onNodeSelected2(args) {
-        $(".secondRow").css("visibility","visible");
-        var treeObj2 = new ej.navigations.TreeView({ fields: { id: 'NodeId', text: 'NodeText', child: 'NodeChild', iconCss: 'Icon', Expanded: 'Expanded', HasChild: true }, expandOn: "Click" , nodeSelected: onNodeSelected });
+       $(".secondRow").css("visibility", "visible");
+        var treeObj2 = new ej.navigations.TreeView({ fields: { id: 'NodeId', text: 'NodeText', child: 'NodeChild', iconCss: 'Icon', Expanded: 'Expanded', HasChild: true }, expandOn: "Click", nodeSelected: onNodeSelected });
         treeObj2.appendTo('#tree2');
-      
+
 
         let SelectedNode = facilities.find(g => g.FacilityID === args.itemData.FacilityID);
         FacilityName = args.itemData.Name;
@@ -173,17 +171,17 @@ End Code
     }
 
     function onNodeSelected(args) {
-        
-       // openDoc(args.nodeData.text);
-        if(args.nodeData.parentID != null)
-             loadEfile(args.nodeData.text, FacilityState, FacilityName);
-     
+
+        // openDoc(args.nodeData.text);
+        if (args.nodeData.parentID != null)
+            loadEfile(args.nodeData.text, FacilityState, FacilityName);
+
     }
     function openDoc(FullPath) {
-     //   var treeObj = document.getElementById('tree2').ej2_instances[0];
-       // var iconFields = treeObj.treeData[args.nodeData.parentID - 1]
-      //  let SelectedNode = iconFields.NodeChild.find(g => g.NodeText === args.nodeText);
-       
+        //   var treeObj = document.getElementById('tree2').ej2_instances[0];
+        // var iconFields = treeObj.treeData[args.nodeData.parentID - 1]
+        //  let SelectedNode = iconFields.NodeChild.find(g => g.NodeText === args.nodeText);
+
         loadEfile(FullPath, FullPath, FacilityName);
 
     }
@@ -333,7 +331,5 @@ End Code
         min-height: 200px;
         margin-right: 10px
     }
-
-   
 </style>
 @Html.EJS().ScriptManager()

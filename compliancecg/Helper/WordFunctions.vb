@@ -786,21 +786,21 @@ Public Class WordFunctions
 
     Public Shared Function GetMasterDocument(Path As String, State As String) As Syncfusion.DocIO.DLS.WordDocument
         Try
-            Dim WordFunctions As New WordFunctions
+            ' Dim WordFunctions As New WordFunctions
             'Dim Path As String = "C:\Projects\Policies\Masters for State\"
             ' Dim Path As String = Server.MapPath("../App_Data/" & "GA Masters.docx")"
 
-            Dim searchPattern As String = "*Masters.docx"
-            Dim DirectoryInfo As DirectoryInfo = New DirectoryInfo(Path)
-            Dim directories As DirectoryInfo() = DirectoryInfo.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly)
-            Dim Files As FileInfo() = DirectoryInfo.GetFiles(searchPattern, SearchOption.AllDirectories)
+            'Dim searchPattern As String = "*Masters.docx"
+            'Dim DirectoryInfo As DirectoryInfo = New DirectoryInfo(Path)
+            'Dim directories As DirectoryInfo() = DirectoryInfo.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly)
+            'Dim Files As FileInfo() = DirectoryInfo.GetFiles(searchPattern, SearchOption.AllDirectories)
 
-            If State.Length > 2 Then
-                Select Case State
-                    Case "New Jersey"
-                        State = "NJ"
-                End Select
-            End If
+            'If State.Length > 2 Then
+            '    Select Case State
+            '        Case "New Jersey"
+            '            State = "NJ"
+            '    End Select
+            'End If
 
             Dim FileName As String = $"{State} Masters.docx"
 
@@ -835,6 +835,21 @@ Public Class WordFunctions
         End Try
     End Function
 
+    Public Shared Function GetMasterDocument(State As String) As Syncfusion.DocIO.DLS.WordDocument
+        Try
+
+            Dim FileName As String = $"{State} Masters.docx"
+
+            Dim Blob As New AzureFiles
+            Dim WordDocument As New Syncfusion.DocIO.DLS.WordDocument
+            WordDocument = Blob.GetBlobWordFile("policies", FileName)
+
+            If WordDocument IsNot Nothing Then Return WordDocument
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
 
 
 

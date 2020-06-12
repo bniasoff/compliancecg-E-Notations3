@@ -417,7 +417,7 @@ Public Class DataRepository
         Try
             Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
                 CCGDataEntities.Configuration.ProxyCreationEnabled = False
-                Dim Facilities As List(Of Facility) = CCGDataEntities.Facilities.Where(Function(f) f.FacilityGroupID = GroupID And Not f.InActive.Value.Equals(True)).ToList
+                Dim Facilities As List(Of Facility) = CCGDataEntities.Facilities.Where(Function(f) f.FacilityGroupID = GroupID And Not f.InActive.Value.Equals(True) And f.State IsNot Nothing).ToList
                 Return Facilities
             End Using
         Catch ex As Exception

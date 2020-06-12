@@ -40,6 +40,9 @@ Namespace Controllers
         Inherits Controller
         Private DataRepository As New DataRepository
         Private Shared logger As Logger = NLog.LogManager.GetCurrentClassLogger()
+
+
+
         ' GET: Policies
         Function Index() As ActionResult
             Return PartialView()
@@ -729,6 +732,48 @@ Namespace Controllers
 
             End Try
         End Function
+
+        Function getFacility() As List(Of Facility)
+
+
+            Dim User As User = HomeController.GetCurrentUser()
+            Dim StaffMember As StaffMember = HomeController.GetCurrentStaffMember()
+
+            Dim UserInfo As New List(Of GetUserInfo_Result)
+            Dim Facilites As New List(Of Facility)
+            Dim FacilityStates As New List(Of FacilityState)
+
+            If User IsNot Nothing Then
+                UserInfo = DataRepository.GetUserInfo(User.EmailAddress)
+
+                Dim IsGroupAdmin As Boolean = False
+                Dim IsFacilityAdmin As Boolean = False
+                If UserInfo.Count > 0 Then
+                    Dim UserInfo2 As GetUserInfo_Result = UserInfo.FirstOrDefault
+                    IsGroupAdmin = DataRepository.IsUserGroupOwner(UserInfo2.EmailAddress, UserInfo2.FacilityGroupID)
+                    IsFacilityAdmin = DataRepository.IsUserFacilityAdmin(UserInfo2.EmailAddress, UserInfo2.FacilityID)
+
+                    If IsGroupAdmin Then
+                        Facilites = DataRepository.GetFacilitesByGroup(UserInfo2.FacilityGroupID)
+                    Else
+                        Facilites = DataRepository.GetFacilityFromUser(User.EmailAddress, True)
+                    End If
+                End If
+
+                'ViewBag.DataSource = FacilityGroups
+                'ViewBag.data = Facilites
+                'Return JsonConvert.SerializeObject(Facilites)
+                Return Facilites
+            End If
+
+
+        End Function
+
+        'Public Function DropdownlistFeatures() As ActionResult
+        '    ViewBag.data = New DropdownlistGameList().DropdownlistGameLists()
+        '    Return View()
+        'End Function
+
         Function TreeView() As ActionResult
             Try
 
@@ -830,6 +875,119 @@ Namespace Controllers
             End Try
         End Function
 
+
+
+        'Function TreeView() As ActionResult
+        '    Try
+
+        '        Dim User As User = HomeController.GetCurrentUser()
+        '        Dim StaffMember As StaffMember = HomeController.GetCurrentStaffMember()
+
+        '        Dim UserInfo As New List(Of GetUserInfo_Result)
+        '        Dim Facilites As New List(Of Facility)
+        '        Dim FacilityStates As New List(Of FacilityState)
+
+
+        '        If User IsNot Nothing Then
+        '            UserInfo = DataRepository.GetUserInfo(User.EmailAddress)
+
+        '            Dim IsGroupAdmin As Boolean = False
+        '            Dim IsFacilityAdmin As Boolean = False
+        '            If UserInfo.Count > 0 Then
+        '                Dim UserInfo2 As GetUserInfo_Result = UserInfo.FirstOrDefault
+        '                IsGroupAdmin = DataRepository.IsUserGroupOwner(UserInfo2.EmailAddress, UserInfo2.FacilityGroupID)
+        '                IsFacilityAdmin = DataRepository.IsUserFacilityAdmin(UserInfo2.EmailAddress, UserInfo2.FacilityID)
+
+        '                If IsGroupAdmin Then
+        '                    Facilites = DataRepository.GetFacilitesByGroup(UserInfo2.FacilityGroupID)
+        '                Else
+        '                    Facilites = DataRepository.GetFacilityFromUser(User.EmailAddress, True)
+        '                End If
+        '            End If
+
+
+
+
+
+        '            '  Dim FacilityGroups As New List(Of FacilityGroup)
+        '            '  Dim FacilityGroupIDs As New List(Of Integer)
+        '            '  If Facilites IsNot Nothing Then
+        '            '      For Each Facility As Facility In Facilites
+        '            '          Dim FoundIndex As Integer = FacilityGroupIDs.IndexOf(Facility.FacilityGroupID)
+        '            '          If FoundIndex = -1 Then FacilityGroupIDs.Add(Facility.FacilityGroupID)
+        '            '
+        '            '          If Facility.State IsNot Nothing Then
+        '            '              If FacilityStates.Where(Function(s) s.State = Facility.State).Any = False Then
+        '            '                  FacilityStates.Add(New FacilityState With {.State = Facility.State, .Icon = ""})
+        '            '              End If
+        '            '          End If
+        '            '      Next
+        '            '
+        '            '      For Each FacilityState As FacilityState In FacilityStates
+        '            '          Dim FacilitiesInState = Facilites.Where(Function(f) f.State = FacilityState.State).ToList
+        '            '          For Each Facility As Facility In FacilitiesInState
+        '            '              If Facility.Name IsNot Nothing Then
+        '            '                  FacilityState.FacilityNameNodes.Add(New FacilityNameNode With {.Name = Facility.Name, .Icon = ""})
+        '            '              End If
+        '            '          Nexts
+        '            '      Next
+        '            '  End If
+
+        '            'For Each FacilityGroupID As Integer In FacilityGroupIDs
+        '            'FacilityGroups.Add(DataRepository.GetFacilityGroup(FacilityGroupID))
+        '            'Nexts
+        '            'If FacilityGroups.Count = 1 Then Session("FacilityGroup") = FacilityGroups.FirstOrDefault
+
+        '            'ViewBag.DataSource = FacilityGroups
+
+
+        '            'ViewBag.data = Facilites
+        '            Dim Facilities2 As New List(Of DropDownList)
+        '            'For Each Facility As Facility In Facilites
+        '            '    Facilities2.Add(New DropDownList With {.DropDownName = Facility.Name, .DropDownValue = Facility.FacilityGroupID})
+        '            'Next
+
+        '            ViewBag.data = New DropdownList().DropdownlistGameLists(Facilites)
+
+        '            ViewBag.dataJson = JsonConvert.SerializeObject(ViewBag.data)
+        '        End If
+
+
+        '        'Dim treeviewIcon As TreeViewImageIcons = New TreeViewImageIcons()
+        '        'Dim iconFields As TreeViewFieldsSettings = New TreeViewFieldsSettings()
+        '        'iconFields.DataSource = treeviewIcon.GetTreeViewNodesForStates(FacilityStates)
+
+
+        '        '   iconFields.Id = "NodeId"
+        '        '   iconFields.Text = "NodeText"
+        '        '   iconFields.IconCss = "Icon"
+        '        '   iconFields.Child = "NodeChild"
+        '        '   iconFields.Expanded = "Expanded"
+        '        '   ViewBag.iconFields2 = iconFields
+
+        '        'Dim ImageIcons As New List(Of ImageIcons)
+        '        'For Each Dir As TreeViewImageIcons In iconFields.DataSource
+        '        'ImageIcons.AddRange(Dir.NodeChild)
+        '        'Next
+        '        'ViewBag.iconFieldsjson2 = JsonConvert.SerializeObject(ImageIcons)
+
+
+        '        If Session("FacilityGroup") IsNot Nothing Then
+        '            Dim FacilityGroup As FacilityGroup = Nothing
+        '            FacilityGroup = Session("FacilityGroup")
+        '            ViewBag.FacilityGroup = FacilityGroup
+        '        End If
+
+
+
+
+        '        Return PartialView()
+        '    Catch ex As Exception
+        '        logger.Error(ex)
+
+        '    End Try
+        'End Function
+
         Function TreeViewPolicies(State As String, SelectedFacilityName As String) As String
             Try
                 Dim SectionIndexes As New List(Of SectionIndex)
@@ -842,11 +1000,17 @@ Namespace Controllers
                 Session("SectionIndexes") = Nothing
 
                 If Session("State") <> State Then
-                    Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
-                    'Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
+                    'Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
+                    Dim MasterFile = WordFunctions.GetMasterDocument(State)
                     Document = MasterFile
-                    SectionIndexes = WordFunctions.GetSectionTitle(Document, State)
                     If Document IsNot Nothing Then Session("MasterDocument") = Document
+                    SectionIndexes = WordFunctions.GetSectionTitle(Document, State)
+
+
+                    For Each index As SectionIndex In SectionIndexes
+                        Debug.WriteLine(index.Header)
+                    Next
+
                     If SectionIndexes IsNot Nothing Then Session("SectionIndexes") = SectionIndexes
                 End If
 
@@ -857,9 +1021,9 @@ Namespace Controllers
                 Session("State") = State
 
                 If Session("MasterDocument") Is Nothing Then
-                    Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
+                    'Dim MasterFile = WordFunctions.GetMasterDocument(Server.MapPath("/App_Data/Policies/"), State)
+                    Dim MasterFile = WordFunctions.GetMasterDocument(State)
                     Document = MasterFile
-                    ' Document.OpenReadOnly(MasterFile.FullName, FormatType.Docx)
                     Session("MasterDocument") = Document
                 End If
 
@@ -1408,3 +1572,4 @@ Public Class jsonObjects
     Public Property startPage As String
     Public Property endPage As String
 End Class
+
