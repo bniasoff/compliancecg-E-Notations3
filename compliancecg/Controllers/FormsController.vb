@@ -210,7 +210,7 @@ Namespace Controllers
                     GetRequiredPosters(viewModel)
                     viewModel.Title = SubFolder
                 Case = "COVID-19"
-                    GetCovid19(viewModel)
+                    'GetCovid19(viewModel)
                     viewModel.Title = SubFolder
             End Select
 

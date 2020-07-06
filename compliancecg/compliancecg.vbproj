@@ -1238,6 +1238,19 @@
     <Content Include="App_Data\Resources\COVID-19\Designation of Infection Preventionist.pdf" />
     <Content Include="App_Data\Resources\COVID-19\Mental Health.pdf" />
     <Content Include="App_Data\Resources\COVID-19\OCR Notification.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\CMS Announcement.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\CMS Letter to Long Term Care Facilities.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\COVID -19 Focused Survey Protocol.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\COVID-19 Entrance Conference Worksheet.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes-2.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes.docx" />
+    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\EIP letter to CMS.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\FFCRA Poster.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Memo 5-8-20.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Memo 6-4-20.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Summary Table of COVID-19 Focused Survey.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Toolkit on State Actions to Mitigate COVID-19.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
