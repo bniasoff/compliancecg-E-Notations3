@@ -1229,6 +1229,15 @@
     <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.pdf" />
     <Content Include="App_Data\Resources\HIPAA\CCG 00214a Business Associate Agreement Cover Lettter.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\CCG Coronavirus Alert Memo.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Checklist for Healthcare Facilities.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\CMS Memo.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\CMS News.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Coronavirus-2019-Nursing-Homes-Preparedness-Checklist.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\COVID-19 Visitor Poster.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Designation of Infection Preventionist.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\Mental Health.pdf" />
+    <Content Include="App_Data\Resources\COVID-19\OCR Notification.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
