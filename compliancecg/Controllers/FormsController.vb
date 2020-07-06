@@ -162,6 +162,8 @@ Namespace Controllers
                     SubFolder = "Human Resources"
                 Case "requiredposters"
                     SubFolder = "Required Posters"
+                Case "covid-19"
+                    SubFolder = "COVID-19"
             End Select
 
             viewModel = GetResourceFiles(SubFolder)
@@ -206,6 +208,9 @@ Namespace Controllers
                     viewModel.Title = SubFolder
                 Case = "Required Posters"
                     GetRequiredPosters(viewModel)
+                    viewModel.Title = SubFolder
+                Case = "COVID-19"
+                    GetCovid19(viewModel)
                     viewModel.Title = SubFolder
             End Select
 
@@ -440,6 +445,38 @@ Namespace Controllers
                         Case = "Smoking Area"
                             file.Description = "1. Designated: Inside and Outside of the facility<br/>2. No Smoking: if applicable"
                             file.PostingRequirement = "Should be posted by the smoking areas"
+                    End Select
+                Next
+            Catch ex As Exception
+
+            End Try
+        End Function
+
+
+
+
+        Private Function GetCovid19(viewModel)
+            Try
+                For Each file As DocFile In viewModel.Files
+                    Select Case file.Name
+                        Case = "CCG Coronavirus Alert Memo.pdf"
+                            file.Description = ""
+                        Case = "Checklist for Healthcare Facilities.pdf"
+                            file.Description = ""
+                        Case = "CMS Memo.pdf"
+                            file.Description = ""
+                        Case = "CMS News.pdf"
+                            file.Description = ""
+                        Case = "Coronavirus-2019-Nursing-Homes-Preparedness-Checklist.pdf"
+                            file.Description = ""
+                        Case = "COVID-19 Visitor Poster.pdf"
+                            file.Description = ""
+                        Case = "Designation of Infection Preventionist.pdf"
+                            file.Description = ""
+                        Case = "Mental Health"
+                            file.Description = ""
+                        Case = "OCR Notification"
+                            file.Description = ""
                     End Select
                 Next
             Catch ex As Exception

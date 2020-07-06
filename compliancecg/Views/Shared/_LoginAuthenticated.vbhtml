@@ -15,6 +15,7 @@
                 <li class="dropdown-item" id="hipaa"><a href="javascript:myFunc3('hipaa')">HIPAA</a></li>
                 <li class="dropdown-item" id="humanresources"><a href="javascript:myFunc3('humanresources')">Human Resources</a></li>
                 <li class="dropdown-item" id="requiredposters"><a href="javascript:myFunc3('requiredposters')">Required Posters</a></li>
+                <li class="dropdown-item" id="covid-19"><a href="javascript:myFunc3('covid-19')">COVID-19 Resources</a></li>
             </ul>
         </li>
 
