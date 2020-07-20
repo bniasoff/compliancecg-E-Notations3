@@ -4,27 +4,27 @@
     ViewData("Title") = "Index"
 End Code
 
-<h4>@ViewBag.Folder</h4>
+@*<h2>Forms</h2>*@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<div style="margin-top:30px;">
-    <ul id="limheight">
-        @For Each File In Model.Files
+<div class="mt-2">
+<ul id="limheight">
+    @For Each File In Model.Files
 
-            Select Case File.Ext
-                Case = ".pdf"
-                    @<li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
-                        @Html.ActionLink(File.Name, "Download", "Forms", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
-                    </li>
-                                        Case = ".docx"
-                                            @<li class="fa fa-file-word-o" style="font-size:16px;color:blue;margin-bottom:10px;">
-                                                @Html.ActionLink(File.Name, "Download", "Forms", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
-                                            </li>
-                                    End Select
-                                Next
-    </ul>
+        Select Case File.Ext
+            Case = ".pdf"
+                @<li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
+                    @Html.ActionLink(File.Name, "Download", "Forms", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
+                </li>
+                                    Case = ".docx"
+                                        @<li class="fa fa-file-word-o" style="font-size:16px;color:blue;margin-bottom:10px;">
+                                            @Html.ActionLink(File.Name, "Download", "Forms", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
+                                        </li>
+                                End Select
+                            Next
+</ul>
 </div>
 
 <style>

@@ -155,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.vb" />
-    <Compile Include="DataRepository2.vb" />
     <Compile Include="Data\AspNetRole.vb">
       <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
@@ -173,6 +172,12 @@
       <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ClientContact.vb">
+      <DependentUpon>CCGDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CovidMemo.vb">
+      <DependentUpon>CCGDataEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CovidTool.vb">
       <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\FacilityOwner.vb">

@@ -66,8 +66,8 @@ warning 6002: The table/view 'CCGData2.dbo.AspNetUserRoles' does not have a prim
           <Property Name="LockoutEnabled" Type="bit" />
           <Property Name="AccessFailedCount" Type="int" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
           <Property Name="UserId" Type="nvarchar" MaxLength="50" />
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="Password2" Type="nvarchar" MaxLength="50" />
@@ -112,6 +112,24 @@ warning 6002: The table/view 'CCGData2.dbo.ChangeLogs' does not have a primary k
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateofEntry" Type="datetime" />
           <Property Name="ValidEmail" Type="bit" />
+        </EntityType>
+        <EntityType Name="CovidMemos">
+          <Key>
+            <PropertyRef Name="MemoID" />
+          </Key>
+          <Property Name="MemoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemoName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MemoPath" Type="varchar" MaxLength="350" />
+          <Property Name="DateSent" Type="date" />
+        </EntityType>
+        <EntityType Name="CovidTools">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MemoID" Type="int" />
+          <Property Name="ToolPath" Type="varchar" MaxLength="450" />
         </EntityType>
         <EntityType Name="Facilities">
           <Key>
@@ -465,6 +483,8 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
         <EntityContainer Name="CCGDataModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientContacts" EntityType="Self.ClientContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidMemos" EntityType="Self.CovidMemos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidTools" EntityType="Self.CovidTools" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Facilities" EntityType="Self.Facilities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FacilityGroups" EntityType="Self.FacilityGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FacilityOwners" EntityType="Self.FacilityOwners" Schema="dbo" store:Type="Tables" />
@@ -688,6 +708,8 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
           <EntitySet Name="GetUsers" EntityType="CCGDataModel.GetUser" />
           <EntitySet Name="SectionIndexes" EntityType="CCGDataModel.SectionIndex" />
           <EntitySet Name="StaffMembers" EntityType="CCGDataModel.StaffMember" />
+          <EntitySet Name="CovidMemos" EntityType="CCGDataModel.CovidMemo" />
+          <EntitySet Name="CovidTools" EntityType="CCGDataModel.CovidTool" />
           </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -735,8 +757,8 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
           <Property Name="LockoutEnabled" Type="Boolean" />
           <Property Name="AccessFailedCount" Type="Int32" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="CCGDataModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
@@ -1204,6 +1226,24 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
           <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DateAdded" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="CovidMemo">
+          <Key>
+            <PropertyRef Name="MemoID" />
+          </Key>
+          <Property Name="MemoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemoName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MemoPath" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="DateSent" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="CovidTool">
+          <Key>
+            <PropertyRef Name="ToolID" />
+          </Key>
+          <Property Name="ToolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MemoID" Type="Int32" />
+          <Property Name="ToolPath" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1620,6 +1660,26 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
                 <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
                 <ScalarProperty Name="FacilityGroupID" ColumnName="FacilityGroupID" />
                 <ScalarProperty Name="StaffMembersID" ColumnName="StaffMembersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidMemos">
+            <EntityTypeMapping TypeName="CCGDataModel.CovidMemo">
+              <MappingFragment StoreEntitySet="CovidMemos">
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="MemoPath" ColumnName="MemoPath" />
+                <ScalarProperty Name="MemoName" ColumnName="MemoName" />
+                <ScalarProperty Name="MemoID" ColumnName="MemoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidTools">
+            <EntityTypeMapping TypeName="CCGDataModel.CovidTool">
+              <MappingFragment StoreEntitySet="CovidTools">
+                <ScalarProperty Name="ToolPath" ColumnName="ToolPath" />
+                <ScalarProperty Name="MemoID" ColumnName="MemoID" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolID" ColumnName="ToolID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

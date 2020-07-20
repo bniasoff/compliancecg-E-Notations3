@@ -441,6 +441,7 @@
     <Compile Include="Models\Efile.vb" />
     <Compile Include="Models\EmailModel.vb" />
     <Compile Include="Models\FacilityUserResponse.vb" />
+    <Compile Include="Models\FormsViewModel.vb" />
     <Compile Include="Models\ImageModel.vb" />
     <Compile Include="Models\ManageViewModels.vb" />
     <Compile Include="Models\Northwind.vb" />
@@ -484,6 +485,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\COVID-19\Memos\Memo 3-3-20.png" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -998,8 +1000,6 @@
     <Content Include="Content\Images\slide3-1024x683-1024x683.jpg" />
     <Content Include="Content\Images\slide3-1024x683.jpg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Site2.css" />
-    <Content Include="Content\Site3.css" />
     <Content Include="libman.json" />
     <Content Include="App_Data\Policies\Blank.docx" />
     <Content Include="App_Data\Policies\Table of Content\1a Table of Contents.docx" />
@@ -1229,28 +1229,49 @@
     <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.pdf" />
     <Content Include="App_Data\Resources\HIPAA\CCG 00214a Business Associate Agreement Cover Lettter.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\CCG Coronavirus Alert Memo.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Checklist for Healthcare Facilities.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\CMS Memo.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\CMS News.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Coronavirus-2019-Nursing-Homes-Preparedness-Checklist.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\COVID-19 Visitor Poster.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Designation of Infection Preventionist.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Mental Health.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\OCR Notification.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\CMS Announcement.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\CMS Letter to Long Term Care Facilities.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\COVID -19 Focused Survey Protocol.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\COVID-19 Entrance Conference Worksheet.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes-2.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes.docx" />
-    <Content Include="App_Data\Resources\COVID-19\COVID-19 Focused Survey for Nursing Homes.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\EIP letter to CMS.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\FFCRA Poster.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Memo 5-8-20.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Memo 6-4-20.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Summary Table of COVID-19 Focused Survey.pdf" />
-    <Content Include="App_Data\Resources\COVID-19\Toolkit on State Actions to Mitigate COVID-19.pdf" />
+    <Content Include="Resources\COVID-19\Tools\CCG Coronavirus Alert Memo.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Checklist for Healthcare Facilities.pdf" />
+    <Content Include="Resources\COVID-19\Tools\CMS Memo.pdf" />
+    <Content Include="Resources\COVID-19\Tools\CMS News.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Coronavirus-2019-Nursing-Homes-Preparedness-Checklist.pdf" />
+    <Content Include="Resources\COVID-19\Tools\COVID-19 Visitor Poster.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Designation of Infection Preventionist.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Mental Health.pdf" />
+    <Content Include="Resources\COVID-19\Tools\OCR Notification.pdf" />
+    <Content Include="Resources\COVID-19\Tools\CMS Announcement.pdf" />
+    <Content Include="Resources\COVID-19\Tools\CMS Letter to Long Term Care Facilities.pdf" />
+    <Content Include="Resources\COVID-19\Tools\COVID -19 Focused Survey Protocol.pdf" />
+    <Content Include="Resources\COVID-19\Tools\COVID-19 Entrance Conference Worksheet.pdf" />
+    <Content Include="Resources\COVID-19\Tools\COVID-19 Focused Survey for Nursing Homes-2.pdf" />
+    <Content Include="Resources\COVID-19\Tools\COVID-19 Focused Survey for Nursing Homes.pdf" />
+    <Content Include="Resources\COVID-19\Tools\EIP letter to CMS.pdf" />
+    <Content Include="Resources\COVID-19\Tools\FFCRA Poster.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Memo 5-8-20.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Memo 6-4-20.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Summary Table of COVID-19 Focused Survey.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Toolkit on State Actions to Mitigate COVID-19.pdf" />
+    <Content Include="Resources\COVID-19\Tools\Visitation Considerations for Nursing Home Residents.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CCG Coronavirus Alert Memo.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CDC Guidance on Extending the Use of N95 Respirators.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CDC Recommendations for COVID-19 Testing in Nursing Homes.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS Clarifications on COVID-19 Requirements.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS COVID-19 Reporting Requirements Update.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS Letter to Long Term Care Facilities .pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS NEWS Trump Administration Issues Key Recommendations to Nursing Homes, State and Local Governments.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS News-Coronavirus updates.pdf" />
+    <Content Include="Resources\COVID-19\Memos\CMS Nursing Home Reopening Recommendations for State and Local Officials.pdf" />
+    <Content Include="Resources\COVID-19\Memos\COVID-19 Survey Activities, CARES Act Funding, Enhanced Enforcement for Infection Control deficiencies, and Quality Improvement Activities in Nursing Homes.pdf" />
+    <Content Include="Resources\COVID-19\Memos\COVID-19 Updates – Weekly Roundup.pdf" />
+    <Content Include="Resources\COVID-19\Memos\EIPs for Residents of Nursing Homes and Assisted Living Facilities.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Families First Coronavirus Response Act %28FFCRA%29 and Health Care Providers.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Families First Coronavirus Response Act %28FFCRA%29 Notice Requirements.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Important COVID-19 Updates.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Mental Health in Challenging Times.pdf" />
+    <Content Include="Resources\COVID-19\Memos\OCR HIPAA Guidance .pdf" />
+    <Content Include="Resources\COVID-19\Memos\Survey and Infection Control Activities in Nursing Homes.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Toolkit on State Actions to Mitigate COVID-19.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Updates to Requirements for Notification of Confirmed and Suspected COVID-19 Cases Among Residents and Staff in Nursing Homes.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Updates to the COVID-19 Focused Survey for Nursing Homes.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1551,7 +1572,7 @@
     <Content Include="Views\Policies\NewFolder1\Treeview5.vbhtml" />
     <Content Include="Views\Policies\NewFolder1\Treeview6.vbhtml" />
     <Content Include="Views\Policies\NewFolder1\TreeView7.vbhtml" />
-    <Content Include="Views\Forms\Index.vbhtml" />
+    <Content Include="Views\Forms\covid19.vbhtml" />
     <Content Include="Views\Facilities\Search.vbhtml" />
     <Content Include="Views\Home\About2.vbhtml" />
     <Content Include="Views\Home\ImageSlider3.vbhtml" />
@@ -1559,7 +1580,6 @@
     <Content Include="Scripts\ej2\ej2.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Views\Shared\Menu.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial2.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial3.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\Search2.vbhtml" />
@@ -1568,9 +1588,7 @@
     <Content Include="Views\Shared\_LoginPartial.vbhtml" />
     <Content Include="Views\Shared\_LoginAuthenticated.vbhtml" />
     <Content Include="Views\Shared\_Login.vbhtml" />
-    <Content Include="Views\Shared\_LoginAuthenticated2.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\Main - Copy.vbhtml" />
-    <Content Include="Views\Shared\_Layout2.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\Main - Copy %282%29.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial3b.vbhtml" />
     <Content Include="Views\Facilities\Main.vbhtml" />
@@ -1583,11 +1601,9 @@
     <Content Include="Views\Home\ImageSlider.vbhtml" />
     <Content Include="Views\Policies\NewFolder1\RichEditPartial2.vbhtml" />
     <Content Include="Views\Account\DisplayEmail.vbhtml" />
-    <Content Include="Views\Forms\Resources.vbhtml" />
     <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial - Copy.vbhtml" />
     <Content Include="Views\Policies\PDFViewer.vbhtml" />
     <Content Include="Views\PDFViewer\Index.vbhtml" />
-    <Content Include="Views\Shared\_Layout3.vbhtml" />
     <Content Include="Views\Training\Index.vbhtml" />
     <Content Include="Views\Training\FileListPartial1.vbhtml" />
     <Content Include="Views\Training\FileListPartial2.vbhtml" />
@@ -1601,18 +1617,10 @@
     <Content Include="Views\PDFViewer\Index5.vbhtml" />
     <Content Include="Views\PDFViewer\Index8.vbhtml" />
     <Content Include="Views\PDFViewer\Index6.vbhtml" />
-    <Content Include="Views\Shared\_Layout - Copy.vbhtml" />
     <Content Include="Views\PDFViewer\Index7.vbhtml" />
-    <Content Include="Views\Forms\Index2.vbhtml" />
-    <Content Include="Views\Forms\Compliance Officer.vbhtml" />
-    <Content Include="Views\Forms\Exclusion List.vbhtml" />
-    <Content Include="Views\Forms\General Forms.vbhtml" />
-    <Content Include="Views\Forms\HIPPA.vbhtml" />
-    <Content Include="Views\Forms\Human Resources.vbhtml" />
-    <Content Include="Views\Forms\Required Posters.vbhtml" />
+    <Content Include="Views\Forms\Resources.vbhtml" />
     <Content Include="Views\Syncfusion\TabControl - Copy.vbhtml" />
     <Content Include="Views\Syncfusion\Card2.vbhtml" />
-    <Content Include="Views\Forms\Acknowledgment Forms - Copy.vbhtml" />
     <Content Include="Scripts\README.md" />
     <Content Include="Test\Script1.ps1" />
     <Content Include="Test\Script2.ps1" />
@@ -2457,7 +2465,6 @@
     <Folder Include="NewFolder1\" />
     <Folder Include="TS\" />
     <Folder Include="Views\Error\" />
-    <Folder Include="Views\Shared\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

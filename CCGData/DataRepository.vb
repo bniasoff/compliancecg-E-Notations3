@@ -854,6 +854,24 @@ Public Class DataRepository
         End Try
     End Function
 
+    Public Function GetCovidMemos() As List(Of CCGData.CovidMemo)
+        Try
+            Dim Memos As List(Of CCGData.CovidMemo) = CCGDataEntities.CovidMemos.OrderBy(Function(f) f.DateSent).ToList
+            Return Memos
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
+    Public Function GetCovidTools() As List(Of CCGData.CovidTool)
+        Try
+            Dim Tools As List(Of CCGData.CovidTool) = CCGDataEntities.CovidTools.ToList
+            Return Tools
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
     Public Function GetFacilityOwner(FacilityOwnerID As Integer) As FacilityOwner
         Try
             Dim FacilityOwner As FacilityOwner = CCGDataEntities.FacilityOwners.Where(Function(f) f.FacilityOwnerID = FacilityOwnerID).SingleOrDefault

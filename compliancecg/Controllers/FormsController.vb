@@ -1,145 +1,146 @@
 ﻿Imports System.IO
 Imports System.Web.Mvc
-
+Imports CCGData
+Imports CCGData.CCGData
+Imports CCGData.CCGData.CCGDataEntities
 Imports System.IO.Compression
-
+Imports Newtonsoft.Json
 
 
 Namespace Controllers
     Public Class FormsController
         Inherits Controller
-
+        Private DataRepository As New DataRepository
         ' GET: Forms
-        Function Index(Folder As String) As ActionResult
-            Dim viewModel As DocFiles = DisplayFilesForDownload(Folder)
-            Dim SubFolder As String
-            Select Case Folder
-                Case "generalforms"
-                    SubFolder = "General Forms"
-                Case "acknowledgmentforms"
-                    SubFolder = "Acknowledgment Forms"
-                Case "complianceofficer"
-                    SubFolder = "Compliance Officer"
-                Case "posters"
-                    SubFolder = "Posters"
-                'Case "statespecific"
-                '    SubFolder = "State Specific"
-                Case "training"
-                    SubFolder = "Training"
-                    'Case "misc"
-                    '    SubFolder = "Misc"
-            End Select
-
-            ViewBag.Folder = SubFolder
-
-            Return PartialView("Index", viewModel)
-        End Function
-
-
-
-
-        'Public Function Index2() As ActionResult
-        '    ViewBag.Files = Directory.EnumerateFiles(Server.MapPath("~/pdfs"))
-        '    Return View()
-        'End Function
-
-        'Public Function DisplayFilesForDownload() As DocFiles
-        '    Dim viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Forms"), .Files = New List(Of DocFile)()}
-        '    Dim paths = Directory.GetFiles(viewModel.Path).ToList()
-
-        '    For Each path In paths
-        '        Dim fileInfo = New FileInfo(path)
-        '        Dim File = New DocFile With {
-        '            .Path = path,
-        '            .Name = fileInfo.Name
-        '        }
-        '        viewModel.Files.Add(File)
-        '    Next
-
-        '    Return viewModel
-        'End Function
-
-
-
-
-        Public Function DisplayFilesForDownload(Folder As String) As DocFiles
-            Dim SubFolder As String = String.Empty
-            Select Case Folder
-                Case "generalforms"
-                    SubFolder = "General Forms"
-                Case "acknowledgmentforms"
-                    SubFolder = "Acknowledgment Forms"
-                Case "complianceofficer"
-                    SubFolder = "Compliance Officer"
-                Case "posters"
-                    SubFolder = "Posters"
-                'Case "statespecific"
-                '    SubFolder = "State Specific"
-                Case "training"
-                    SubFolder = "Training"
-                    'Case "misc"
-                    '    SubFolder = "Misc"
-            End Select
-
-            Dim viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Forms/") + SubFolder, .Files = New List(Of DocFile)()}
-            'Dim paths = Directory.GetFiles(viewModel.Path).ToList()
-
-
-
-            'For Each path In paths
-            '    Dim fileInfo = New FileInfo(path)
-            '    Dim File = New DocFile With {
-            '        .Path = path,
-            '        .Name = fileInfo.Name,
-            '        .Ext = fileInfo.Extension
-            '    }
-            '    viewModel.Files.Add(File)
-            'Next
-
-            Return viewModel
-        End Function
-        Public Function DisplayRescourceFileForDownload(ResourceFile As String) As DocFiles
-            Dim SubFolder As String = String.Empty
-            Dim File2 As String = ""
-            Dim viewModel = New DocFiles
-            Select Case ResourceFile
-                Case "exclusionlist"
-                    SubFolder = "Resources"
-                    File2 = "Exclusion List.pdf"
-                    viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Resources/"), .Files = New List(Of DocFile)()}
-                Case "hipaa"
-                    SubFolder = "Resources"
-                    viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Resources/"), .Files = New List(Of DocFile)()}
-
-                Case "complianceofficer"
-                    SubFolder = "Compliance Officer"
-                    viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Forms/Compliance Officer/"), .Files = New List(Of DocFile)()}
-            End Select
-
-            Dim paths = Directory.GetFiles(viewModel.Path).ToList()
-
-            For Each path In paths
-                Dim fileInfo = New FileInfo(path)
-                Dim File = New DocFile With {
-                    .Path = path,
-                    .Name = fileInfo.Name
-                }
-                viewModel.Files.Add(File)
-            Next
-
-
-
-
-
-            Return viewModel
-        End Function
+        ' Function Index(Folder As String) As ActionResult
+        '     Dim viewModel As DocFiles = DisplayFilesForDownload(Folder)
+        '     Dim SubFolder As String
+        '     Select Case Folder
+        '         Case "generalforms"
+        '             SubFolder = "General Forms"
+        '         Case "acknowledgmentforms"
+        '             SubFolder = "Acknowledgment Forms"
+        '         Case "complianceofficer"
+        '             SubFolder = "Compliance Officer"
+        '         Case "posters"
+        '             SubFolder = "Posters"
+        '         'Case "statespecific"
+        '         '    SubFolder = "State Specific"
+        '         Case "training"
+        '             SubFolder = "Training"
+        '             'Case "misc"
+        '             '    SubFolder = "Misc"
+        '     End Select
+        '
+        '     ViewBag.Folder = SubFolder
+        '
+        '     Return PartialView("Index", viewModel)
+        ' End Function
+        '
+        '
+        ' Public Function DisplayFilesForDownload(Folder As String) As DocFiles
+        '     Dim SubFolder As String = String.Empty
+        '     Select Case Folder
+        '         Case "generalforms"
+        '             SubFolder = "General Forms"
+        '         Case "acknowledgmentforms"
+        '             SubFolder = "Acknowledgment Forms"
+        '         Case "complianceofficer"
+        '             SubFolder = "Compliance Officer"
+        '         Case "posters"
+        '             SubFolder = "Posters"
+        '         'Case "statespecific"
+        '         '    SubFolder = "State Specific"
+        '         Case "training"
+        '             SubFolder = "Training"
+        '             'Case "misc"
+        '             '    SubFolder = "Misc"
+        '     End Select
+        '
+        '     Dim viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Forms/") + SubFolder, .Files = New List(Of DocFile)()}
+        '     'Dim paths = Directory.GetFiles(viewModel.Path).ToList()
+        '
+        '
+        '
+        '     'For Each path In paths
+        '     '    Dim fileInfo = New FileInfo(path)
+        '     '    Dim File = New DocFile With {
+        '     '        .Path = path,
+        '     '        .Name = fileInfo.Name,
+        '     '        .Ext = fileInfo.Extension
+        '     '    }
+        '     '    viewModel.Files.Add(File)
+        '     'Next
+        '
+        '     Return viewModel
+        ' End Function
+        ' Public Function DisplayRescourceFileForDownload(ResourceFile As String) As DocFiles
+        '     Dim SubFolder As String = String.Empty
+        '     Dim File2 As String = ""
+        '     Dim viewModel = New DocFiles
+        '     Select Case ResourceFile
+        '         Case "exclusionlist"
+        '             SubFolder = "Resources"
+        '             File2 = "Exclusion List.pdf"
+        '             viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Resources/"), .Files = New List(Of DocFile)()}
+        '         Case "hipaa"
+        '             SubFolder = "Resources"
+        '             viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Resources/"), .Files = New List(Of DocFile)()}
+        '
+        '         Case "complianceofficer"
+        '             SubFolder = "Compliance Officer"
+        '             viewModel = New DocFiles With {.Path = Server.MapPath("../App_Data/Forms/Compliance Officer/"), .Files = New List(Of DocFile)()}
+        '     End Select
+        '
+        '     Dim paths = Directory.GetFiles(viewModel.Path).ToList()
+        '
+        '     For Each path In paths
+        '         Dim fileInfo = New FileInfo(path)
+        '         Dim File = New DocFile With {
+        '             .Path = path,
+        '             .Name = fileInfo.Name
+        '         }
+        '         viewModel.Files.Add(File)
+        '     Next
+        '
+        '
+        '
+        '
+        '
+        '     Return viewModel
+        ' End Function
 
 
         Function Resources(File As String) As ActionResult
             Dim viewModel As DocFiles = DisplayRescourceFileForDownload2(File)
 
             Dim ViewForm As String = Nothing
-            ViewForm = "Index2"
+            ViewForm = "Resources"
+            Return PartialView(ViewForm, viewModel)
+        End Function
+
+        Function CovidResources(Page As String, Optional SMemoID As Integer = 0) As ActionResult
+            Dim CovidTools As List(Of CovidTool) = DataRepository.GetCovidTools()
+            Dim CovidMemos As List(Of CovidMemo) = DataRepository.GetCovidMemos()
+
+            Dim viewModel = New FormsViewModel()
+            viewModel.Page = Page
+
+            If Page = "memos" Then
+                viewModel.SelectedMemo = CovidMemos(0)
+                If SMemoID > 0 Then
+                    viewModel.SelectedMemo = CovidMemos.Where(Function(t) t.MemoID = SMemoID)(0)
+                End If
+            End If
+            'Dim CovidJoin = CovidTools.Join(CovidMemos,
+            '                        Function(c) c.MemoID,
+            '                        Function(m) m.MemoID,
+            '                        Function(c, m) New With {.ToolID = c.ToolID, .ToolName = c.ToolName, .ToolPath = c.ToolPath, .MemoID = c.MemoID, .MemoName = m.MemoName})
+            viewModel.CovidMemos = CovidMemos
+            viewModel.CovidTools = CovidTools
+
+            Dim ViewForm As String = Nothing
+            ViewForm = "covid19"
             Return PartialView(ViewForm, viewModel)
         End Function
 
@@ -162,8 +163,6 @@ Namespace Controllers
                     SubFolder = "Human Resources"
                 Case "requiredposters"
                     SubFolder = "Required Posters"
-                Case "covid-19"
-                    SubFolder = "COVID-19"
             End Select
 
             viewModel = GetResourceFiles(SubFolder)
@@ -209,9 +208,6 @@ Namespace Controllers
                 Case = "Required Posters"
                     GetRequiredPosters(viewModel)
                     viewModel.Title = SubFolder
-                Case = "COVID-19"
-                    'GetCovid19(viewModel)
-                    viewModel.Title = SubFolder
             End Select
 
 
@@ -224,7 +220,7 @@ Namespace Controllers
                 For Each file As DocFile In viewModel.Files
                     Select Case file.Name
                         Case = "CCG 00102b Code of Conduct Acknowledgment Form.pdf"
-                            file.Description = "Form to be signed stating individual has received a copy of the Facility’s Code of Conduct, Corporate Compliance and Ethics plan"
+                            file.Description = "Form to be signed stating individual has received a copy of the Facility's Code of Conduct, Corporate Compliance and Ethics plan"
                         Case = "CCG 00201a DRA acknowledgement form.pdf"
                             file.Description = "Form to be signed stating individual has received and read, understands and agrees to follow the Deficit Reduction Act of 2005 Policy and Procedure"
                         Case = "CCG 00202a Acknowledgement of Receipt of training in FWA.pdf"
@@ -455,34 +451,7 @@ Namespace Controllers
 
 
 
-        Private Function GetCovid19(viewModel)
-            Try
-                For Each file As DocFile In viewModel.Files
-                    Select Case file.Name
-                        Case = "CCG Coronavirus Alert Memo.pdf"
-                            file.Description = ""
-                        Case = "Checklist for Healthcare Facilities.pdf"
-                            file.Description = ""
-                        Case = "CMS Memo.pdf"
-                            file.Description = ""
-                        Case = "CMS News.pdf"
-                            file.Description = ""
-                        Case = "Coronavirus-2019-Nursing-Homes-Preparedness-Checklist.pdf"
-                            file.Description = ""
-                        Case = "COVID-19 Visitor Poster.pdf"
-                            file.Description = ""
-                        Case = "Designation of Infection Preventionist.pdf"
-                            file.Description = ""
-                        Case = "Mental Health"
-                            file.Description = ""
-                        Case = "OCR Notification"
-                            file.Description = ""
-                    End Select
-                Next
-            Catch ex As Exception
 
-            End Try
-        End Function
 
         Public Function Download(ByVal FilePath As String, ByVal FileName As String) As FileResult
             Return File(FilePath, System.Net.Mime.MediaTypeNames.Text.Xml, FileName)

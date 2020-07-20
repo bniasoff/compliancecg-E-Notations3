@@ -3,31 +3,6 @@ Imports System.Configuration
 
 Public Class ConnectionStrings
 
-    'Public Shared Function CCGEntityConnectionString() As ConnectionStringSettings
-    '    Try
-    '        Dim myConfiguration As Configuration = WebConfigurationManager.OpenWebConfiguration("~/app.config")
-    '        Dim myConnectionStringsSection As ConnectionStringsSection = myConfiguration.ConnectionStrings
-    '        Dim myConnectionStringSettings As New ConnectionStringSettings
-
-    '        'Dim myConfiguration = WebConfigurationManager.OpenWebConfiguration("~/Web.config")
-    '        'Dim myConnectionStringsSection As ConnectionStringsSection = myConfiguration.ConnectionStrings
-    '        'Dim myConnectionStringSettings As New ConnectionStringSettings
-
-    '        Select Case My.Computer.Name
-    '            Case "CCG-009"
-    '                myConnectionStringSettings = myConnectionStringsSection.ConnectionStrings("CCGDataEntities")
-    '            Case "NIASOFF-DESKTOP"
-    '                myConnectionStringSettings = myConnectionStringsSection.ConnectionStrings("CCGDataEntities")
-    '            Case Else
-    '                myConnectionStringSettings = myConnectionStringsSection.ConnectionStrings("CCGDataEntities")
-    '        End Select
-
-    '        Return myConnectionStringSettings
-    '  Catch ex As Exception
-    'logger.Error(ex)
-
-    '    End Try
-    'End Function
 
 
     Public Shared Function CCGEntityConnectionString() As ConnectionStringSettings

@@ -15,20 +15,26 @@
                 <li class="dropdown-item" id="hipaa"><a href="javascript:myFunc3('hipaa')">HIPAA</a></li>
                 <li class="dropdown-item" id="humanresources"><a href="javascript:myFunc3('humanresources')">Human Resources</a></li>
                 <li class="dropdown-item" id="requiredposters"><a href="javascript:myFunc3('requiredposters')">Required Posters</a></li>
-                <li class="dropdown-item" id="covid-19"><a href="javascript:myFunc3('covid-19')">COVID-19 Resources</a></li>
+              
             </ul>
         </li>
-
+        <li id="covid" class="dropdown nav-item p-2  m-2">
+            <a href="javascript:SetActive('covid')" class="dropdown-toggle " data-toggle="dropdown">COVID-19</a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" id="memos"><a href="javascript:covidActive('memos')">Memos</a></li>
+                <li class="dropdown-item" id="tools"><a href="javascript:covidActive('tools')">Tools</a></li>
+            </ul>
+        </li>
 
         <li id="facilities" Class="nav-item p-2  m-2"> <a href="javascript:SetActive('facilities')" data-hover="facilities">Facilities <span data-hover="Facilities"></span></a></li>
         @*<li id="search" style="display:none" class="nav-item p-2 m-2"> <a href="javascript:SetActive('search')" data-hover="Search">Search <span data-hover="Search"></span></a></li>*@
         <li id="training" Class="nav-item p-2  m-2"> <a href="javascript:SetActive('training')" data-hover="training">Yearly Training <span data-hover="training"></span></a></li>
-       
+
         <li id="Admin" class="dropdown nav-item p-2  m-2">
             <a href="javascript:SetActive('admin')" class="dropdown-toggle " data-toggle="dropdown">Admin</a>
             <ul class="dropdown-menu">
-                 <li class="dropdown-item" id="Search"><a href="javascript:SetActive('search')">Search</a></li>
-                 <li class="dropdown-item" id="uploadpolicies"><a href="javascript:SetActive('uploadpolicies')">Upload Policies</a></li>
+                <li class="dropdown-item" id="Search"><a href="javascript:SetActive('search')">Search</a></li>
+                <li class="dropdown-item" id="uploadpolicies"><a href="javascript:SetActive('uploadpolicies')">Upload Policies</a></li>
             </ul>
         </li>
     </ul>
@@ -61,6 +67,7 @@
                 if (data.includes("staff") == true) {
                     $('#facilities').hide();
                     $('#resources').hide();
+                    $('#covid').hide();
                     $('#training').hide();
                     $('#forms').hide();
                 }
@@ -87,6 +94,7 @@
         jQuery("#audits").removeClass("active");
         jQuery("#hotline").removeClass("active");
         jQuery("#resources").removeClass("active");
+        jQuery("#covid").removeClass("active");
         jQuery("#training").removeClass("active");
         jQuery("#admin").removeClass("active");
 
@@ -198,6 +206,22 @@
                 $("#PartialView").html(data);
             });
         };
+    };
+    function covidActive(arg) {
+        if (arg != null) {
+
+            $("#page-content-wrapper").removeClass();
+            $("#page-content-wrapper").addClass("page_covid_" + arg);
+
+            jQuery(".nav-item").removeClass("active");
+            var current = jQuery("#covid").addClass("active");
+
+            var ajax = new ej.base.Ajax('/Forms/CovidResources?Page=' + arg, 'POST', true);
+            ajax.send().then((data) => {
+                $("#PartialView").html(data);
+            });
+        }
+       
     };
 </script>
 
