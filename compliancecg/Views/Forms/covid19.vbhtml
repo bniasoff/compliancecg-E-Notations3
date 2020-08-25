@@ -96,11 +96,11 @@
 
     .covidList {
         list-style-type: none;
-        font-size:  14px;
+        font-size:  16px;
     }
 
         .covidList li {
-            margin: 5px 0;
+            margin: 10px 0;
             cursor: pointer;
         }
 
@@ -111,6 +111,9 @@
     .FilePDF {
         font-size:  14px;
         color: red
+    }
+    .e-card-header-title{
+        font-size:15px !important;
     }
 </style>
 

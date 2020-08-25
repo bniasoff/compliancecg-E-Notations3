@@ -27,7 +27,7 @@ End Code
                     <div class="form-group">
                         @Html.LabelFor(Function(m) m.Password, New With {.class = "mb-0"})
                         <p class="float-right mb-0 pPass">
-                            @Html.ActionLink("Forgot password?", "ForgotPassword")
+                            @Html.ActionLink("Forgot password?", "ForgotPassword", "", New With {.tabIndex = "-1"})
                         </p>
                         <div class="">
                             @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})

@@ -82,7 +82,7 @@
 
 
     function loadDocIndex(State, FacilityName) {
-        
+
          $.ajax({
             type: "POST",
             cache: false,

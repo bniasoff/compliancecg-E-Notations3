@@ -438,9 +438,10 @@ Public Class AccountController
         If ModelState.IsValid Then
             Dim user = Await UserManager.FindByNameAsync(model.Email)
 
-            'If user Is Nothing OrElse Not (Await UserManager.IsEmailConfirmedAsync(user.Id)) Then
-            '    Return View("ForgotPasswordConfirmation")
-            'End If
+            If user Is Nothing OrElse Not (Await UserManager.IsEmailConfirmedAsync(user.Id)) Then
+                ModelState.AddModelError(String.Empty, "Invalid Email")
+                Return View("ForgotPassword")
+            End If
 
             Dim code = Await UserManager.GeneratePasswordResetTokenAsync(user.Id)
             Dim callbackUrl = Url.Action("ResetPassword", "Account", New With {.UserId = user.Id, .code = code}, protocol:=Request.Url.Scheme)
