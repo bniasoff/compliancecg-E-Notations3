@@ -66,21 +66,16 @@ Public Class AccountController
         'model.LastName = "Niasoff"
         'model.FirstName = "Benyomin"
 
-
         If Not ModelState.IsValid Then
             Return View(model)
         End If
 
         ' This doesn't count login failures towards account lockout
         ' To enable password failures to trigger account lockout, change to shouldLockout := True
-        'Dim result = Await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout:=False)
-
 
 
         Dim result = Await SignInManager.PasswordSignInAsync(model.Email, model.Password, True, shouldLockout:=False)
         Dim CurrentUser = Await Users.FindUserbyUserName(model.Email)
-        ' Dim CurrentUser As Membership.UserAccou = UserManager.FindById(model.Email)
-        'Dim Result2 = SignInManager.UserManager.CheckPassword(CurrentUser, model.Password)
 
         Select Case result
             Case SignInStatus.Success
@@ -91,28 +86,34 @@ Public Class AccountController
                     Users.Update(CurrentUser)
                     UserHistory.AddUserHistory(CurrentUser, result, LoginType.LogIn)
 
-
-
-                    'Dim Facilites As List(Of Facility) = DataRepository.GetFacilities(CurrentUser.UserName)
-                    ' If Facilites IsNot Nothing Then Session("FacilityName") = Facilites.FirstOrDefault.Name
-
-
-                    'Dim Facility As Facility = DataRepository.GetFacilities3(CurrentUser.UserName)
-                    'If Facility IsNot Nothing Then Session("FacilityName") = Facility.Name
-
                     Session("MasterDocument") = Nothing
                     Session("SectionIndexes") = Nothing
 
-
+                    'AE 8/28/20 add admin authentication cookies for staff logins
                     If CurrentUser.Email <> "info@compliancecg.com" Then
-                        Return RedirectToAction("Acknowledgement", "Home")
+                        If CurrentUser.Email.IndexOf("staff@") = 0 Then
+                            If Request.Cookies.Get("staffAuthenticated") Is Nothing Then
+                                ViewData!ReturnUrl = returnUrl
+                                Return View("StaffLogin", New LoginViewModel() With {
+                                .Email = "", .Password = ""
+                            })
+
+                            Else
+                                If Request.Cookies("staffAuthenticated").Value <> CurrentUser.Email Then
+                                    ModelState.AddModelError("", "Invalid login attempt.")
+                                    Return View(model)
+                                Else
+                                    Return RedirectToAction("Acknowledgement", "Home")
+                                End If
+                            End If
+                        Else
+                            Return RedirectToAction("Acknowledgement", "Home")
+                        End If
                     End If
                     If CurrentUser.Email = "info@compliancecg.com" Then
                         Session("Acknowledgement") = True
-
-                        'Dim Home As New HomeController
-                        'Home.SetAcknowledgementSessionValue(True)
                     End If
+
 
 
 
@@ -120,10 +121,8 @@ Public Class AccountController
 
                     Return RedirectToLocal(returnUrl)
             Case SignInStatus.LockedOut
-                '   If Not IsNothing(CurrentUser) Then AddUserHistory(CurrentUser, result, LoginType.LogIn)
                 Return View("Lockout")
             Case SignInStatus.RequiresVerification
-                '  If Not IsNothing(CurrentUser) Then AddUserHistory(CurrentUser, result, LoginType.LogIn)
                 Return RedirectToAction("SendCode", New With {
                     returnUrl,
                     model.RememberMe
@@ -133,7 +132,29 @@ Public Class AccountController
                 Return View(model)
         End Select
     End Function
+    ' POST: /Account/StaffLogin
+    ' 'AE 8/28/20 add admin authentication cookies for staff logins
+    <HttpPost>
+    Public Async Function StaffLogin(model As LoginViewModel, returnUrl As String) As Task(Of ActionResult)
+        If Not ModelState.IsValid Then
+            Return View(model)
+        End If
+        Dim adminWSUser = Await UserManager.FindAsync(model.Email, model.Password)
+        Dim adminUser = Await Users.FindUserbyUserName(model.Email)
+        Dim IsUserAdmin As Boolean = DataRepository.IsUserAdmin(adminUser.Email)
 
+        If IsUserAdmin = True AndAlso Not IsNothing(adminWSUser) Then
+            Dim staffCookie As HttpCookie = New HttpCookie("staffAuthenticated")
+            staffCookie.Value = Session("CurrentUser").Email
+            staffCookie.Expires = Now.AddDays(3650)
+            Response.Cookies.Add(staffCookie)
+            Return RedirectToAction("Acknowledgement", "Home")
+            'Return RedirectToLocal(returnUrl)
+        Else
+            ModelState.AddModelError("", "Invalid login attempt.")
+            Return View(model)
+        End If
+    End Function
     '
     ' GET: /Account/VerifyCode
     <AllowAnonymous>
@@ -438,7 +459,8 @@ Public Class AccountController
         If ModelState.IsValid Then
             Dim user = Await UserManager.FindByNameAsync(model.Email)
 
-            If user Is Nothing OrElse Not (Await UserManager.IsEmailConfirmedAsync(user.Id)) Then
+            ' Dim isConfirmed = Await UserManager.IsEmailConfirmedAsync(user.Id) OrElse isConfirmed = False
+            If user Is Nothing Then
                 ModelState.AddModelError(String.Empty, "Invalid Email")
                 Return View("ForgotPassword")
             End If

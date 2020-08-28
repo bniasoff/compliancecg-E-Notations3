@@ -1506,7 +1506,6 @@
     <Content Include="Syncfusion\TreeView\navigations.min.js" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.vbhtml" />
     <Content Include="Views\Account\ConfirmEmail.vbhtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.vbhtml" />
     <Content Include="Views\Account\ExternalLoginFailure.vbhtml" />
     <Content Include="Views\Account\ForgotPassword.vbhtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.vbhtml" />
@@ -1626,6 +1625,7 @@
     <Content Include="Test\Script2.ps1" />
     <Content Include="Views\Admin\Search.vbhtml" />
     <Content Include="Views\Admin\Upload.vbhtml" />
+    <Content Include="Views\Account\StaffLogin.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

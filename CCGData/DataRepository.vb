@@ -844,6 +844,25 @@ Public Class DataRepository
         End Try
     End Function
 
+    Public Function IsUserAdmin(UserName As String) As Boolean
+        Try
+
+            'Administrator
+            'Compliance Officer
+
+            Dim User = CCGDataEntities.Users.Where(Function(u) u.EmailAddress = UserName).SingleOrDefault
+            If User IsNot Nothing Then
+                If User.EmailAddress = "info@compliancecg.com" Then Return True
+                Dim FacilityUserRoles As List(Of FacilityUserRole) = CCGDataEntities.FacilityUserRoles.Where(Function(j) j.EmailAddress = User.EmailAddress And (j.Title = "Administrator" Or j.Title = "Compliance Officer" Or j.Title = "Owner" Or j.Title = "Operator" Or j.Title = "Regional Administrator" Or j.Title = "Regional Human Resources" Or j.Title.Substring(0, 7) = "Regional")).ToList
+                If FacilityUserRoles.Count > 0 Then Return True
+            End If
+
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
+
     Public Function GetUsers() As List(Of CCGData.User)
         Try
             Dim Users As List(Of CCGData.User) = CCGDataEntities.Users.Where(Function(u) Not u.InActive.Value.Equals(True)).OrderBy(Function(f) f.LastName).ThenBy(Function(f) f.FirstName).ToList
