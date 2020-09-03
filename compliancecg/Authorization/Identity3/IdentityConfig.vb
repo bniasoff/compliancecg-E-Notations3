@@ -12,35 +12,8 @@ Imports CCGData.CCGData
 Imports CCGData.Enums
 Imports System.Data.Entity.SqlServer.Utilities
 Imports System.Globalization
-'Imports ~compliancecg.Microsoft.AspNet.Identity~
 Imports compliancecg.My.Resources
 
-
-
-'Public Class EmailService
-'    Inherits IIdentityMessageService
-
-'    Public Function SendAsync(ByVal message As IdentityMessage) As Task
-'        Return configSendGridasync(message)
-'    End Function
-
-'    Private Function configSendGridasync(ByVal message As IdentityMessage) As Task
-'        Dim myMessage = New SendGridMessage()
-'        myMessage.AddTo(message.Destination)
-'        myMessage.From = New System.Net.Mail.MailAddress("Joe@contoso.com", "Joe S.")
-'        myMessage.Subject = message.Subject
-'        myMessage.Text = message.Body
-'        myMessage.Html = message.Body
-'        Dim credentials = New NetworkCredential(ConfigurationManager.AppSettings("mailAccount"), ConfigurationManager.AppSettings("mailPassword"))
-'        Dim transportWeb = New Web(credentials)
-
-'        If transportWeb IsNot Nothing Then
-'            Return transportWeb.DeliverAsync(myMessage)
-'        Else
-'            Return Task.FromResult(0)
-'        End If
-'    End Function
-'End Class
 
 
 
@@ -48,7 +21,6 @@ Public Class EmailService
     Implements IIdentityMessageService
 
     Private Shared logger As Logger = NLog.LogManager.GetCurrentClassLogger()
-    'Public Property UserTokenProvider As IUserTokenProvider(Of TUser, TKey)
 
     Public Async Function SendAsync(message As IdentityMessage) As Task Implements IIdentityMessageService.SendAsync
         Try
@@ -120,7 +92,9 @@ Public Class ApplicationUserManager
             manager.MaxFailedAccessAttemptsBeforeLockout = 5
 
             'manager.RegisterTwoFactorProvider("Phone Code", New PhoneNumberTokenProvider(Of ApplicationUser, Integer) With {.MessageFormat = "Your security code is {0}"})
+
             'manager.RegisterTwoFactorProvider("Email Code", New EmailTokenProvider(Of ApplicationUser, Integer) With {.Subject = "Security Code", .BodyFormat = "Your security code is {0}"})
+
             manager.EmailService = New EmailService()
             manager.SmsService = New SmsService()
 
@@ -132,6 +106,7 @@ Public Class ApplicationUserManager
 
             'var manager = New UserManager < IdentityUser > (New NoopUserStore());
             ' Dim VerifyUserToken = manager.VerifyUserTokenAsync(Nothing, Nothing, Nothing)
+
             Return manager
         Catch ex As Exception
             'logger.Error(ex)
@@ -173,15 +148,6 @@ Public Class ApplicationUserManager
 
         Return cast
     End Function
-    'Public Overrides Async Function ResetPasswordAsync(userId As Integer, Token As String, newPassword As String) As Task(Of IdentityResult)
-    '    Try
-    '        'Dim Token2 = Await MyBase.ResetPasswordAsync(userId, Token, newPassword)
-    '        Return Await MyBase.ResetPasswordAsync(userId, Token, newPassword)
-    '    Catch ex As Exception
-    '        'logger.Error(ex)
-
-    '    End Try
-    'End Function
 
     Public Overrides Async Function ResetPasswordAsync(ByVal userId As Integer, ByVal token As String, ByVal newPassword As String) As Task(Of IdentityResult)
         Try
@@ -212,7 +178,6 @@ Public Class ApplicationUserManager
         End Try
     End Function
 
-
     Public Overrides Async Function ConfirmEmailAsync(ByVal userId As Integer, ByVal token As String) As Task(Of IdentityResult)
         ThrowIfDisposed()
         Dim store = GetEmailStore()
@@ -231,11 +196,6 @@ Public Class ApplicationUserManager
         Return Await UpdateAsync(user).WithCurrentCulture()
     End Function
 
-
-    'Public Overrides Function ConfirmEmailAsync(userId As Integer, token As String) As Task(Of IdentityResult)
-
-
-    'End Function
     Private Function GetPasswordStore() As IUserPasswordStore(Of ApplicationUser, Integer)
         Dim cast = TryCast(Store, IUserPasswordStore(Of ApplicationUser, Integer))
 
@@ -271,11 +231,11 @@ Public Class ApplicationUserManager
                 End If
             End Function
 
-            Private Shared Function NewSecurityStamp() As String
-                Return Guid.NewGuid().ToString()
-            End Function
+    Private Shared Function NewSecurityStamp() As String
+        Return Guid.NewGuid().ToString()
+    End Function
 
-            Private _passwordValidator As IIdentityValidator(Of String)
+    Private _passwordValidator As IIdentityValidator(Of String)
     Public Overloads Property PasswordValidator As IIdentityValidator(Of String)
         Get
             ThrowIfDisposed()
@@ -292,57 +252,35 @@ Public Class ApplicationUserManager
         End Set
     End Property
 
-    'Protected Overrides Async Function UpdatePassword(passwordStore As IUserPasswordStore(Of ApplicationUser, Integer), user As ApplicationUser, newPassword As String) As Task(Of IdentityResult)
-    '    Try
-    '        Return Await MyBase.UpdatePassword(passwordStore, user, newPassword)
-    '    Catch ex As Exception
-    '        'logger.Error(ex)
-
-    '    End Try
-    'End Function
-
-
-
-
-    '<Runtime.CompilerServices.Extension>
-    'Public Shared Function GeneratePasswordResetToken(Of TUser As {Class, IUser(Of TKey)}, TKey As IEquatable(Of TKey))(ByVal manager As UserManager(Of TUser, TKey), ByVal userId As TKey) As String
-    '    If manager Is Nothing Then
-    '        Throw New ArgumentNullException("manager")
-    '    End If
-
-    '    Return AsyncHelper.RunSync(Function() manager.GeneratePasswordResetTokenAsync(userId))
-    'End Function
-
-
     Public Overrides Async Function GenerateUserTokenAsync(ByVal purpose As String, ByVal userId As Integer) As Task(Of String)
-                ThrowIfDisposed()
+        ThrowIfDisposed()
 
-                If UserTokenProvider Is Nothing Then
-                    Throw New NotSupportedException(Resource1.NoTokenProvider)
-                End If
+        If UserTokenProvider Is Nothing Then
+            Throw New NotSupportedException(Resource1.NoTokenProvider)
+        End If
 
-                Dim user = Await FindByIdAsync(userId).WithCurrentCulture()
+        Dim user = Await FindByIdAsync(userId).WithCurrentCulture()
 
-                If user Is Nothing Then
-                    Throw New InvalidOperationException(String.Format(CultureInfo.CurrentCulture, Resource1.UserIdNotFound, userId))
-                End If
+        If user Is Nothing Then
+            Throw New InvalidOperationException(String.Format(CultureInfo.CurrentCulture, Resource1.UserIdNotFound, userId))
+        End If
 
-                Return Await UserTokenProvider.GenerateAsync(purpose, Me, user).WithCurrentCulture()
-            End Function
+        Return Await UserTokenProvider.GenerateAsync(purpose, Me, user).WithCurrentCulture()
+    End Function
 
-            Public Overrides Async Function VerifyUserTokenAsync(ByVal userId As Integer, ByVal purpose As String, ByVal token As String) As Task(Of Boolean)
-                ThrowIfDisposed()
+    Public Overrides Async Function VerifyUserTokenAsync(ByVal userId As Integer, ByVal purpose As String, ByVal token As String) As Task(Of Boolean)
+        ThrowIfDisposed()
 
-                If UserTokenProvider Is Nothing Then
-                    Throw New NotSupportedException(Resource1.NoTokenProvider)
-                End If
+        If UserTokenProvider Is Nothing Then
+            Throw New NotSupportedException(Resource1.NoTokenProvider)
+        End If
 
-                Dim user = Await FindByIdAsync(userId).WithCurrentCulture()
-                ' Dim TokenExpired = IsTokenExpired(user, token)
+        Dim user = Await FindByIdAsync(userId).WithCurrentCulture()
+        ' Dim TokenExpired = IsTokenExpired(user, token)
 
-                If user Is Nothing Then
-                    Throw New InvalidOperationException(String.Format(CultureInfo.CurrentCulture, Resource1.UserIdNotFound, userId))
-                End If
+        If user Is Nothing Then
+            Throw New InvalidOperationException(String.Format(CultureInfo.CurrentCulture, Resource1.UserIdNotFound, userId))
+        End If
 
 
 
@@ -356,18 +294,6 @@ Public Class ApplicationUserManager
     End Function
 
 
-    'Public Overrides Async Function GetSecurityStampAsync(ByVal userId As Integer) As Task(Of String)
-    '    ThrowIfDisposed()
-    '    Dim securityStore = GetSecurityStore()
-    '    Dim user = Await FindByIdAsync(userId).WithCurrentCulture()
-
-    '    If user Is Nothing Then
-    '        Throw New InvalidOperationException(String.Format(CultureInfo.CurrentCulture, Resources.UserIdNotFound, userId))
-    '    End If
-
-    '    Return Await securityStore.GetSecurityStampAsync(user).WithCurrentCulture()
-    'End Function
-
 
     Public Overrides Async Function GeneratePasswordResetTokenAsync(ByVal userId As Integer) As Task(Of String)
                 Try
@@ -380,33 +306,7 @@ Public Class ApplicationUserManager
             End Function
 
 
-            'Public Overrides Function SendEmailAsync(ByVal userId As Integer, subject As String, body As String) As Task
-            '    Try
-
-
-            '        Return MyBase.SendEmailAsync(userId, subject, body)
-            '    Catch ex As Exception
-            '        'logger.Error(ex)
-
-            '    End Try
-            'End Function
-
-            'Public Overrides Async Function SendEmailAsync(ByVal userId As Integer, ByVal subject As String, ByVal body As String) As Task
-            '    ThrowIfDisposed()
-
-            '    If EmailService IsNot Nothing Then
-            '        Dim msg = New IdentityMessage With {
-            '        .Destination = Await GetEmailAsync(userId).WithCurrentCulture(),
-            '        .Subject = subject,
-            '        .Body = body
-            '    }
-            '        Await EmailService.SendAsync(msg).WithCurrentCulture()
-            '    End If
-            'End Function
-
-
-
-            Public Overrides Function FindAsync(ByVal userName As String, ByVal password As String) As Task(Of ApplicationUser)
+    Public Overrides Function FindAsync(ByVal userName As String, ByVal password As String) As Task(Of ApplicationUser)
                 Try
                     ' Logger2.Log("ApplicationUserManager:FindAsync (userName = {0}, password = {1})", userName, password)
                     Return MyBase.FindAsync(userName, password)
@@ -427,76 +327,15 @@ Public Class ApplicationUserManager
                 End Try
             End Function
 
-            Public Overrides Async Function FindByNameAsync(ByVal userName As String) As Task(Of ApplicationUser)
-                Try
-                    'Logger2.Log("ApplicationUserManager:FindByNameAsync (userName = {0})", userName)
-                    Return Await MyBase.FindByNameAsync(userName)
-                Catch ex As Exception
-                    'logger.Error(ex)
+    Public Overrides Async Function FindByNameAsync(ByVal userName As String) As Task(Of ApplicationUser)
+        Try
+            'Logger2.Log("ApplicationUserManager:FindByNameAsync (userName = {0})", userName)
+            Return Await MyBase.FindByNameAsync(userName)
+        Catch ex As Exception
+            'logger.Error(ex)
 
-                End Try
-            End Function
-
-
-
-    'Public Function Create(ByVal user As ApplicationUser, ByVal password As String) As Task(Of IdentityResult)
-    '    Try
-    '        'Dim ApplicationUser As New ApplicationUser
-    '        'Dim Users As New Users
-    '        ''ApplicationUser = Await Users.AddUser(user.LastName, user.FirstName, user.Email, user.Email, password)
-
-    '        ' Logger2.Log("ApplicationUserManager:FindAsync (userName = {0}, password = {1})", userName, password)
-    '        ' Return MyBase.FindAsync(userName, password)
-    '  Catch ex As Exception
-    'logger.Error(ex)
-
-    '    End Try
-    'End Function
-
-    'Public Overrides Async Function CreateAsync(ByVal user As ApplicationUser, ByVal password As String) As Task(Of IdentityResult)
-    '    Try
-
-    '        'user.Id = Guid.NewGuid()
-    '        '_users.Add(user)
-    '        'Return _db.SaveChangesAsync()
-
-
-    '        'Dim aa As IUserPasswordStore(Of FrUser) = TryCast(Store, IUserPasswordStore(Of FrUser))
-    '        'If CObj(user) Is Nothing Then Return New IdentityResult(String.Format(SystemMessage.NewException, "CreateAsync User Null"))
-    '        'If password Is Nothing Then Return New IdentityResult(String.Format(SystemMessage.NewException, "CreateAsync Password Null"))
-    '        'Dim sssS As IdentityResult = Await Me.UpdatePassword(aa, user, password)
-    '        'Dim s As IdentityResult = Await MyBase.CreateAsync(user)
-    '        'Dim ss = _userService
-    '        'Return Nothing
-
-
-    '        'Me.ThrowIfDisposed()
-    '        'Await Me.UpdateSecurityStampInternal(user).WithCurrentCulture()
-    '        'Dim identityResult As IdentityResult = Await Me.UserValidator.ValidateAsync(user).WithCurrentCulture(Of IdentityResult)()
-    '        'If Not identityResult.Succeeded Then Return identityResult
-    '        'If Me.UserLockoutEnabledByDefault AndAlso Me.SupportsUserLockout Then Await Me.GetUserLockoutStore().SetLockoutEnabledAsync(user, True).WithCurrentCulture()
-    '        'Await Me.Store.CreateAsync(user).WithCurrentCulture()
-    '        'Return IdentityResult.Success
-
-
-
-    '        'Logger2.Log("ApplicationUserManager:FindByNameAsync (userName = {0})", userName)
-    '        'Dim identityResult = MyBase.Create(user, password)
-
-    '        ' Create(Of TUser As {Class, IUser(Of TKey)}, TKey As IEquatable(Of TKey))(manager As UserManager(Of TUser, TKey), user As TUser) As IdentityResult
-
-    '        'Dim ApplicationUser As New ApplicationUser
-    '        'Dim Users As New Users
-    '        'ApplicationUser = Await Users.AddUser(user.LastName, user.FirstName, user.Email, user.Email, password)
-
-    '        ' Return Await Task.FromResult(IdentityResult)
-    '        ' Dim s As IdentityResult = Await MyBase.CreateAsync(user)
-    '        Return Await MyBase.CreateAsync(user, password)
-    '  Catch ex As Exception
-    'logger.Error(ex)
-
-    '    End Try
-    'End Function
+        End Try
+    End Function
 
 
 
@@ -516,14 +355,6 @@ Public Class ApplicationUserManager
         Await Store.CreateAsync(user).WithCurrentCulture()
         Return IdentityResult.Success
     End Function
-
-
-    'Public Function CreateAsync(ByVal user As ApplicationUser) As Task
-    '    Dim context = TryCast(UserStore.Context, ApplicationDbContext)
-    '    context.Users.Add(user)
-    '    context.Configuration.ValidateOnSaveEnabled = False
-    '    Return context.SaveChangesAsync()
-    'End Function
 
 
     Public Overrides Async Function CreateAsync(ByVal user As ApplicationUser, ByVal password As String) As Task(Of IdentityResult)
@@ -558,16 +389,6 @@ Public Class ApplicationUserManager
         Return cast
     End Function
 
-
-    'Public Overrides Async Function CreateAsync(ByVal user As ApplicationUser, ByVal password As String) As Task(Of IdentityResult)
-    '            Try
-    '                Return Await MyBase.CreateAsync(user, password)
-    '            Catch ex As Exception
-    '                'logger.Error(ex)
-
-    '            End Try
-    '        End Function
-
     Public Overrides Async Function AddToRoleAsync(ByVal userId As Integer, ByVal role As String) As Task(Of IdentityResult)
         ThrowIfDisposed()
         Dim userRoleStore = GetUserRoleStore()
@@ -597,9 +418,6 @@ Public Class ApplicationUserManager
         Return cast
     End Function
 
-    'Public Overrides Async Function AddToRoleAsync(ByVal userId As Integer, ByVal role As String) As Task(Of IdentityResult)
-    '            Return Await MyBase.AddToRoleAsync(userId, role)
-    '        End Function
 
     Protected Overrides Function VerifyPasswordAsync(ByVal store As IUserPasswordStore(Of ApplicationUser, Integer), ByVal user As ApplicationUser, ByVal password As String) As Task(Of Boolean)
                 Try
@@ -637,27 +455,22 @@ Public Class ApplicationUserManager
                 End Try
             End Function
 
-            Public Overrides Function GetTwoFactorEnabledAsync(ByVal userId As Integer) As Task(Of Boolean)
-                Try
-                    ' Logger2.Log("ApplicationUserManager:GetTwoFactorEnabledAsync (userId = {0})", userId)
-                    Return Task.FromResult(Of Boolean)(False)
-                Catch ex As Exception
-                    'logger.Error(ex)
+    Public Overrides Function GetTwoFactorEnabledAsync(ByVal userId As Integer) As Task(Of Boolean)
+        Try
+            'Logger2.Log("ApplicationUserManager:GetTwoFactorEnabledAsync (userId = {0})", userId)
+            'Dim twostep As Boolean = False
+            'If GetTwoFactorEnabledAsync(userId) Then twostep = True
+            ' Return Task.FromResult(Of Boolean)(True)
+            Return Task.FromResult(Of Boolean)(False)
+            ' Return MyBase.GetTwoFactorEnabledAsync(userId)
+        Catch ex As Exception
+            'logger.Error(ex)
 
-                End Try
-            End Function
+        End Try
+    End Function
 
-            'Private Function GetSecurityStore() As IUserSecurityStampStore(Of IdentityUser)
-            '    Dim cast = TryCast(Store, IUserSecurityStampStore(Of IdentityUser))
 
-            '    If cast Is Nothing Then
-            '        Throw New NotSupportedException(Resources.StoreNotIUserSecurityStampStore)
-            '    End If
-
-            '    Return cast
-            'End Function
-
-            Public Overrides Async Function GetSecurityStampAsync(ByVal userId As Integer) As Task(Of String)
+    Public Overrides Async Function GetSecurityStampAsync(ByVal userId As Integer) As Task(Of String)
                 Try
                     ThrowIfDisposed()
                     Dim securityStore = GetSecurityStore()
@@ -693,30 +506,8 @@ Public Class ApplicationUserManager
                     Throw New ObjectDisposedException([GetType]().Name)
                 End If
             End Sub
-            'Public Overrides Function GetSecurityStampAsync(ByVal userId As Integer) As Task(Of String)
-            '    Try
-            '        Dim identityUser = ToIdentityUser(userId)
-            '        Dim task = UserStore.GetSecurityStampAsync(identityUser)
-            '        SetApplicationUser(User, identityUser)
 
-            '        '  Return Me.GetSecurityStampAsync(userId)
-            '    Catch ex As Exception
-            '        'logger.Error(ex)
-
-            '    End Try
-            'End Function
-
-            'Public Function SetSecurityStampAsync(ByVal user As ApplicationUser, ByVal stamp As String) As Task
-            '    Dim identityUser = ToIdentityUser(user)
-            '    Dim task = UserStore.SetSecurityStampAsync(identityUser, stamp)
-            '    SetApplicationUser(user, identityUser)
-            '    Return task
-            'End Function
-
-            'Private Function ToIdentityUser(ByVal user As ApplicationUser) As IdentityUser
-            '    Return New IdentityUser With {.Id = user.Id, .PasswordHash = user.PasswordHash, .SecurityStamp = user.SecurityStamp, .UserName = user.UserName}
-            'End Function
-            Private Function ToIdentityUser(ByVal userId As Integer) As IdentityUser
+    Private Function ToIdentityUser(ByVal userId As Integer) As IdentityUser
                 Return New IdentityUser With {.Id = userId}
             End Function
 

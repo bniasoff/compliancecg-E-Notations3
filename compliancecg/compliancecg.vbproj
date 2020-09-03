@@ -391,7 +391,6 @@
     <Compile Include="Authorization\IdentityResult.vb" />
     <Compile Include="Authorization\IIdentityValidator.vb" />
     <Compile Include="Authorization\IUserPasswordStore.vb" />
-    <Compile Include="Authorization\UserStore.vb" />
     <Compile Include="Authorization\Identity3\Crypto.vb" />
     <Compile Include="Authorization\Identity3\IdentityConfig.vb" />
     <Compile Include="Authorization\Identity3\IdentityModels.vb" />

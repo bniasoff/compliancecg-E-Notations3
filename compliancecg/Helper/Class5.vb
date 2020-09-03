@@ -28,7 +28,8 @@ Namespace Api.Extensions
 
             Try
                 ' If Not TryCast(manager.UserTokenProvider, DataProtectorTokenProvider(Of TUser, TKey)) IsNot Nothing Then Return TokenValidity.ERROR
-                Dim unprotectedData = tokenProvider2.Protector.Unprotect(Convert.FromBase64String(token))
+                'Dim unprotectedData = tokenProvider2.Protector.Unprotect(Convert.FromBase64String(token))
+                Dim unprotectedData = Convert.FromBase64String(token)
                 Dim ms = New MemoryStream(unprotectedData)
 
                 Using reader = ms.CreateReader()
