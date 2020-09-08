@@ -18,9 +18,9 @@ Public Class SendCodeViewModel
 End Class
 
 Public Class VerifyCodeViewModel
-    <Required>
-    Public Property Provider As String
-    
+    '<Required>
+    'Public Property Provider As String
+
     <Required>
     <Display(Name:="Code")>
     Public Property Code As String

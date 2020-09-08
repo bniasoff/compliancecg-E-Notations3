@@ -83,20 +83,29 @@ Public Class AccountController
                 If Not IsNothing(CurrentUser) Then
                     CurrentUser.LastLoginDate = Now
                     Session("CurrentUser") = CurrentUser
+
+
                     Users.Update(CurrentUser)
                     UserHistory.AddUserHistory(CurrentUser, result, LoginType.LogIn)
 
                     Session("MasterDocument") = Nothing
                     Session("SectionIndexes") = Nothing
 
+
+
+                    ' Dim result2 = SignInManager.AESendTwoFactorCodeAsync()
+
+
+
                     'AE 8/28/20 add admin authentication cookies for staff logins
+                    'AE 9/7/20 Create 2 step email verification
                     If CurrentUser.Email <> "info@compliancecg.com" Then
                         If CurrentUser.Email.IndexOf("staff@") = 0 Then
                             If Request.Cookies.Get("staffAuthenticated") Is Nothing Then
                                 ViewData!ReturnUrl = returnUrl
                                 Return View("StaffLogin", New LoginViewModel() With {
-                                .Email = "", .Password = ""
-                            })
+                            .Email = "", .Password = ""
+                        })
 
                             Else
                                 If Request.Cookies("staffAuthenticated").Value <> CurrentUser.Email Then
@@ -107,19 +116,30 @@ Public Class AccountController
                                 End If
                             End If
                         Else
-                            Return RedirectToAction("Acknowledgement", "Home")
+                            If Request.Cookies.Get("loginVerified") Is Nothing Then
+                                Dim rndnumber As Random = New Random
+                                Dim Number = rndnumber.Next(0, 100000).ToString("00000")
+                                Session("LoginCode") = Number
+                                Await UserManager.SendEmailAsync(CurrentUser.Id, "CCG Login Verification Code", "Your Login Verification code is:<br/>" & Number)
+                                Return RedirectToAction("VerifyCode", New With {
+                                    returnUrl,
+                                    model.RememberMe
+                                })
+                            Else
+                                Return RedirectToAction("Acknowledgement", "Home")
+                            End If
                         End If
+                        End If
+                        If CurrentUser.Email = "info@compliancecg.com" Then
+                            Session("Acknowledgement") = True
+                        End If
+
+
+
+
                     End If
-                    If CurrentUser.Email = "info@compliancecg.com" Then
-                        Session("Acknowledgement") = True
-                    End If
 
-
-
-
-                End If
-
-                    Return RedirectToLocal(returnUrl)
+                Return RedirectToLocal(returnUrl)
             Case SignInStatus.LockedOut
                 Return View("Lockout")
             Case SignInStatus.RequiresVerification
@@ -158,13 +178,12 @@ Public Class AccountController
     '
     ' GET: /Account/VerifyCode
     <AllowAnonymous>
-    Public Async Function VerifyCode(provider As String, returnUrl As String, rememberMe As Boolean) As Task(Of ActionResult)
+    Public Async Function VerifyCode(returnUrl As String, rememberMe As Boolean) As Task(Of ActionResult)
         ' Require that the user has already logged in via username/password or external login
         If Not Await SignInManager.HasBeenVerifiedAsync() Then
             Return View("Error")
         End If
         Return View(New VerifyCodeViewModel() With {
-            .Provider = provider,
             .ReturnUrl = returnUrl,
             .RememberMe = rememberMe
         })
@@ -184,16 +203,30 @@ Public Class AccountController
         ' If a user enters incorrect codes for a specified amount of time then the user account 
         ' will be locked out for a specified amount of time. 
         ' You can configure the account lockout settings in IdentityConfig
-        Dim result = Await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:=model.RememberMe, rememberBrowser:=model.RememberBrowser)
-        Select Case result
-            Case SignInStatus.Success
-                Return RedirectToLocal(model.ReturnUrl)
-            Case SignInStatus.LockedOut
-                Return View("Lockout")
-            Case Else
-                ModelState.AddModelError("", "Invalid code.")
-                Return View(model)
-        End Select
+        'Dim result = Await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:=model.RememberMe, rememberBrowser:=model.RememberBrowser)
+
+        If model.Code = Session("LoginCode") Then
+            Dim verifiedCookie As HttpCookie = New HttpCookie("loginVerified")
+            verifiedCookie.Value = Session("CurrentUser").Email
+            verifiedCookie.Expires = Now.AddDays(30)
+            Response.Cookies.Add(verifiedCookie)
+            Return RedirectToAction("Acknowledgement", "Home")
+        Else
+            ModelState.AddModelError("", "Invalid code.")
+            Return View(model)
+        End If
+        'Select Case result
+        '    Case SignInStatus.Success
+        '        Return RedirectToLocal(model.ReturnUrl)
+        '    Case SignInStatus.LockedOut
+        '        Return View("Lockout")
+        '    Case Else
+        '        ModelState.AddModelError("", "Invalid code.")
+        '        Return View(model)
+        'End Select
+
+
+
     End Function
 
     Public Async Function AddUser(model As RegisterViewModel) As Task(Of Boolean)
@@ -240,42 +273,6 @@ Public Class AccountController
         Return View()
     End Function
 
-    ''
-    '' POST: /Account/Register
-    '<HttpPost>
-    '<AllowAnonymous>
-    '<ValidateAntiForgeryToken>
-    'Public Async Function Register(model As RegisterViewModel) As Task(Of ActionResult)
-    '    If ModelState.IsValid Then
-    '        Dim user = New ApplicationUser() With {.UserName = model.Email, .Email = model.Email}
-    '        'Dim user = New ApplicationUser() With {.UserName = model.Email, .Email = model.Email, .FirstName = model.FirstName, .LastName = model.LastName}
-    '        Dim UserAccount = user
-
-
-    '        'Dim result2 = Await AddUser(model)
-    '        ' Dim UserAccount As New UserAccount
-    '        'UserAccount.UserName = model.Email
-    '        'UserAccount.Email = model.Email
-    '        'UserAccount.Password = model.Password
-
-    '        Dim result = Await UserManager.CreateAsync(user, model.Password)
-    '        If result.Succeeded Then
-    '            Await SignInManager.SignInAsync(UserAccount, isPersistent:=False, rememberBrowser:=False)
-
-    '            ' For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-    '            ' Send an email with this link
-    '            ' Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(user.Id)
-    '            ' Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With { .userId = user.Id, code }, protocol := Request.Url.Scheme)
-    '            ' Await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=""" & callbackUrl & """>here</a>")
-
-    '            Return RedirectToAction("Index", "Home")
-    '        End If
-    '        AddErrors(result)
-    '    End If
-
-    '    ' If we got this far, something failed, redisplay form
-    '    Return View(model)
-    'End Function
 
 
     <HttpPost>
@@ -352,31 +349,6 @@ Public Class AccountController
 
 
 
-    'Public Async Function Register2(Email As String, Password As String) As Task(Of String)
-
-    '    Dim User = New ApplicationUser With {.UserName = Email, .Email = Email}
-    '    Dim appDbContext = HttpContext.GetOwinContext().[Get](Of ApplicationDbContext)()
-
-    '    Using transaction = appDbContext.Database.BeginTransaction()
-
-    '        Try
-    '            User.Password2 = Password
-    '            Dim result = Await UserManager.CreateAsync(User, Password)
-
-    '            If result.Succeeded Then
-    '                Await Me.UserManager.AddToRoleAsync(User.Id, "Client")
-    '                transaction.Commit()
-    '                Await SignInManager.SignInAsync(User, isPersistent:=False, rememberBrowser:=False)
-    '            End If
-
-    '            Dim LoginErrors As List(Of String) = AddErrors2(result)
-    '            Return JsonConvert.SerializeObject(LoginErrors)
-    '      Catch ex As Exception
-    'logger.Error(ex)
-    '            transaction.Rollback()
-    '            ' Return Nothing
-    '        End Try
-    '    End Using
 
     Public Async Function Register2(Email As String, Password As String) As Task(Of String)
 
@@ -533,7 +505,9 @@ Public Class AccountController
     ' GET: /Account/SendCode
     <AllowAnonymous>
     Public Async Function SendCode(returnUrl As String, rememberMe As Boolean) As Task(Of ActionResult)
-        Dim userId = Await SignInManager.GetVerifiedUserIdAsync()
+        'Dim userId = Await SignInManager.GetVerifiedUserIdAsync()
+        Dim CurrentUser = Session("CurrentUser")
+        Dim userId = CurrentUser.Id
         If userId = 0 Then
             Return View("Error")
         End If
@@ -560,9 +534,9 @@ Public Class AccountController
         End If
 
         ' Generate the token and send it
-        If Not Await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider) Then
-            Return View("Error")
-        End If
+        ' If Not Await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider) Then
+        ' Return View("Error")
+        ' End If
         Return RedirectToAction("VerifyCode", New With {
             .Provider = model.SelectedProvider,
             model.ReturnUrl,

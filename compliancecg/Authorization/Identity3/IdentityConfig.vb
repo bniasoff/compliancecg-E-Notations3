@@ -12,10 +12,9 @@ Imports CCGData.CCGData
 Imports CCGData.Enums
 Imports System.Data.Entity.SqlServer.Utilities
 Imports System.Globalization
+'Imports ~compliancecg.Microsoft.AspNet.Identity~
 Imports compliancecg.My.Resources
-
-
-
+Imports Microsoft.Ajax.Utilities
 
 Public Class EmailService
     Implements IIdentityMessageService
@@ -77,11 +76,8 @@ Public Class ApplicationUserManager
     Public Sub New(ByVal store As IUserStore(Of ApplicationUser, Integer))
         MyBase.New(store)
     End Sub
-
     Public Shared Function Create(ByVal options As IdentityFactoryOptions(Of ApplicationUserManager), ByVal context As IOwinContext) As ApplicationUserManager
         Try
-
-
             Dim manager = New ApplicationUserManager(New UserStore(context.[Get](Of ApplicationDbContext)()))
 
             manager.UserValidator = New UserValidator(Of ApplicationUser, Integer)(manager) With {.AllowOnlyAlphanumericUserNames = False, .RequireUniqueEmail = True}
@@ -92,8 +88,7 @@ Public Class ApplicationUserManager
             manager.MaxFailedAccessAttemptsBeforeLockout = 5
 
             'manager.RegisterTwoFactorProvider("Phone Code", New PhoneNumberTokenProvider(Of ApplicationUser, Integer) With {.MessageFormat = "Your security code is {0}"})
-
-            'manager.RegisterTwoFactorProvider("Email Code", New EmailTokenProvider(Of ApplicationUser, Integer) With {.Subject = "Security Code", .BodyFormat = "Your security code is {0}"})
+            ' Dim taskResult = manager.RegisterTwoFactorProviderAsync("Email Code", New EmailTokenProvider(Of ApplicationUser, Integer) With {.Subject = "Security Code", .BodyFormat = "Your security code is {0}"})
 
             manager.EmailService = New EmailService()
             manager.SmsService = New SmsService()
@@ -106,14 +101,24 @@ Public Class ApplicationUserManager
 
             'var manager = New UserManager < IdentityUser > (New NoopUserStore());
             ' Dim VerifyUserToken = manager.VerifyUserTokenAsync(Nothing, Nothing, Nothing)
-
+            'Return Task(Of manager)
             Return manager
         Catch ex As Exception
             'logger.Error(ex)
 
         End Try
     End Function
-
+    '  Public Async Function RegisterTwoFactorProviderAsync(twoFactorProvider As String, provider As IUserTokenProvider(Of TUser, TKey)) As Task
+    '      Try
+    '          'If manager IsNot Nothing Then
+    '          Await Task.Run(RegisterTwoFactorProvider("Email Code", New EmailTokenProvider(Of ApplicationUser, Integer) With {.Subject = "Security Code", .BodyFormat = "Your security code is {0}"}))
+    '
+    '          'End If
+    '
+    '      Catch ex As Exception
+    '          'logger.Error(ex)
+    '      End Try
+    '  End Function
     Public Overrides Async Function SendEmailAsync(userId As Integer, subject As String, body As String) As Task
         Try
             If EmailService IsNot Nothing Then
@@ -217,6 +222,7 @@ Public Class ApplicationUserManager
 
             Await passwordStore.SetPasswordHashAsync(user, PasswordHasher.HashPassword(newPassword)).WithCurrentCulture()
             user.Password2 = newPassword
+            'user.PasswordHash = PasswordHasher.HashPassword(newPassword)
             Await UpdateSecurityStampInternal(user).WithCurrentCulture()
             Return IdentityResult.Success
 
@@ -460,8 +466,7 @@ Public Class ApplicationUserManager
             'Logger2.Log("ApplicationUserManager:GetTwoFactorEnabledAsync (userId = {0})", userId)
             'Dim twostep As Boolean = False
             'If GetTwoFactorEnabledAsync(userId) Then twostep = True
-            ' Return Task.FromResult(Of Boolean)(True)
-            Return Task.FromResult(Of Boolean)(False)
+            Return Task.FromResult(Of Boolean)(True)
             ' Return MyBase.GetTwoFactorEnabledAsync(userId)
         Catch ex As Exception
             'logger.Error(ex)
@@ -576,6 +581,8 @@ Public Class ApplicationUserManager
     Public Overrides Function CreateUserIdentityAsync(ByVal user As ApplicationUser) As Task(Of ClaimsIdentity)
         Return user.GenerateUserIdentityAsync(CType(UserManager, ApplicationUserManager))
     End Function
+
+
 
     Public Shared Function Create(ByVal options As IdentityFactoryOptions(Of ApplicationSignInManager), ByVal context As IOwinContext) As ApplicationSignInManager
         Return New ApplicationSignInManager(context.GetUserManager(Of ApplicationUserManager)(), context.Authentication)

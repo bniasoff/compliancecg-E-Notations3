@@ -2461,7 +2461,6 @@
     <Folder Include="ckeditor\tests\_benderjs\ckeditor\static\" />
     <Folder Include="ckeditor\tests\_benderjs\ssl\" />
     <Folder Include="Data\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="TS\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
