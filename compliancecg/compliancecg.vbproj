@@ -1187,8 +1187,6 @@
     <Content Include="App_Data\Resources\Human Resources\CCG Form 00305i Certification of Health Care Provider for Family Member.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00305b FMLA Notice.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00412b Fax Machine Poster.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00446a Resident Privacy Poster, Media Device Poster.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00503a Nondiscrimination Notice.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00505b Grievance Poster.pdf" />
     <Content Include="App_Data\Resources\Required Posters\Common Taglines.pdf" />
@@ -1271,6 +1269,8 @@
     <Content Include="Resources\COVID-19\Memos\Toolkit on State Actions to Mitigate COVID-19.pdf" />
     <Content Include="Resources\COVID-19\Memos\Updates to Requirements for Notification of Confirmed and Suspected COVID-19 Cases Among Residents and Staff in Nursing Homes.pdf" />
     <Content Include="Resources\COVID-19\Memos\Updates to the COVID-19 Focused Survey for Nursing Homes.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00412 Fax Machine Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00446a Resident Privacy Poster, Media Device Poster.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
