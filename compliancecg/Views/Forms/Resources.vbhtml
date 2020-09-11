@@ -18,7 +18,7 @@ End Code
                                 Select Case File.Ext
                                     Case = ".pdf"
 
-                                        @<div style="margin-bottom:20px">
+                                        @<div class="e-card-parent e-card-@Model.Title">
                                             <div tabindex="0" class="e-card" id="basic_card">
                                                 <div class="e-card-header">
                                                     <div class="e-card-header-caption">

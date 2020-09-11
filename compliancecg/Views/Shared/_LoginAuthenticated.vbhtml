@@ -204,7 +204,15 @@
             var ajax = new ej.base.Ajax('/Forms/Resources?File=' + arg, 'POST', true);
             ajax.send().then((data) => {
                 $("#PartialView").html(data);
+                if (arg == "acknowledgmentforms") {
+                    var ajax = new ej.base.Ajax('/Forms/Resources?File=packets', 'POST', true);
+                    ajax.send().then((data) => {
+                        $("#PartialView").html("<div class='row formsRow'><h2>Acknowledgment Forms</h2></div><hr/>" + data.replace("<h2>", "<h3>") + $("#PartialView").html().replace("<h2>", "<h3>"));
+                    });
+                }
             });
+         
+
         };
     };
     function covidActive(arg) {

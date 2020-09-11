@@ -5,7 +5,7 @@ Imports CCGData.CCGData
 Imports CCGData.CCGData.CCGDataEntities
 Imports System.IO.Compression
 Imports Newtonsoft.Json
-
+Imports System.Net.Sockets
 
 Namespace Controllers
     Public Class FormsController
@@ -147,10 +147,11 @@ Namespace Controllers
         Public Function DisplayRescourceFileForDownload2(ResourceFile As String) As DocFiles
             Dim SubFolder As String = String.Empty
             Dim viewModel = New DocFiles
-
             Select Case ResourceFile
                 Case "acknowledgmentforms"
                     SubFolder = "Acknowledgment Forms"
+                Case "packets"
+                    SubFolder = "Acknowledgment Forms/Packets"
                 Case "complianceofficer"
                     SubFolder = "Compliance Officer"
                 Case "exclusionlist"
@@ -189,7 +190,10 @@ Namespace Controllers
             Select Case SubFolder
                 Case = "Acknowledgment Forms"
                     GetAcknowledgmentForms(viewModel)
-                    viewModel.Title = SubFolder
+                    viewModel.Title = "Individual Forms"
+                Case = "Acknowledgment Forms/Packets"
+                    GetAcknowledgmentForms(viewModel)
+                    viewModel.Title = "Packets"
                 Case = "Compliance Officer"
                     GetComplianceOfficer(viewModel)
                     viewModel.Title = SubFolder

@@ -1185,11 +1185,6 @@
     <Content Include="App_Data\Resources\Human Resources\CCG Form 00305g Certification for Serious Injury or Illness of a Veteran for Military Caregiver Leave.pdf" />
     <Content Include="App_Data\Resources\Human Resources\CCG Form 00305h Certification of Health Care Provider for Employee%27s Serious Health Condition.pdf" />
     <Content Include="App_Data\Resources\Human Resources\CCG Form 00305i Certification of Health Care Provider for Family Member.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00305b FMLA Notice.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00503a Nondiscrimination Notice.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00505b Grievance Poster.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\Common Taglines.pdf" />
     <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.docx" />
     <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.pdf" />
     <Content Include="App_Data\Resources\State Specific\MI\CCG Form 003MIBCb Long Term Care Workforce Background Check Forms.docx" />
@@ -1225,7 +1220,6 @@
     <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.docx" />
     <Content Include="App_Data\Resources\State Specific\WI\CCG Form 00305b WI FMLA Poster.pdf" />
     <Content Include="App_Data\Resources\HIPAA\CCG 00214a Business Associate Agreement Cover Lettter.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
     <Content Include="Resources\COVID-19\Tools\CCG Coronavirus Alert Memo.pdf" />
     <Content Include="Resources\COVID-19\Tools\Checklist for Healthcare Facilities.pdf" />
     <Content Include="Resources\COVID-19\Tools\CMS Memo.pdf" />
@@ -1269,8 +1263,20 @@
     <Content Include="Resources\COVID-19\Memos\Toolkit on State Actions to Mitigate COVID-19.pdf" />
     <Content Include="Resources\COVID-19\Memos\Updates to Requirements for Notification of Confirmed and Suspected COVID-19 Cases Among Residents and Staff in Nursing Homes.pdf" />
     <Content Include="Resources\COVID-19\Memos\Updates to the COVID-19 Focused Survey for Nursing Homes.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00305b FMLA Notice.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00412 Fax Machine Poster.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00446a Resident Privacy Poster, Media Device Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00503a Nondiscrimination Notice.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00505b Grievance Poster.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\Common Taglines.pdf" />
+    <Content Include="App_Data\Resources\Acknowledgment Forms\Packets\Annual Packet.pdf" />
+    <Content Include="App_Data\Resources\Acknowledgment Forms\Packets\New Hire Packet.pdf" />
+    <Content Include="App_Data\Resources\Acknowledgment Forms\Packets\Volunteers Packet.pdf" />
+    <Content Include="App_Data\Forms\Acknowledgment Forms\Packets\Annual Packet.pdf" />
+    <Content Include="App_Data\Forms\Acknowledgment Forms\Packets\New Hire Packet.pdf" />
+    <Content Include="App_Data\Forms\Acknowledgment Forms\Packets\Volunteers Packet.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
