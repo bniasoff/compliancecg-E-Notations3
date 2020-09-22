@@ -28,6 +28,11 @@ Namespace Controllers
             Return View()
         End Function
 
+        Function UploadRec() As ActionResult
+            Return View()
+        End Function
+
+
         Function Search() As ActionResult
             Try
 
@@ -88,7 +93,59 @@ Namespace Controllers
         '        Response.HttpContext.Features.[Get](Of IHttpResponseFeature)().ReasonPhrase = e.Message
         '    End Try
         'End Sub
+        <AcceptVerbs("Post")>
+        Public Function SaveRec() As Threading.Tasks.Task
+            Dim file = HttpContext.Request.Form("File")
 
+            Try
+
+                Dim httpPostedFile = System.Web.HttpContext.Current.Request.Files("UploadFiles")
+
+                If httpPostedFile IsNot Nothing Then
+                    Dim fileSave = System.Web.HttpContext.Current.Server.MapPath("~/Resources/Training Recordings/")
+                    Dim fileSavePath = Path.Combine(fileSave, httpPostedFile.FileName)
+
+                    If Not System.IO.File.Exists(fileSavePath) Then
+                        httpPostedFile.SaveAs(fileSavePath)
+
+                        ' If Uploaded = True Then
+                        Dim Response As HttpResponse = System.Web.HttpContext.Current.Response
+                        Response.Clear()
+                        Response.ContentType = "application/json; charset=utf-8"
+                        Response.StatusDescription = "File uploaded succesfully"
+                        Response.[End]()
+                        ' End If
+
+                        ' If Uploaded = False Then
+                        ' Dim Response As HttpResponse = System.Web.HttpContext.Current.Response
+                        ' Response.Clear()
+                        ' Response.Status = "File failed to upload"
+                        ' Response.StatusCode = 409
+                        ' Response.StatusDescription = "File failed to upload"
+                        ' Response.[End]()
+                        'End If
+                    Else
+                        Dim Response As HttpResponse = System.Web.HttpContext.Current.Response
+                        Response.Clear()
+                        Response.Status = "File already exists"
+                        Response.StatusCode = 409
+                        Response.StatusDescription = "File already exists"
+                        Response.[End]()
+                    End If
+                End If
+
+
+
+            Catch e As Exception
+                Dim Response As HttpResponse = System.Web.HttpContext.Current.Response
+                Response.Clear()
+                Response.ContentType = "application/json; charset=utf-8"
+                Response.StatusCode = 409
+                Response.Status = "No Content"
+                Response.StatusDescription = e.Message
+                Response.[End]()
+            End Try
+        End Function
         <AcceptVerbs("Post")>
         Public Async Function Save() As Threading.Tasks.Task
             Dim file = HttpContext.Request.Form("File")

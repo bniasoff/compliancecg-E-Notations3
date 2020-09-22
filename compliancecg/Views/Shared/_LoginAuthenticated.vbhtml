@@ -35,6 +35,7 @@
             <ul class="dropdown-menu">
                 <li class="dropdown-item" id="Search"><a href="javascript:SetActive('search')">Search</a></li>
                 <li class="dropdown-item" id="uploadpolicies"><a href="javascript:SetActive('uploadpolicies')">Upload Policies</a></li>
+                <li class="dropdown-item" id="uploadrecordings"><a href="javascript:SetActive('uploadrecordings')">Upload Recordings</a></li>
             </ul>
         </li>
     </ul>
@@ -142,6 +143,13 @@
             });
         };
 
+        if (arg == 'uploadrecordings') {
+            var ajax = new ej.base.Ajax("/Admin/UploadRec", 'POST', true);
+            ajax.send().then((data) => {
+                $("#PartialView").html(data);
+            });
+        };
+        
 
         if (arg == 'search') {
             var ajax = new ej.base.Ajax("/Admin/Search", 'POST', true);

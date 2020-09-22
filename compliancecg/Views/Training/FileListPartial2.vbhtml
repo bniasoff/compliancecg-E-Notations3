@@ -1,13 +1,14 @@
 ﻿
-<div style="margin-left:2px; width:800px">
+<div style="margin-left:2px; ">
     <ul id="limheight">
         @For Each File In Model.Files
             If File.name.StartsWith("CCG 00201") Then
                 Select Case File.Ext
                     Case = ".pdf"
-                        @<li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
-    @Html.ActionLink(File.Name, "Download", "Training", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
-</li>
+                        @<li>
+                            <i class="fa fa-file-pdf-o" style="font-size:16px;color:red;"></i>
+                            @Html.ActionLink(File.Name, "Download", "Training", New With {.FilePath = File.Path, .FileName = File.Name}, Nothing)
+                        </li>
                 End Select
             End If
         Next
@@ -54,7 +55,7 @@
     }
 
     #limheight {
-        list-style-type disc;
+        list-style: none;
     }
 </Style>
 

@@ -14,15 +14,18 @@
     </div>*@
 
 
-<div style="margin-left:2px; width:800px">
+<div style="margin-left:2px; ">
     <ul id="limheight">
-        <li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
+        <li >
+            <i class="fa fa-file-pdf-o" style="font-size:16px;color:red;"></i>
             @Html.ActionLink("HIPAA Training Script and Acknowledgment.pdf", "DownloadFiles", "Training", New With {.fileName = "HIPAA Training Script and Acknowledgment"}, New With {.target = "_blank"})
         </li>
-        <li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
+        <li >
+            <i class="fa fa-file-pdf-o" style="font-size:16px;color:red;"></i>
             @Html.ActionLink("HIPAA Department Head Sign-in Sheet", "DownloadFiles", "Training", New With {.fileName = "HIPAA Department Head Sign-in Sheet"}, New With {.target = "_blank"})
         </li>
-        <li class="fa fa-file-pdf-o" style="font-size:16px;color:red;margin-bottom:10px;">
+        <li >
+            <i class="fa fa-file-pdf-o" style="font-size:16px;color:red;"></i>
             @Html.ActionLink("HIPAA Line Staff Sign-in Sheet.pdf", "DownloadFiles", "Training", New With {.fileName = "HIPAA Line Staff Sign-in Sheet"}, New With {.target = "_blank"})
         </li>
     </ul>
@@ -58,7 +61,7 @@
     }
 
     #limheight {
-        list-style-type disc;
+        list-style:none;
     }
 </Style>
 
