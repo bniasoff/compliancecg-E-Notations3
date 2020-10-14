@@ -67,34 +67,34 @@ Namespace Controllers
 
 
 
-        '<AcceptVerbs("Post")>
-        'Public Async Sub Save(ByVal UploadFiles As IList(Of IFormFile))
-        '    Try
-
-        '        For Each UpFile In UploadFiles
-        '            Const accountName As String = "compliancecgstorage"
-        '            Const key As String = "examplekey"
-        '            Dim storageAccount = New CloudStorageAccount(New StorageCredentials(accountName, key), True)
-        '            Dim blobClient = storageAccount.CreateCloudBlobClient()
-        '            Dim container = blobClient.GetContainerReference("policies")
-        '            Await container.CreateIfNotExistsAsync()
-        '            Await container.SetPermissionsAsync(New BlobContainerPermissions() With {.PublicAccess = BlobContainerPublicAccessType.Blob})
-        '            Dim blob = container.GetBlockBlobReference("test.jpg")
-
-        '            Using stream = File.OpenReadStream()
-        '                Await blob.UploadFromStreamAsync(stream)
-        '            End Using
-        '        Next
-
-        '    Catch e As Exception
-        '        Response.Clear()
-        '        Response.StatusCode = 204
-        '        Response.HttpContext.Features.[Get](Of IHttpResponseFeature)().ReasonPhrase = "File failed to upload"
-        '        Response.HttpContext.Features.[Get](Of IHttpResponseFeature)().ReasonPhrase = e.Message
-        '    End Try
-        'End Sub
+        '   <AcceptVerbs("Post")>
+        '   Public Async Sub Save(ByVal UploadFiles As IList(Of IFormFile))
+        '       Try
+        '
+        '           For Each UpFile In UploadFiles
+        '               Const accountName As String = "compliancecgstorage"
+        '               Const key As String = "examplekey"
+        '               Dim storageAccount = New CloudStorageAccount(New StorageCredentials(accountName, key), True)
+        '               Dim blobClient = storageAccount.CreateCloudBlobClient()
+        '               Dim container = blobClient.GetContainerReference("policies")
+        '               Await container.CreateIfNotExistsAsync()
+        '               Await container.SetPermissionsAsync(New BlobContainerPermissions() With {.PublicAccess = BlobContainerPublicAccessType.Blob})
+        '               Dim blob = container.GetBlockBlobReference("test.jpg")
+        '
+        '               Using stream = File.OpenReadStream()
+        '                   Await blob.UploadFromStreamAsync(stream)
+        '               End Using
+        '           Next
+        '
+        '       Catch e As Exception
+        '           Response.Clear()
+        '           Response.StatusCode = 204
+        '           Response.HttpContext.Features.[Get](Of IHttpResponseFeature)().ReasonPhrase = "File failed to upload"
+        '           Response.HttpContext.Features.[Get](Of IHttpResponseFeature)().ReasonPhrase = e.Message
+        '       End Try
+        '   End Sub
         <AcceptVerbs("Post")>
-        Public Function SaveRec() As Threading.Tasks.Task
+        Public Sub SaveRec() 'As Threading.Tasks.Task
             Dim file = HttpContext.Request.Form("File")
 
             Try
@@ -102,7 +102,7 @@ Namespace Controllers
                 Dim httpPostedFile = System.Web.HttpContext.Current.Request.Files("UploadFiles")
 
                 If httpPostedFile IsNot Nothing Then
-                    Dim fileSave = System.Web.HttpContext.Current.Server.MapPath("~/Resources/Training Recordings/")
+                    Dim fileSave = System.Web.HttpContext.Current.Server.MapPath("~/Resources/TrainingRecordings/")
                     Dim fileSavePath = Path.Combine(fileSave, httpPostedFile.FileName)
 
                     If Not System.IO.File.Exists(fileSavePath) Then
@@ -145,7 +145,7 @@ Namespace Controllers
                 Response.StatusDescription = e.Message
                 Response.[End]()
             End Try
-        End Function
+        End Sub
         <AcceptVerbs("Post")>
         Public Async Function Save() As Threading.Tasks.Task
             Dim file = HttpContext.Request.Form("File")

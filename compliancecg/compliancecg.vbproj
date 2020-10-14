@@ -1299,7 +1299,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Content Include="Resources\Training Recordings\GMT20200916-140226_Aaron-Rubi.m4a" />
+    <Content Include="Resources\TrainingRecordings\GMT20200916-140226_Aaron-Rubi.m4a" />
+    <Content Include="Resources\TrainingRecordings\7-GMT20200922-210225_Resident-R_640x360.mp4" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1637,6 +1638,8 @@
     <Content Include="Views\Account\StaffLogin.vbhtml" />
     <Content Include="Views\Training\FileListPartial7.vbhtml" />
     <Content Include="Views\Admin\UploadRec.vbhtml" />
+    <Content Include="Views\Admin\Upload.vbhtml" />
+    <Content Include="Views\Training\FileListPartial2.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

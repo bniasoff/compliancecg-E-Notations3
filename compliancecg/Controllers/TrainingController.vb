@@ -30,6 +30,8 @@ Namespace Controllers
             Dim paths = Directory.GetFiles(viewModel.Path).ToList()
             ' Dim paths = Directory.GetFiles(viewModel.Path).ToList()
 
+            Dim viewModel2 = New DocFiles With {.Path = Server.MapPath("../Resources/TrainingRecordings"), .Files = New List(Of DocFile)()}
+            Dim paths2 = Directory.GetFiles(viewModel2.Path).ToList()
 
             For Each path In paths
                 Dim fileInfo = New FileInfo(path)
@@ -40,6 +42,18 @@ Namespace Controllers
                 }
                 viewModel.Files.Add(File)
             Next
+
+            For Each path In paths2
+                Dim fileInfo = New FileInfo(path)
+                Dim File = New DocFile With {
+                    .Path = path,
+                    .Name = fileInfo.Name,
+                    .Ext = fileInfo.Extension
+                }
+                viewModel.Files.Add(File)
+            Next
+
+
 
             Return viewModel
         End Function
