@@ -43,7 +43,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("1-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -64,7 +64,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("2-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -85,7 +85,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("3-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -106,7 +106,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("4-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -127,7 +127,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("5-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -148,7 +148,7 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("6-") And File.Ext = ".mp4" Then
-                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
+                                @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
                                     <source src="@File.Path" type="video/mp4" />
                                     Your browser does Not support the video element.
                                 </video>
@@ -171,8 +171,9 @@ End Code
                     <div Class="divTableCell3" style=" vertical-align: middle;">
                         @For Each File In Model.Files
                             If File.name.StartsWith("7-") And File.Ext = ".mp4" Then
-                                 @<video style = "max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false">
-                                    <source src="@File.Path" type="video/mp4"/>
+                                 @<video style="max-width: 350px;" controls controlsList="nodownload" oncontextmenu="return false" class="trainingVideo">
+                                    <source src="@File.Path" type="video/mp4" />
+                                    @*~/Resources/TrainingRecordings/7-GMT20200922-210225_Resident-R_640x360.mp4*@
                                     Your browser does Not support the video element.
                                 </video>
                             End If
@@ -186,101 +187,119 @@ End Code
                 </div>
             </div>
 
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('.trainingVideo').on('click', function (event) {
+            event.preventDefault();
+            debugger;
+            var elem = jQuery(this)[0];
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+            elem.play();
+        });
+    });
+</script>
+<Style>
+    /* DivTable.com */
+    .divTable {
+        display:   table;
+        width: 95%;
+    }
+    audio:focus {
+        outline: none;
+    }
+    .divTableRow {
+        display:   table-row;
+        height: 80px;
+        max-height: 80px;
+    }
 
-                <Style>
-                    /* DivTable.com */
-                    .divTable {
-                        display:   table;
-                        width: 95%;
-                    }
-                    audio:focus {
-                        outline: none;
-                    }
-                    .divTableRow {
-                        display:   table-row;
-                        height: 80px;
-                        max-height: 80px;
-                    }
+    .divTableHeading {
+        background - color:   #EEE;
+        display: table-header-group;
+    }
 
-                    .divTableHeading {
-                        background - color:   #EEE;
-                        display: table-header-group;
-                    }
+    .divTableCell, .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+        height: 80px;
 
-                    .divTableCell, .divTableHead {
-                        border: 1px solid #999999;
-                        display: table-cell;
-                        padding: 3px 10px;
-                        height: 80px;
+    }
 
-                    }
+    .divTableHeading {
+        background - color:   #EEE;
+        display: table-header-group;
+        font-weight: bold;
+    }
 
-                    .divTableHeading {
-                        background - color:   #EEE;
-                        display: table-header-group;
-                        font-weight: bold;
-                    }
+    .divTableFoot {
+        background - color:   #EEE;
+        display: table-footer-group;
+        font-weight: bold;
+    }
 
-                    .divTableFoot {
-                        background - color:   #EEE;
-                        display: table-footer-group;
-                        font-weight: bold;
-                    }
-
-                    .divTableBody {
-                        display:   table-row-group;
-                    }
-
-
-                    .divTableCell2, .divTableHead {
-                        border: 1px solid #999999;
-                        /*display: table-cell;*/
-                        padding: 3px 10px;
-                        width: 300px;
-                        height: 80px;
-                    }
-
-                    .divTableCell3, .divTableHead {
-                        border: 1px solid #999999;
-                        display: table-cell;
-                        padding: 3px 10px;
-                        text-align: center;
-                    }
-
-                    .divTableCell4, .divTableHead {
-                        border: 1px solid #999999;
-                        display: table-cell;
-                    }
-
-                    .FilePDF {
-                        font - size:   14px;
-                        color: red
-                    }
-
-                    #limheight3 {
-                        list-style-type disc;
-                        -webkit-columns: 3;
-                        -moz-columns: 3;
-                        columns: 3;
-                        list-style-position: inside; /*//this Is important addition*/
-                    }
+    .divTableBody {
+        display:   table-row-group;
+    }
 
 
-                    #limheight2 {
-                        /*height 900px;*/ /*your fixed height;*/
-                        -webkit-column-count: 2;
-                        -moz-column-count: 2;
-                        column-count: 2; /*3 in those rules Is just placeholder -- can be anything*/
-                        list-style-type: none;
-                    }
+    .divTableCell2, .divTableHead {
+        border: 1px solid #999999;
+        /*display: table-cell;*/
+        padding: 3px 10px;
+        width: 300px;
+        height: 80px;
+    }
 
-                    #limheight li {
-                        /*float left;*/
-                        width: 100%; /*helps to determine number of columns, for instance 33.3% displays 3 columns*/
-                    }
+    .divTableCell3, .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+        text-align: center;
+    }
 
-                    #limheight {
-                        list-style-type disc;
-                    }
-                </Style>
+    .divTableCell4, .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+    }
+
+    .FilePDF {
+        font - size:   14px;
+        color: red
+    }
+
+    #limheight3 {
+        list-style-type disc;
+        -webkit-columns: 3;
+        -moz-columns: 3;
+        columns: 3;
+        list-style-position: inside; /*//this Is important addition*/
+    }
+
+
+    #limheight2 {
+        /*height 900px;*/ /*your fixed height;*/
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2; /*3 in those rules Is just placeholder -- can be anything*/
+        list-style-type: none;
+    }
+
+    #limheight li {
+        /*float left;*/
+        width: 100%; /*helps to determine number of columns, for instance 33.3% displays 3 columns*/
+    }
+
+    #limheight {
+        list-style-type disc;
+    }
+</Style>
 

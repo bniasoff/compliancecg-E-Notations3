@@ -1175,16 +1175,8 @@
     <Content Include="App_Data\Resources\HIPAA\CCG 00447a Acknowledgement Form.pdf" />
     <Content Include="App_Data\Resources\HIPAA\CMS Guidance on Texting.pdf" />
     <Content Include="App_Data\Resources\HIPAA\Suspected HIPAA Breach Incident Packet.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG 00305a FMLA Request Form.pdf" />
     <Content Include="App_Data\Resources\Human Resources\CCG 00311 Physician Credentialing Packet and Agreements.pdf" />
     <Content Include="App_Data\Resources\Human Resources\CCG 00512a Volunteer Screening Authorization.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305c FMLA Designation Notice.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305d Notice of Eligibility and Rights and Responsibilities.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305e Certification for Qualifying Exigency for Military Family Leave.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305f Certification for Serious Injury or Illness of a Current Service Member for Military Family Leave.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305g Certification for Serious Injury or Illness of a Veteran for Military Caregiver Leave.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305h Certification of Health Care Provider for Employee%27s Serious Health Condition.pdf" />
-    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305i Certification of Health Care Provider for Family Member.pdf" />
     <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.docx" />
     <Content Include="App_Data\Resources\State Specific\IL\CCG Form 00207c Illinois Overpayment Self-Disclosure Protocol.pdf" />
     <Content Include="App_Data\Resources\State Specific\MI\CCG Form 003MIBCb Long Term Care Workforce Background Check Forms.docx" />
@@ -1264,7 +1256,6 @@
     <Content Include="Resources\COVID-19\Memos\Updates to Requirements for Notification of Confirmed and Suspected COVID-19 Cases Among Residents and Staff in Nursing Homes.pdf" />
     <Content Include="Resources\COVID-19\Memos\Updates to the COVID-19 Focused Survey for Nursing Homes.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00304a Elder Justice Act Poster.pdf" />
-    <Content Include="App_Data\Resources\Required Posters\CCG 00305b FMLA Notice.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00402a Notice of Privacy Practices and Acknowledgement Form.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00412 Fax Machine Poster.pdf" />
     <Content Include="App_Data\Resources\Required Posters\CCG 00446a Resident Privacy Poster, Media Device Poster.pdf" />
@@ -1281,6 +1272,14 @@
     <Content Include="App_Data\Forms\Yearly Required Trainings\7-Resident Rights DH.pdf" />
     <Content Include="App_Data\Forms\Yearly Required Trainings\7-Resident Rights Line Staff.pdf" />
     <Content Include="App_Data\Forms\Yearly Required Trainings\CCG 00516a Acknowledgement Form.pdf" />
+    <Content Include="App_Data\Resources\Required Posters\CCG 00305a FMLA Notice.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305b FMLA Designation Notice.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305c Certification for Qualifying Exigency for Military Family Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305d Notice of Eligibility and Rights and Responsibilities.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305e Certification for Serious Injury or Illness of a Current Service Member for Military Family Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305f Certification for Serious Injury or Illness of a Veteran for Military Caregiver Leave.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305g Certification of health Care Provider for Employee%27s Serious Health Condition.pdf" />
+    <Content Include="App_Data\Resources\Human Resources\CCG Form 00305h Certification of Health Care Provider for Family Member%27s Serious Health Condition.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

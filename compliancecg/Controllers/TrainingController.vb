@@ -46,7 +46,7 @@ Namespace Controllers
             For Each path In paths2
                 Dim fileInfo = New FileInfo(path)
                 Dim File = New DocFile With {
-                    .Path = path,
+                    .Path = path.Substring(20),
                     .Name = fileInfo.Name,
                     .Ext = fileInfo.Extension
                 }
