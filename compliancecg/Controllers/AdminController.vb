@@ -62,7 +62,19 @@ Namespace Controllers
 
             End Try
         End Function
+        Function WebUsers() As ActionResult
+            Try
+                Dim Users As List(Of AspNetUser) = DataRepository.GetWebUsers
+                ViewBag.Users = Users
+                ViewBag.jsonUsers = JsonConvert.SerializeObject(Users)
 
+
+                Return PartialView("WebUsers")
+            Catch ex As Exception
+                logger.Error(ex)
+
+            End Try
+        End Function
 
 
 
@@ -296,56 +308,22 @@ Namespace Controllers
         End Function
 
 
+        Function SearchRequestWU() As String
+            Try
+                Dim jsonString As String = New StreamReader(Me.Request.InputStream).ReadToEnd()
+                jsonString = jsonString.Replace("""User"":null", """User"":0")
+                Dim Search As Search = JsonConvert.DeserializeObject(Of Search)(jsonString)
 
-        '<HttpPost>
-        'Public Async Function Upload(ByVal files As HttpPostedFileBase) As Threading.Tasks.Task(Of ActionResult)
-        '    Try
-        '        If files IsNot Nothing AndAlso files.ContentLength > 0 Then
-        '            Dim InputStream As Stream = files.InputStream
+                Dim AllUsers As List(Of AspNetUser) = DataRepository.GetWebUsersSearch(Search)
+                Return JsonConvert.SerializeObject(AllUsers, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
 
-        '            Dim b As BinaryReader = New BinaryReader(InputStream)
-        '            Dim binData As Byte() = b.ReadBytes(InputStream.Length)
+            Catch ex As Exception
+                logger.Error(ex)
 
-        '            Dim tmpFile = Path.GetTempFileName()
-        '            System.IO.File.WriteAllBytes(tmpFile, binData)
-
-        '            Dim app As Application = New Word.Application()
-        '            Dim WordFile As Word.Document = app.Documents.Open(tmpFile)
-
-        '            SetUpDocument(WordFile)
-
-        '            WordFile.Save()
-        '            WordFile.Close()
-        '            app.Quit()
+            End Try
 
 
-        '            Dim Folders = tmpFile.Split("\")
-        '            Dim Folders2 = Folders.Take(Folders.Count - 1)
-        '            Dim tmpFileRename = String.Join("\", Folders2) & "\" & files.FileName
-
-        '            If My.Computer.FileSystem.FileExists(tmpFileRename) Then
-        '                System.IO.File.SetAttributes(tmpFileRename, FileAttributes.Normal)
-        '                System.IO.File.Delete(tmpFileRename)
-        '            End If
-        '            My.Computer.FileSystem.RenameFile(tmpFile, files.FileName)
-
-        '            Dim AzureFiles As New AzureFiles
-        '            Await AzureFiles.UploadBlobFile("policies", tmpFileRename)
-
-
-        '        End If
-
-        '            Return RedirectToAction("Upload")
-        '    Catch ex As Exception
-
-        '    End Try
-        'End Function
-
-
-
-
-
-
+        End Function
 
         Function SearchRequest() As String
             Try
@@ -369,38 +347,6 @@ Namespace Controllers
                 End If
 
 
-
-
-                'If Search.Control = "User" Then
-                '    Dim Facilities As List(Of Facility) = DataRepository.GetFacilityByUser(Search.User)
-                '    For Each Facility As Facility In Facilities
-                '        Facility.Roles = Facility.FacilityUsers.Where(Function(f) f.FacilityID = Facility.FacilityID And f.UserID = Search.User).Select(Function(f) f.Roles).SingleOrDefault
-                '    Next
-                '    Return JsonConvert.SerializeObject(Facilities, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
-                'End If
-
-                'If Search.Control = "State" Then
-                '    If Search.DisplayResult = "Users" Then
-                '        Dim AllUsers As List(Of GetUser) = DataRepository.GetUsersByState(Search.State)
-
-                '        'Dim Facilities As List(Of Facility) = DataRepository.GetFacilitiesBySearch(Search)
-                '        'Dim AllUsers As New List(Of GetUser)=
-                '        'For Each Facility As Facility In Facilities
-                '        '    Dim Users As List(Of GetUser) = DataRepository.GetUsersByState(Facility.FacilityID)
-                '        '    If Users IsNot Nothing Then
-                '        '        AllUsers.AddRange(Users)
-                '        '    End If
-                '        'Next
-
-                '        Return JsonConvert.SerializeObject(AllUsers, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
-
-                '    End If
-                '    If Search.DisplayResult = "Facilities" Then
-                '        Dim Facilities As List(Of Facility) = DataRepository.GetFacilitiesBySearch(Search)
-                '        Return JsonConvert.SerializeObject(Facilities, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
-                '    End If
-                'End If
-
                 If Search.Control = "Title" Then
                     Dim UsersByTitle As List(Of UsersByTitle) = DataRepository.GetUsersByTitle(Search.Title)
                     'Dim Users As List(Of User) = DataRepository.GetUsersByTitle(TitleID)
@@ -412,10 +358,7 @@ Namespace Controllers
                     Return JsonConvert.SerializeObject(Facilities, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
                 End If
 
-                'If Search.Control = "Facility" Then
-                '    Dim Facilities As List(Of Facility) = DataRepository.GetFacilitiesBySearch(Search)
-                '    Return JsonConvert.SerializeObject(Facilities, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
-                'End If
+
             Catch ex As Exception
                 logger.Error(ex)
 

@@ -49,7 +49,7 @@ Namespace CCGData
         Public Overridable Property StaffMembers() As DbSet(Of StaffMember)
         Public Overridable Property CovidMemos() As DbSet(Of CovidMemo)
         Public Overridable Property CovidTools() As DbSet(Of CovidTool)
-
+    
         Public Overridable Function GetFacilitiesFromUser(userName As String) As ObjectResult(Of Nullable(Of Integer))
             Dim userNameParameter As ObjectParameter = If(userName IsNot Nothing, New ObjectParameter("UserName", userName), New ObjectParameter("UserName", GetType(String)))
     

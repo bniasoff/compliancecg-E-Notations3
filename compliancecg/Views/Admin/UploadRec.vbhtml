@@ -74,7 +74,8 @@ End Code
         dropArea: dropElement,
         upLoading: onFileUpload,
         success: onUploadSuccess,
-        failure: onUploadFailure
+        failure: onUploadFailure,
+        maxFileSize: 700000000
     });
     uploadObj.appendTo('#fileupload');
 
@@ -83,7 +84,6 @@ End Code
     }
 
     function onFileUpload(args) {
-        debugger;
         if (args.operation === 'upload') {
             console.log('File uploaded successfully');
         }

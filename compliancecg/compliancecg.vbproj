@@ -1298,6 +1298,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Resources\TrainingRecordings\6-GMT20201020-155511_Aaron-Rubi_640x360.mp4" />
     <Content Include="Resources\TrainingRecordings\GMT20200916-140226_Aaron-Rubi.m4a" />
     <Content Include="Resources\TrainingRecordings\7-GMT20200922-210225_Resident-R_640x360.mp4" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -1525,6 +1526,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.vbhtml" />
     <Content Include="Views\Account\SendCode.vbhtml" />
     <Content Include="Views\Account\VerifyCode.vbhtml" />
+    <Content Include="Views\Admin\Search.vbhtml" />
     <Content Include="Views\Manage\AddPhoneNumber.vbhtml" />
     <Content Include="Views\Manage\ChangePassword.vbhtml" />
     <Content Include="Views\Manage\Index.vbhtml" />
@@ -1633,12 +1635,12 @@
     <Content Include="Scripts\README.md" />
     <Content Include="Test\Script1.ps1" />
     <Content Include="Test\Script2.ps1" />
-    <Content Include="Views\Admin\Search.vbhtml" />
     <Content Include="Views\Account\StaffLogin.vbhtml" />
     <Content Include="Views\Training\FileListPartial7.vbhtml" />
     <Content Include="Views\Admin\UploadRec.vbhtml" />
     <Content Include="Views\Admin\Upload.vbhtml" />
     <Content Include="Views\Training\FileListPartial2.vbhtml" />
+    <Content Include="Views\Admin\WebUsers.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

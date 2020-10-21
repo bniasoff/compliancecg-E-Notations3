@@ -64,6 +64,7 @@ Public Class Users
                     If UserName IsNot Nothing Then .Email = UserName
                     If UserName IsNot Nothing Then .UserName = UserName
                     .Password2 = Password
+                    .IsActive = True
                 End With
 
                 If Password IsNot Nothing Then

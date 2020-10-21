@@ -32,6 +32,7 @@ Namespace CCGData
         Public Property LastLoginDate As Nullable(Of Date)
         Public Property Password2 As String
         Public Property DateofEntry As Nullable(Of Date)
+        Public Property IsActive As Nullable(Of Boolean)
     
         Public Overridable Property AspNetUserClaims As ICollection(Of AspNetUserClaim) = New HashSet(Of AspNetUserClaim)
         Public Overridable Property AspNetUserLogins As ICollection(Of AspNetUserLogin) = New HashSet(Of AspNetUserLogin)

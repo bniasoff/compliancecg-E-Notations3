@@ -180,6 +180,9 @@ Public Class ApplicationUser
     Public Property LastName As String
     Public Property FirstName As String
     Public Property UserID As String
+
+    Public Property IsActive As Boolean
+
     Public Property LastLoginDate As DateTime?
     Public Property Password2 As String
 

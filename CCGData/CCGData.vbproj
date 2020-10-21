@@ -168,6 +168,16 @@
       <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CCGDataEnitiesExt.vb" />
+    <Compile Include="Data\CCGDataEntities.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCGDataEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CCGDataEntities.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CCGDataEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ChangeLog.vb">
       <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
@@ -206,20 +216,10 @@
     </Compile>
     <Compile Include="ConnectionString.vb" />
     <Compile Include="DataRepository.vb" />
-    <Compile Include="Data\CCGDataEntities.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CCGDataEntities.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\CCGDataEntities.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CCGDataEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CCGDataEntities.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CCGDataEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Facility.vb">
       <DependentUpon>CCGDataEntities.tt</DependentUpon>

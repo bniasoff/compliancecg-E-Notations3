@@ -84,7 +84,7 @@ End code
         ${'Roles'}
     </script>*@
 
-<div style='float:left;margin-right:30px;margin-bottom: 50px;' , class="control-wrapper">
+<div style='float:left;margin-right:30px;margin-bottom: 50px;'  class="control-wrapper">
 
     <div>
         <div style="float:left;margin-right:20px">

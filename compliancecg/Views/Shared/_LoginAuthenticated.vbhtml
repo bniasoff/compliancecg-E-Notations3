@@ -34,6 +34,7 @@
             <a href="javascript:SetActive('admin')" class="dropdown-toggle " data-toggle="dropdown">Admin</a>
             <ul class="dropdown-menu">
                 <li class="dropdown-item" id="Search"><a href="javascript:SetActive('search')">Search</a></li>
+                <li class="dropdown-item" id="webUsers"><a href="javascript:SetActive('webUsers')">Web Users</a></li>
                 <li class="dropdown-item" id="uploadpolicies"><a href="javascript:SetActive('uploadpolicies')">Upload Policies</a></li>
                 <li class="dropdown-item" id="uploadrecordings"><a href="javascript:SetActive('uploadrecordings')">Upload Recordings</a></li>
             </ul>
@@ -149,7 +150,6 @@
                 $("#PartialView").html(data);
             });
         };
-        
 
         if (arg == 'search') {
             var ajax = new ej.base.Ajax("/Admin/Search", 'POST', true);
@@ -158,14 +158,18 @@
             });
         };
 
+        if (arg == 'webUsers') {
+            var ajax = new ej.base.Ajax("/Admin/WebUsers", 'POST', true);
+            ajax.send().then((data) => {
+                $("#PartialView").html(data);
+            });
+        };
         //if (arg == 'forms') {
         //    var ajax = new ej.base.Ajax("/Forms/Index", 'POST', true);
         //    ajax.send().then((data) => {
         //        $("#PartialView").html(data);
         //    });
         //};
-
-
 
     }
 

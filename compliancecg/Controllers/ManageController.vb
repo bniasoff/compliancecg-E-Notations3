@@ -42,7 +42,7 @@ Public Class ManageController
 
         Dim userId = User.Identity.GetUserId()
         Dim model = New IndexViewModel() With {
-            .HasPassword = HasPassword(),
+            .HasPassword = HasPassword(userId),
             .PhoneNumber = Await UserManager.GetPhoneNumberAsync(userId),
             .TwoFactor = Await UserManager.GetTwoFactorEnabledAsync(userId),
             .Logins = Await UserManager.GetLoginsAsync(userId),
@@ -302,8 +302,9 @@ Public Class ManageController
         Next
     End Sub
 
-    Private Function HasPassword() As Boolean
-        Dim userInfo = UserManager.FindById(User.Identity.GetUserId())
+    Private Function HasPassword(ByVal userId As Integer) As Boolean
+
+        Dim userInfo = UserManager.FindById(userId)
         If userInfo IsNot Nothing Then
             Return userInfo.PasswordHash IsNot Nothing
         End If

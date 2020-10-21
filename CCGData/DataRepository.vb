@@ -913,7 +913,19 @@ Public Class DataRepository
             End Try
         End Using
     End Function
-
+    Public Shared Function GetWebUsers() As List(Of AspNetUser)
+        Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
+            Try
+                CCGDataEntities.Configuration.ProxyCreationEnabled = False
+                ' Dim AspNetUser As AspNetUser = CCGDataEntities.AspNetUsers.Where(Function(u) u.Email = UserName).SingleOrDefault
+                Dim WebUsers As List(Of AspNetUser) = CCGDataEntities.AspNetUsers.Where(Function(u) u.LastName IsNot Nothing).OrderBy(Function(f) f.Email).ToList
+                Return WebUsers
+            Catch ex As Exception
+                logger.Error(ex)
+                Return Nothing
+            End Try
+        End Using
+    End Function
     Public Function GetSates2() As List(Of String)
         Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
             Try
@@ -1322,6 +1334,32 @@ Public Class DataRepository
     End Function
 
 
+    Public Function GetWebUsersSearch(Search As Search) As List(Of AspNetUser)
+        Try
+            Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
+                CCGDataEntities.Configuration.ProxyCreationEnabled = False
+
+                Dim Users As List(Of AspNetUser)
+                'Dim UsersIQ As IQueryable(Of AspNetUser) = Nothing
+                ' Dim WebUsers As List(Of AspNetUser) = CCGDataEntities.AspNetUsers.Where(Function(u) u.LastName IsNot Nothing).OrderBy(Function(f) f.Email).ToList
+                If Search.Active = True Then Users = CCGDataEntities.AspNetUsers.Where(Function(u) u.IsActive.Value.Equals(True)).ToList
+                If Search.Active = False Then Users = CCGDataEntities.AspNetUsers.Where(Function(u) u.IsActive.Value.Equals(False)).ToList
+
+                If Search.User > 0 Then
+                    If Search.Active = True Then Users = CCGDataEntities.AspNetUsers.Where(Function(u) u.IsActive.Value.Equals(True) AndAlso u.Id = Search.User).ToList
+                    If Search.Active = False Then Users = CCGDataEntities.AspNetUsers.Where(Function(u) u.IsActive.Value.Equals(False) AndAlso u.Id = Search.User).ToList
+                End If
+
+                ' Users = UsersIQ.ToList
+                Return Users
+
+            End Using
+        Catch ex As Exception
+            logger.Error(ex)
+
+        End Try
+    End Function
+
     Public Function GetUsersSearch(Search As Search) As List(Of GetUser)
         Try
             Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
@@ -1336,7 +1374,7 @@ Public Class DataRepository
                 If Search.Group > 0 Then UsersIQ = UsersIQ.Where(Function(u) u.FacilityGroupID = Search.Group)
                 If Search.Facility > 0 Then UsersIQ = UsersIQ.Where(Function(u) u.FacilityID = Search.Facility)
 
-                '    If Search?.Title?.Length > 0 Then UsersIQ = UsersIQ.Where(Function(u) u.JobTitleID = Search.Title)
+                'If Search?.Title?.Length > 0 Then UsersIQ = UsersIQ.Where(Function(u) u.JobTitleID = Search.Title)
 
 
                 If Search?.State?.Length > 0 Then UsersIQ = UsersIQ.Where(Function(u) u.State = Search.State)
@@ -1353,6 +1391,7 @@ Public Class DataRepository
 
         End Try
     End Function
+
 
     Public Function GetFacilitiesBySearch(Search As Search) As List(Of GetFacility)
         Try

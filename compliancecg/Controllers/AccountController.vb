@@ -116,8 +116,8 @@ Public Class AccountController
                                 End If
                             End If
                         Else
-
-                            If Request.Cookies.Get("loginVerified") Is Nothing And CurrentUser.Email.IndexOf("@fgmanor.com") = -1 And CurrentUser.Email.IndexOf("@empirecarecenters.com") = -1 And CurrentUser.Email.IndexOf("@monumentrehab.com") = -1 And CurrentUser.Email.IndexOf("@newyorkrehab.com") = -1 And CurrentUser.Email.IndexOf("@aomhc.com") = -1 Then
+                            'CurrentUser.Email.IndexOf("@fgmanor.com") = -1 And CurrentUser.Email.IndexOf("@empirecarecenters.com") = -1 And CurrentUser.Email.IndexOf("@monumentrehab.com") = -1 And CurrentUser.Email.IndexOf("@newyorkrehab.com") = -1 And CurrentUser.Email.IndexOf("@aomhc.com") = -1                            
+                            If Request.Cookies.Get("loginVerified") Is Nothing And CurrentUser.TwoFactorEnabled = True Then
                                 Dim rndnumber As Random = New Random
                                 Dim Number = rndnumber.Next(0, 100000).ToString("00000")
                                 Session("LoginCode") = Number
@@ -233,7 +233,7 @@ Public Class AccountController
     Public Async Function AddUser(model As RegisterViewModel) As Task(Of Boolean)
         Try
 
-            Dim user = New ApplicationUser() With {.UserName = model.Email, .Email = model.Email}
+            Dim user = New ApplicationUser() With {.UserName = model.Email, .Email = model.Email, .IsActive = True}
             'Dim user = New ApplicationUser() With {.UserName = model.Email, .Email = model.Email, .FirstName = model.FirstName, .LastName = model.LastName}
             Dim UserAccount = user
             Dim UserRemoved As Boolean = False

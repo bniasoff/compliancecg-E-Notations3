@@ -72,6 +72,7 @@ warning 6002: The table/view 'CCGData2.dbo.AspNetUserRoles' does not have a prim
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="Password2" Type="nvarchar" MaxLength="50" />
           <Property Name="DateofEntry" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CCGData2.dbo.ChangeLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -767,6 +768,7 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
           <NavigationProperty Name="UserHistories" Relationship="CCGDataModel.FK_UserHistory_AspNetUsers" FromRole="AspNetUser" ToRole="UserHistory" />
           <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateofEntry" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="CCGDataModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -1280,6 +1282,7 @@ warning 6002: The table/view 'CCGData2.dbo.UsersByTitle' does not have a primary
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="CCGDataModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="DateofEntry" ColumnName="DateofEntry" />
                 <ScalarProperty Name="Password2" ColumnName="Password2" />
                 <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
