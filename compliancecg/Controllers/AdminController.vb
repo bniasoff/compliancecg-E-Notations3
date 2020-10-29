@@ -14,7 +14,7 @@ Namespace Controllers
 
         Private DataRepository As New DataRepository
         Private Shared logger As Logger = NLog.LogManager.GetCurrentClassLogger()
-
+        Private userManager As ApplicationUserManager
 
         ' GET: Admin
         Function Index() As ActionResult
@@ -36,7 +36,7 @@ Namespace Controllers
         Function Search() As ActionResult
             Try
 
-                Dim FacilityGroups As List(Of FacilityGroup) = DataRepository.GetFacilityGroups2
+                Dim FacilityGroups As List(Of FacilityGroup) = DataRepository.GetFacilityGroups2(True)
                 ViewBag.FacilityGroups = FacilityGroups
                 ViewBag.jsonFacilityGroups = JsonConvert.SerializeObject(FacilityGroups)
 
@@ -324,7 +324,21 @@ Namespace Controllers
 
 
         End Function
+        Async Function UpdateUserWU() As Threading.Tasks.Task(Of String)
+            Dim jsonString As String = New StreamReader(Me.Request.InputStream).ReadToEnd()
+            Dim user As AspNetUser = JsonConvert.DeserializeObject(Of AspNetUser)(jsonString)
 
+            Dim CurrentUser As ApplicationUser = Await Users.FindUserbyUserName(user.Email)
+            If CurrentUser IsNot Nothing Then
+                CurrentUser.FirstName = user.FirstName
+                CurrentUser.LastName = user.LastName
+                CurrentUser.IsActive = user.IsActive
+                CurrentUser.TwoFactorEnabled = user.TwoFactorEnabled
+
+                Users.Update(CurrentUser)
+            End If
+            Return JsonConvert.SerializeObject(CurrentUser, Formatting.Indented, New JsonSerializerSettings With {.PreserveReferencesHandling = PreserveReferencesHandling.Objects, .ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
+        End Function
         Function SearchRequest() As String
             Try
                 Dim jsonString As String = New StreamReader(Me.Request.InputStream).ReadToEnd()

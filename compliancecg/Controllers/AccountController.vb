@@ -77,6 +77,11 @@ Public Class AccountController
         Dim result = Await SignInManager.PasswordSignInAsync(model.Email, model.Password, True, shouldLockout:=False)
         Dim CurrentUser = Await Users.FindUserbyUserName(model.Email)
 
+        'AE adding for non active users
+        If CurrentUser.IsActive = 0 Then
+            Return View("Lockout")
+        End If
+
         Select Case result
             Case SignInStatus.Success
 
@@ -90,10 +95,6 @@ Public Class AccountController
 
                     Session("MasterDocument") = Nothing
                     Session("SectionIndexes") = Nothing
-
-
-
-                    ' Dim result2 = SignInManager.AESendTwoFactorCodeAsync()
 
 
 
@@ -116,7 +117,6 @@ Public Class AccountController
                                 End If
                             End If
                         Else
-                            'CurrentUser.Email.IndexOf("@fgmanor.com") = -1 And CurrentUser.Email.IndexOf("@empirecarecenters.com") = -1 And CurrentUser.Email.IndexOf("@monumentrehab.com") = -1 And CurrentUser.Email.IndexOf("@newyorkrehab.com") = -1 And CurrentUser.Email.IndexOf("@aomhc.com") = -1                            
                             If Request.Cookies.Get("loginVerified") Is Nothing And CurrentUser.TwoFactorEnabled = True Then
                                 Dim rndnumber As Random = New Random
                                 Dim Number = rndnumber.Next(0, 100000).ToString("00000")
@@ -281,18 +281,11 @@ Public Class AccountController
     <ValidateAntiForgeryToken>
     Public Async Function Register(model As RegisterViewModel) As Task(Of ActionResult)
         If ModelState.IsValid Then
-            Dim ApplicationUser = New ApplicationUser With {.UserName = model.Email, .Email = model.Email, .FirstName = model.FirstName, .LastName = model.LastName}
+            Dim ApplicationUser = New ApplicationUser With {.UserName = model.Email, .Email = model.Email, .FirstName = model.FirstName, .LastName = model.LastName, .TwoFactorEnabled = 1, .IsActive = 1}
             Dim User As User = DataRepository.GetUser(model.Email)
             Dim appDbContext = HttpContext.GetOwinContext().[Get](Of ApplicationDbContext)()
-
-            'Using context = New MyEntities()
-
             Using transaction = appDbContext.Database.BeginTransaction()
-
                 Try
-                    'Dim DataModel = New UserMaster()
-                    'DataModel.Gender = model.Gender.ToString()
-                    'DataModel.Name = String.Empty
 
                     Dim result As New IdentityResult
 
@@ -301,33 +294,12 @@ Public Class AccountController
                         result = Await UserManager.CreateAsync(ApplicationUser, model.Password)
 
                         If result.Succeeded Then
-                            'Await AddUser(model)
-
                             Dim code = Await UserManager.GenerateEmailConfirmationTokenAsync(ApplicationUser.Id)
                             Dim callbackUrl = Url.Action("ConfirmEmail", "Account", New With {.userId = ApplicationUser.Id, .code = code}, protocol:=Request.Url.Scheme)
                             Await UserManager.SendEmailAsync(ApplicationUser.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=""" & callbackUrl & """>link</a>")
-
-
                             Me.UserManager.AddToRole(ApplicationUser.Id, "Client")
-
-
-                            'transaction.Commit()
-                            'Await SignInManager.SignInAsync(ApplicationUser, isPersistent:=False, rememberBrowser:=False)
                             Return View("DisplayEmail")
                         End If
-
-
-                        'If result.Succeeded Then
-                        '    Await Me.UserManager.AddToRoleAsync(ApplicationUser.Id, "Client")
-
-
-                        '    'Me.AddUser(DataModel, context)
-                        '    transaction.Commit()
-                        '    Await SignInManager.SignInAsync(ApplicationUser, isPersistent:=False, rememberBrowser:=False)
-                        '    Return RedirectToAction("Index", "Home")
-
-                        '    'Return View("DisplayEmail")
-                        'End If
                     End If
 
                     If User Is Nothing Then
@@ -340,7 +312,6 @@ Public Class AccountController
                     Return Nothing
                 End Try
             End Using
-            'End Using
         End If
 
         ' If we got this far, something failed, redisplay form

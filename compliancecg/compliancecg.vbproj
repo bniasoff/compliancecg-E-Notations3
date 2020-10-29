@@ -1590,6 +1590,7 @@
     <Content Include="Views\Home\ImageSlider2.vbhtml" />
     <Content Include="Scripts\ej2\ej2.min.js.map" />
     <Content Include="Resources\COVID-19\Memos\The United States Department of Labor Redefines “Health Care Provider” Exception to FFCRA.pdf" />
+    <Content Include="Resources\COVID-19\Memos\Nursing Home Visitation during COVID-19.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Facilities\NewFolder1\FacilitiesPartial2.vbhtml" />

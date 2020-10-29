@@ -60,15 +60,19 @@ End code
     <div style="width:10px">
         @*@Html.EJS().Tab("ej2Tab").Animation(Function(anim) anim.Previous(New TabTabActionSettings With {.Effect = "SlideRight"})).HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Popup).Selected("TabSelected").Items(TabTabItems).Width("1500px").Height("600px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()*@
         @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.Auto).OverflowMode(OverflowMode.Scrollable).Selected("TabSelected").Items(TabTabItems).Width("1500px").Height("800px").SelectedItem(0).Created("TabCreated").HeaderPlacement(HeaderPosition.Left).HeightAdjustMode(HeightStyles.Content).Render()
-        <div id="GroupButton">
-            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                <button type="button" class="btn btn-primary" id="ajaxSubmit" onclick="onClick();">Edit Groups</button>
-            </div>
-        </div>
+        
+        @If ViewBag.IsAdmin = True Then
+            @<div id="GroupButton">
+                <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                    <button type="button" class="btn btn-primary" id="ajaxSubmit" onclick="onClick();">Edit Groups</button>
+                </div>
+             </div>
+        End If
+
     </div>
 
 
-    <div id="target3" class="col-lg-12 control-section" style="display:none; height:600px;">
+    <div id = "target3" Class="col-lg-12 control-section" style="display:none; height:600px;">
         @Html.EJS().Dialog("ExternalDialog3").IsModal(True).AnimationSettings(New DialogAnimationSettings() With {.Effect = DialogEffect.None}).ContentTemplate(@@<div>
 
             <div id="Grid2">Test</div>
@@ -228,73 +232,6 @@ End code
                             adaptor: new ej.data.UrlAdaptor()
                             //.Query().addParams("FacilityID",FacilityGroup.FacilityGroupID)
                         });
-
-
-
-
-
-
-
-
-                        //var grid3 = document.getElementById("Grid3").ej2_instances[0];
-
-                        //$.post('/Facilities/GetGroupUsers', request)
-                        //    .done(function (data) {
-                        //        var Users = jQuery.parseJSON(data)
-                        //        grid3.columnModel[0].edit.params.dataSource = Users
-                        //        var Ds = grid3.columnModel[0].edit.params.dataSource;
-                        //    });
-
-
-
-                        //grid3.dataSource = new ej.data.DataManager({
-                        //    url: "/Facilities/UrlDatasource2",
-                        //    insertUrl: "/Facilities/Insert2",
-                        //    updateUrl: "/Facilities/Update2",
-                        //    removeUrl: "/Facilities/Delete2",
-
-                        //    adaptor: new ej.data.UrlAdaptor()
-                        //    //.Query().addParams("FacilityID",FacilityGroup.FacilityGroupID)
-
-                        //    //var dataManager1 = new ej.DataManager({
-                        //    //    url: "TreeViewFeatures.aspx/Data",
-                        //    //    adaptor: new ej.UrlAdaptor()
-                        //    //});
-
-
-                        //    //var dataManager2 =new ej.data.DataManager({ url: "/Facilities/UrlDatasource", adaptor: new ej.data.ODataV4Adaptor })
-                        //    //  .executeQuery(new ej.data.Query().addParams('FacilityGroupID', '1'))
-                        //    //  .then((e) => {
-                        //    //      (e.result).forEach((data) => {
-                        //    //          debugger;
-                        //    //          //table.appendChild(compiledFunction(data)[0]);
-                        //    //      });
-                        //    //  });
-
-
-
-                        //    //var query = ej.Query().addParams("Syncfusion", true);
-                        //    //var execute = dataManager.executeQuery(query) // executing query
-                        //    //.done(function (e) {
-                        //    //    renderTable(e.result);
-                        //    //});
-
-
-                        //    // var query = ej.Query().take(3).skip(2).addParams("Syncfusion", true);
-                        //    //var execute = dataManager1.executeQuery(query);
-
-                        //    //  var ds = grid.dataSource;
-
-
-                        //    //grid.dataSource.model.query.addParams("ID", 10248);
-
-                        //    //var query = ej.Query().sortBy("FacilityID", "descending", false)
-                        //    // var query = ej.Query();
-                        //    //  query.addParams("FacilityGroupID", FacilityGroup.FacilityGroupID);
-
-                        //    //   .select("ItemID", "ItemName", "ItemType")
-                        //});
-
                     }
                 });
 

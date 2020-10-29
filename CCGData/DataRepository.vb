@@ -339,12 +339,18 @@ Public Class DataRepository
 
     End Function
 
-    Public Function GetFacilityGroups2() As List(Of FacilityGroup)
+    Public Function GetFacilityGroups2(IncludeInActive As Boolean) As List(Of FacilityGroup)
         Using CCGDataEntities = New CCGDataEntities(ConnectionStrings.CCGEntityConnectionString.ToString)
             Try
                 CCGDataEntities.Configuration.ProxyCreationEnabled = False
+                Dim FacilityGroups As List(Of FacilityGroup)
                 'Dim FacilityGroups As List(Of FacilityGroup) = CCGDataEntities.FacilityGroups.Where(Function(g) Not g.InActive.Value.Equals(True)).OrderBy(Function(g) g.GroupName).ToList
-                Dim FacilityGroups As List(Of FacilityGroup) = CCGDataEntities.FacilityGroups.OrderBy(Function(g) g.GroupName).ToList
+                If IncludeInActive Then
+                    FacilityGroups = CCGDataEntities.FacilityGroups.OrderBy(Function(g) g.GroupName).ToList
+                Else
+                    FacilityGroups = CCGDataEntities.FacilityGroups.Where(Function(f) Not f.InActive.Value.Equals(True)).OrderBy(Function(g) g.GroupName).ToList
+                End If
+
                 Return FacilityGroups
             Catch ex As Exception
                 logger.Error(ex)

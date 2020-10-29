@@ -7,6 +7,18 @@
 
 @Code
     ViewData("Title") = "Web Users"
+
+    @Code
+        Dim commands As List(Of Object) = New List(Of Object)()
+        commands.Add(New With {.Type = "Edit", .buttonOption = New With {.iconCss = "e-icons e-edit", .cssClass = "e-flat"}})
+        @*commands.Add(New With {.Type = "Delete", .buttonOption = New With {.iconCss = "e-icons e-delete", .cssClass = "e-flat"}})*@
+    commands.Add(New With {.Type = "Save", .buttonOption = New With {.iconCss = "e-icons e-update", .cssClass = "e-flat"}})
+    commands.Add(New With {.Type = "Cancel", .buttonOption = New With {.iconCss = "e-icons e-cancel-icon", .cssClass = "e-flat"}})
+    commands.Add(New With {.Type = "Update", .buttonOption = New With {.iconCss = "e-icons e-update", .cssClass = "e-flat"}})
+
+
+    End code
+
 End Code
 
 
@@ -44,10 +56,9 @@ End Code
 <div ID="DivUsers" style="margin-left:10px;margin-top:20px;">
     <div><h4>Users</h4></div>
     <div>
-
         @Html.EJS().Grid("Grid2").Height("300").Width("1400").Columns(Sub(col)
                                                                           col.Field("Id").HeaderText("ID").IsPrimaryKey(True).Visible(False).Add()
-                                                                          col.Field("Email").HeaderText("Email").Width("200").Template("#template").Add()
+                                                                          col.Field("Email").HeaderText("Email").Width("200").AllowEditing(False).Template("#template").Add()
                                                                           col.Field("LastName").HeaderText("Last Name").Width("150").Add()
                                                                           col.Field("FirstName").HeaderText("First Name").Width("150").AllowEditing(True).Add()
                                                                           col.Field("IsActive").HeaderText("IsActive").EditType("booleanedit").DisplayAsCheckBox(True).Type("boolean").Width("150").Add()
@@ -55,8 +66,7 @@ End Code
                                                                           col.Field("LastLoginDate").HeaderText("LastLoginDate").Format("yMd").Width("160").AllowEditing(False).Add()
                                                                           col.Field("DateofEntry").HeaderText("Date Created").Format("yMd").Width("160").AllowEditing(False).Add()
                                                                           col.Field("Password2").HeaderText("Password").Width("140").Template("#template2").AllowEditing(False).Add()
-                                                                      End Sub).AllowExcelExport().ToolbarClick("toolbarClickWU").Toolbar(New List(Of String)() From {"ExcelExport"}).Load("loadWU").SelectionSettings(Sub(selection) selection.Type(Syncfusion.EJ2.Grids.SelectionType.Single)).AllowSorting().AllowFiltering().AllowGrouping().AllowResizing(True).FilterSettings(Sub(Filter) Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Render()
-
+                                                                      End Sub).ActionComplete("actionComplete").AllowExcelExport().ToolbarClick("toolbarClickWU").Load("loadWU").SelectionSettings(Sub(selection) selection.Type(Syncfusion.EJ2.Grids.SelectionType.Single)).AllowSorting().AllowFiltering().AllowGrouping().AllowResizing(True).AllowPaging().PageSettings(Sub(page) page.PageCount(2)).EditSettings(Sub(edit) edit.AllowEditing(True).Mode(Syncfusion.EJ2.Grids.EditMode.Normal)).FilterSettings(Sub(Filter) Filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel)).Toolbar(New List(Of String)(New String() {"ExcelExport", "Edit", "Update", "Cancel"})).Render()
     </div>
 </div>
 
@@ -68,10 +78,9 @@ End Code
 </script>
 <script id="template2" type="text/x-template">
     <div>
-        <input type="password" name="password" class="password" value="${Password2}" style="width:85%">
-        <span class="togglePassword"  onclick="togglePass(this)">show</span>
+        <input type="password" name="password" class="password" value="${Password2}" style="width:85%" readonly="readonly">
+        <span class="togglePassword" onclick="togglePass(this)">show</span>
     </div>
-   
 </script>
 <script>
 
@@ -84,7 +93,7 @@ End Code
 
         var text = $(togglePassword).html() === "show" ? "hide" : "show";
         $(togglePassword).html(text)
-       // togglePassword.classList.toggle('fa-eye-slash');
+        // togglePassword.classList.toggle('fa-eye-slash');
     }
     function toolbarClickWU(args) {
         var gridObj = document.getElementById("Grid2").ej2_instances[0];
@@ -93,13 +102,18 @@ End Code
         }
     }
 
-
-
-    // function dropdown(args) {
-    //     var ele = args.cell.querySelector('select');
-    //     var drop = new ej.dropdowns.DropDownList({ popupHeight: 150, popupWidth: 150 });
-    //     drop.appendTo(ele);
-    // }
+    function actionComplete(args) {
+  
+       
+        if (args.requestType === 'save') 
+        {
+            debugger;
+            var updateUser1 = JSON.stringify(args.data);
+            $.post('../Admin/UpdateUserWU', updateUser1)
+                .done(function (data) {
+             });
+        }
+    }
 
     function loadWU() {
         debugger;
@@ -151,20 +165,26 @@ End Code
 
     function valueChangeWU(args) {
         debugger;
-        var mySearch = GetSearchValues()
+        var mySearch = GetSearchValuesWU()
         mySearch.Control = 'WebUsers';
-        SetGridData()
+        SetGridDataWU()
     };
 
 </script>
 
 
 <style>
+    .password {
+        border: none;
+        background: transparent;
+        cursor: initial;
+    }
 
     .togglePassword {
         cursor: pointer;
         color: #007bff
     }
+
     .header1 {
         font-weight: 600;
         color: rgba(0, 0, 0, .54);

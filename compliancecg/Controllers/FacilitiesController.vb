@@ -229,7 +229,7 @@ Namespace Controllers
         Function Search() As ActionResult
             Try
 
-                Dim FacilityGroups As List(Of FacilityGroup) = DataRepository.GetFacilityGroups2
+                Dim FacilityGroups As List(Of FacilityGroup) = DataRepository.GetFacilityGroups2(True)
                 ViewBag.FacilityGroups = FacilityGroups
                 ViewBag.jsonFacilityGroups = JsonConvert.SerializeObject(FacilityGroups)
 
@@ -418,13 +418,13 @@ Namespace Controllers
                 Dim CurrentUser As User = HomeController.GetCurrentUser()
                 If CurrentUser Is Nothing Then
                     Facilites = DataRepository.GetFacilites2
-                    FacilityGroups = DataRepository.GetFacilityGroups2
+                    FacilityGroups = DataRepository.GetFacilityGroups2(False)
                 End If
 
                 If CurrentUser IsNot Nothing Then
                     If CurrentUser.EmailAddress = "info@compliancecg.com" Then
                         Facilites = DataRepository.GetFacilites2
-                        FacilityGroups = DataRepository.GetFacilityGroups2
+                        FacilityGroups = DataRepository.GetFacilityGroups2(False)
                     Else
                         Facilites = DataRepository.GetFacilities2(CurrentUser.EmailAddress)
                         FacilityGroups = DataRepository.GetFacilitiesGroup2(CurrentUser.EmailAddress)
@@ -463,6 +463,8 @@ Namespace Controllers
 
                 ViewBag.ordersData = OrdersDetails.GetAllRecords().ToArray()
 
+                ViewBag.IsAdmin = If(CurrentUser IsNot Nothing AndAlso CurrentUser.EmailAddress = "info@compliancecg.com", True, False)
+
                 Return PartialView()
             Catch ex As Exception
                 logger.Error(ex)
@@ -480,7 +482,7 @@ Namespace Controllers
                 'ViewBag.DefaultButtons = buttons
 
                 Dim Facilites = DataRepository.GetFacilites2
-                Dim FacilityGroups = DataRepository.GetFacilityGroups2
+                Dim FacilityGroups = DataRepository.GetFacilityGroups2(False)
 
                 Dim TabHeaders As New List(Of TabHeader)
                 For Each Group As FacilityGroup In FacilityGroups
@@ -705,7 +707,7 @@ Namespace Controllers
 
                 If User Is Nothing Then
                     Facilites = DataRepository.GetFacilites2
-                    FacilityGroups = DataRepository.GetFacilityGroups2
+                    FacilityGroups = DataRepository.GetFacilityGroups2(False)
                 End If
 
                 If User IsNot Nothing Then
@@ -1537,7 +1539,7 @@ Namespace Controllers
                 Dim FacilityGroups As New List(Of FacilityGroup)
                 Dim DataSource As IEnumerable = Nothing
 
-                FacilityGroups = DataRepository.GetFacilityGroups2
+                FacilityGroups = DataRepository.GetFacilityGroups2(True)
 
                 DataSource = FacilityGroups
 
